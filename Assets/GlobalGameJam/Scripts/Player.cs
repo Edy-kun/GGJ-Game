@@ -90,12 +90,3 @@ public class Player : MonoBehaviour, ICanPickUp, IControlled
         throw new NotImplementedException();
     }
 }
-
-public interface IControlled
-{
-    void StartControl();
-    event Action<IControlled> OnControlEnd;
-    void EndControl();
-
-
-}
