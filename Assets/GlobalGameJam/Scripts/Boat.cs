@@ -19,15 +19,6 @@ public class Boat : MonoBehaviour, ICanPickUp
         Devices[Random.Range(0, Devices.Count)].TakeDamage(dmg);
     }
 
-    private void Awake()
-    {
-        throw new NotImplementedException();
-    }
-
-    private void Update()
-    {
-        throw new NotImplementedException();
-    }
 
     public bool TryPickUp(Element contains)
     {
