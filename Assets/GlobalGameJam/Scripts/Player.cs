@@ -6,6 +6,7 @@ using DG.Tweening;
 using UnityEngine;
 using UnityEngine.InputSystem;
 
+
 public class Player : MonoBehaviour, ICanPickUp, IControlled
 {
     public GameObject character;
@@ -66,13 +67,18 @@ public class Player : MonoBehaviour, ICanPickUp, IControlled
     }
 
     public void Rotate(InputAction.CallbackContext context)
-    {
-    if (_controller is ThirdPersonHoverCraftController hoverCraftController)
-           hoverCraftController.ControlRightThruster(context);        
-           if (!IsMine(context))
+    { 
+        if (!IsMine(context))
+                 return;
+        if (_controller is ThirdPersonHoverCraftController hoverCraftController)
+        {
+            hoverCraftController.ControlRightThruster(context);
             return;
-            this.transform.rotation = Quaternion.Euler(0, Angle(rotvec), 0);
-        
+        }
+
+        var rotvec = context.ReadValue<Vector2>();
+        this.transform.rotation = Quaternion.Euler(0, Angle(rotvec), 0);
+
     }
 
     private static float Angle(Vector2 p_vector2)
