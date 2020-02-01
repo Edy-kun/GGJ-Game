@@ -4,6 +4,7 @@ using System.Collections.Generic;
 using System.Linq;
 using TMPro;
 using UnityEngine;
+using UnityEngine.InputSystem;
 
 public class PlayerPanel : UIPanel
 {
@@ -17,30 +18,10 @@ public class PlayerPanel : UIPanel
         playerSelectPanelPrototype = GetComponentInChildren<PlayerSelectPanel>();
         playerSelectPanelPrototype.gameObject.SetActive(false);
         EmptyLabel.text = "Press Start To join!";
+        GameManager.Instance.OnJoined += HandlePlayerJoined;
     }
 
-    private void Update()
-    {
-        if (Input.GetKeyDown(KeyCode.A))
-        {
-            OnPlayerJoined(PlayerSelectPanels.Count);
-        }
 
-        if (Input.GetKeyDown(KeyCode.B))
-        {
-            OnPlayerLeft(PlayerSelectPanels.Count - 1);
-        }
-
-        if (Input.GetKey(KeyCode.Space))
-        {
-            HandleStart();
-        }
-
-        if (PlayersReady())
-        {
-            HandleStart();
-        }
-    }
 
     private bool PlayersReady()
     {
@@ -64,8 +45,9 @@ public class PlayerPanel : UIPanel
         EmptyLabel.gameObject.SetActive(PlayerSelectPanels.Count == 0);
     }
 
-    public void OnPlayerJoined(int id)
+    public void HandlePlayerJoined(int id)
     {
+        
         if (PlayerSelectPanels.Count >= GameManager.Instance.Settings.MaxPlayers)
             return;
         var p = Instantiate(playerSelectPanelPrototype, Container);
