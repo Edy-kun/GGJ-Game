@@ -14446,7 +14446,7 @@ GameObject:
   - component: {fileID: 6811593711954861690}
   - component: {fileID: 6811593711954896858}
   m_Layer: 0
-  m_Name: Bleh
+  m_Name: MuzzleFlash
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0

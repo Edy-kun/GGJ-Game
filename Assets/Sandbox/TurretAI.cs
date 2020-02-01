@@ -13,8 +13,10 @@ public class TurretAI : MonoBehaviour
 
     [SerializeField] private float fireDelta;
 
+    [SerializeField] private GameObject ps, bullet;
+
     private Transform player;
-    private float cachedSpeed, nextFire = 0.5f, myTime = 0.0f;
+    private float cachedSpeed, nextFire = 0.4f, myTime = 0.0f;
 
 
     private void Start()
@@ -83,6 +85,10 @@ public class TurretAI : MonoBehaviour
             Vector3 forward = partToRotate.TransformDirection(Vector3.forward) * maxTurretRange;
             Debug.DrawRay(partToRotate.position, forward, Color.yellow);
 
+            GameObject shootBullet;
+            shootBullet = Instantiate(bullet, ps.transform.position, partToRotate.rotation);
+            shootBullet.GetComponent<Rigidbody>().AddForce(shootBullet.transform.forward * 100f);
+            Destroy(shootBullet,0.4f);
             nextFire = nextFire - myTime;
             myTime = 0.0f;
         }
