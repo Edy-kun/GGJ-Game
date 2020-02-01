@@ -15,8 +15,8 @@ public class Gun : Device, IWeapon, IControlled, IReceiveInput
     private Element Cost;
 
     private float position =.5f;
-    public Vector3 begin;
-    public Vector3 end;
+    public Transform begin;
+    public Transform end;
 
     public Vector3 AimDirMax;
     public Vector3 AimDirMin;
@@ -90,7 +90,7 @@ public class Gun : Device, IWeapon, IControlled, IReceiveInput
     {
         position += move.y * .5f;
         position= Mathf.Clamp(position, 0, 1);
-        TurrentCart.transform.position = turrentCartStartPos+Vector3.Lerp(begin, end, position);
+        TurrentCart.transform.position = turrentCartStartPos+Vector3.Lerp(begin.position, end.position, position);
     }
 
     public void Rotate(Vector2 rotate)
@@ -125,8 +125,8 @@ public class Gun : Device, IWeapon, IControlled, IReceiveInput
     public void OnDrawGizmos()
     {
         Gizmos.color = Color.blue;
-        Gizmos.DrawSphere(transform.TransformPoint(begin), .5f);
+        Gizmos.DrawSphere(begin.position, .5f);
         
-        Gizmos.DrawSphere(transform.TransformPoint(end), .5f);
+        Gizmos.DrawSphere(end.position, .5f);
     }
 }

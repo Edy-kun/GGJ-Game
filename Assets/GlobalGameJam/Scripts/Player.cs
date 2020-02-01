@@ -18,6 +18,7 @@ public class Player : MonoBehaviour, ICanPickUp, IControlled
     [SerializeField] private PlayerInput _playerInput;
     public event Action<object, Player> OnLeave;
     private static HashSet<InputDevice> _knownControllers = new HashSet<InputDevice>();
+    public Boat Boat { get; set; }
 
     public bool TryPickUp(Element contains)
     {
@@ -63,12 +64,13 @@ public class Player : MonoBehaviour, ICanPickUp, IControlled
     {
         if (!IsMine(context))
             return;
-        
+
         if (_controller is ThirdPersonHoverCraftController hoverCraftController)
         {
             hoverCraftController.ControlLeftThruster(context);
             return;
-            }
+        }
+
         _movevec = context.ReadValue<Vector2>();
    
     }
@@ -146,6 +148,7 @@ public class Player : MonoBehaviour, ICanPickUp, IControlled
         if (InputDevice == null && !_knownControllers.Contains(context.control.device) &&
             (context.phase == InputActionPhase.Started))
         {
+            this.transform.parent = Boat.transform;
             var device = context.control.device;
             _knownControllers.Add(device);
             InputDevice = device;
@@ -221,21 +224,27 @@ public class Player : MonoBehaviour, ICanPickUp, IControlled
             return;
         }
 
-        Debug.Log("Interacted");
+        
         if (Physics.Raycast(this.transform.position, this.transform.forward, out var hit, 5.0f))
         {
-            
-            Debug.Log($"{name} tried to interact with {hit.rigidbody.name}");
-            var con = hit.rigidbody.GetComponent<IControlled>();
-            if (con == null)
-                return;
-            else if (con is IReceiveInput input)
+            var con = hit.collider.GetComponent<IReceiveInput>();
+            IControlled icon = null;
+            if (con != null)
             {
-                _recieveInput = input;
+                icon = _recieveInput = con;
+                
             }
-            con.OnControlEnd += EndControl;
-            con.StartControl();
-            _controller = con;
+            else
+            {
+                Debug.Log($"{name} tried to interact with {hit.rigidbody.name}");
+                icon = hit.rigidbody.GetComponent<IControlled>();
+            }
+            if (icon == null)
+                return;
+          
+            icon.OnControlEnd += EndControl;
+            icon.StartControl();
+            _controller = icon;
         }
     }
 
