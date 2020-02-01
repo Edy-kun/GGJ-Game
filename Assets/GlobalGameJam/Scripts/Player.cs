@@ -17,8 +17,8 @@ public class Player : MonoBehaviour, ICanPickUp, IControlled
     public InputDevice InputDevice;
     [SerializeField] private PlayerInput _playerInput;
     public event Action<object, Player> OnLeave;
-    private static HashSet<InputDevice> _knownControllers= new HashSet<InputDevice>();
-    
+    private static HashSet<InputDevice> _knownControllers = new HashSet<InputDevice>();
+
     public bool TryPickUp(Element contains)
     {
         if (holds != null)
@@ -34,7 +34,7 @@ public class Player : MonoBehaviour, ICanPickUp, IControlled
 
     public void Update()
     {
-        DoMove(_movevec*Time.deltaTime);
+        DoMove(_movevec * Time.deltaTime);
     }
 
     public void DoMove(Vector3 vec)
@@ -51,25 +51,29 @@ public class Player : MonoBehaviour, ICanPickUp, IControlled
 
     public void Move(InputAction.CallbackContext context)
     {
-    if(_controller is ThirdPersonHoverCraftController hoverCraftController)
-     hoverCraftController.ControlLeftThruster(context);
-        if (!IsMine(context)) 
+        if (!IsMine(context))
             return;
+        
+        if (_controller is ThirdPersonHoverCraftController hoverCraftController)
+        {
+            hoverCraftController.ControlLeftThruster(context);
+            return;
+        }
+
         var temp = context.ReadValue<Vector2>();
         _movevec = new Vector3(temp.x, 0, temp.y);
-
-
     }
 
     private bool IsMine(InputAction.CallbackContext context)
     {
-        return (context.control.device == InputDevice);
+        return true; //(context.control.device == InputDevice);
     }
 
     public void Rotate(InputAction.CallbackContext context)
-    { 
+    {
         if (!IsMine(context))
-                 return;
+            return;
+        
         if (_controller is ThirdPersonHoverCraftController hoverCraftController)
         {
             hoverCraftController.ControlRightThruster(context);
@@ -78,7 +82,6 @@ public class Player : MonoBehaviour, ICanPickUp, IControlled
 
         var rotvec = context.ReadValue<Vector2>();
         this.transform.rotation = Quaternion.Euler(0, Angle(rotvec), 0);
-
     }
 
     private static float Angle(Vector2 p_vector2)
@@ -101,36 +104,30 @@ public class Player : MonoBehaviour, ICanPickUp, IControlled
         {
             _recieveInput = hit.rigidbody.GetComponent<IReceiveInput>();
         }
-
-
     }
 
     public void No(InputAction.CallbackContext context)
     {
-        
     }
 
 
     public void Join(InputAction.CallbackContext context)
     {
-
-        if (InputDevice == null && !_knownControllers.Contains(context.control.device)&&(context.phase == InputActionPhase.Started))
+        if (InputDevice == null && !_knownControllers.Contains(context.control.device) &&
+            (context.phase == InputActionPhase.Started))
         {
             var device = context.control.device;
             _knownControllers.Add(device);
             InputDevice = device;
             character.SetActive(true);
             OnJoined?.Invoke(this, this);
-
         }
     }
 
     public void Leave(InputAction.CallbackContext context)
     {
-        
         if (InputDevice != null && (context.phase == InputActionPhase.Performed))
         {
-            
             var device = context.control.device;
             _knownControllers.Remove(device);
             InputDevice = null;
@@ -157,15 +154,15 @@ public class Player : MonoBehaviour, ICanPickUp, IControlled
 
     public void StartControl()
     {
-        
     }
 
     public void EndControl()
     {
         //do cleanup here
     }
+
     public event Action<IControlled> OnControlEnd;
-    
+
     public void Interact(InputAction.CallbackContext context)
     {
         if (!context.performed) return;
@@ -181,7 +178,7 @@ public class Player : MonoBehaviour, ICanPickUp, IControlled
         {
             Debug.Log($"{name} tried to interact with {hit.rigidbody.name}");
             var con = hit.rigidbody.GetComponent<IControlled>();
-            if (con == null) 
+            if (con == null)
                 return;
             con.OnControlEnd += EndControl;
             con.StartControl();
