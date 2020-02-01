@@ -23,17 +23,17 @@
                 },
                 {
                     "name": "ThrustLeft",
-                    "type": "Button",
+                    "type": "Value",
                     "id": "c5b7a185-e915-4da4-af08-6bc17714c205",
-                    "expectedControlType": "Button",
+                    "expectedControlType": "Analog",
                     "processors": "",
                     "interactions": ""
                 },
                 {
                     "name": "ThrustRight",
-                    "type": "Button",
+                    "type": "Value",
                     "id": "46ab143b-89f3-49b7-991b-29a2507c0f42",
-                    "expectedControlType": "Button",
+                    "expectedControlType": "Analog",
                     "processors": "",
                     "interactions": ""
                 },
@@ -47,17 +47,17 @@
                 },
                 {
                     "name": "ControlLeftEngine",
-                    "type": "Button",
+                    "type": "Value",
                     "id": "f899e6be-d215-4791-807c-4992c8d7d669",
-                    "expectedControlType": "",
+                    "expectedControlType": "Vector2",
                     "processors": "",
                     "interactions": ""
                 },
                 {
                     "name": "ControlRightEngine",
-                    "type": "Button",
+                    "type": "Value",
                     "id": "07758f0d-3656-4c41-8d38-9caf6cd8c3d8",
-                    "expectedControlType": "",
+                    "expectedControlType": "Vector2",
                     "processors": "",
                     "interactions": ""
                 },
@@ -308,7 +308,7 @@
                     "name": "",
                     "id": "ca8c2f6d-5a27-4c4a-9ce7-e82865365008",
                     "path": "<Gamepad>/buttonNorth",
-                    "interactions": "",
+                    "interactions": "Press(behavior=1)",
                     "processors": "",
                     "groups": "Gamepad",
                     "action": "Interact",

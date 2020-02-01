@@ -12,8 +12,6 @@ namespace GlobalGameJam.Hovercraft
         [SerializeField] private Transform _thrustersRoot;
         [SerializeField] private DownThrusterController _downThrusterController;
 
-        [SerializeField] private PlayerInput _playerInput;
-        
         public HoverCraftEngine LeftEngine => _leftEngine;
         
         public HoverCraftEngine RightEngine => _rightEngine;
@@ -41,10 +39,6 @@ namespace GlobalGameJam.Hovercraft
         {
             _engines = new[] {LeftEngine, RightEngine};
             ThrusterController.HoverCraftFloatForcePoints = _thrustersRoot.GetComponentsInChildren<Transform>();
-            StartControl();
-            
-            //for debug purposes. pretend the exit control was accepted
-            OnControlEnd += (a) => EndControl();
         }
 
         private void OnDrawGizmosSelected()
@@ -59,7 +53,6 @@ namespace GlobalGameJam.Hovercraft
 
         private void Update()
         {
-            ControlThrustUp();
         }
         private void FixedUpdate()
         {
@@ -92,35 +85,28 @@ namespace GlobalGameJam.Hovercraft
         public void ControlThrustUpLeft(InputAction.CallbackContext value)
         {
             _leftThrustUp = value.ReadValue<float>();
+            var totalPower = _leftThrustUp * (_powerDistribution) + _rightThrustUp * (1f - _powerDistribution);
+            ThrusterController.PowerSetting = totalPower;
         }
 
         public void ControlThrustUpRight(InputAction.CallbackContext value)
         {
             _rightThrustUp = value.ReadValue<float>();
+            var totalPower = _leftThrustUp * (_powerDistribution) + _rightThrustUp * (1f - _powerDistribution);
+            ThrusterController.PowerSetting = totalPower;
         }
 
         public void RequestEndControl(InputAction.CallbackContext value)
         {
-            if (value.phase == InputActionPhase.Performed)
+            if (value.performed)
             {
-                if (_playerInput.enabled)
-                {
-                    OnControlEnd?.Invoke(this);
-                }
-                else StartControl();
+                OnControlEnd?.Invoke(this);
             }
-        }
-
-        private void ControlThrustUp()
-        {
-            var totalPower = _leftThrustUp * (_powerDistribution) + _rightThrustUp * (1f - _powerDistribution);
-            ThrusterController.PowerSetting = totalPower;
         }
 
 
         public void StartControl()
         {
-            _playerInput.enabled = true;
             foreach (var engine in _engines)
             {
                 engine.Direction = Vector3.forward;
@@ -131,7 +117,6 @@ namespace GlobalGameJam.Hovercraft
         public event Action<IControlled> OnControlEnd;
         public void EndControl()
         {
-            _playerInput.enabled = false;
             LeftEngine.EnginePower = 0;
             RightEngine.EnginePower = 0;
             ThrusterController.PowerSetting = 0;
