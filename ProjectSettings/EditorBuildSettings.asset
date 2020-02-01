@@ -4,5 +4,14 @@
 EditorBuildSettings:
   m_ObjectHideFlags: 0
   serializedVersion: 2
-  m_Scenes: []
+  m_Scenes:
+  - enabled: 1
+    path: Assets/GlobalGameJam/Scenes/Main.unity
+    guid: 58411ac17961d494b9d0d6a6a901f7f4
+  - enabled: 1
+    path: Assets/GlobalGameJam/Scenes/Menu.unity
+    guid: 8b5f95b26a2efb849b3ff432f1135958
+  - enabled: 1
+    path: Assets/GlobalGameJam/Scenes/Game.unity
+    guid: f677103a81dbf3d4ea038369b7583036
   m_configObjects: {}
