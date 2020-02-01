@@ -5,9 +5,15 @@ using Random = UnityEngine.Random;
 
 public class Boat : MonoBehaviour, ICanPickUp
 {
+    
     public List<IRepairable> Devices;
     public Inventory Inventory = new Inventory();
 
+    public void EnterBoat()
+    {
+        
+    }
+    
     public void TakeDamage(int dmg)
     {
         Devices[Random.Range(0, Devices.Count)].TakeDamage(dmg);

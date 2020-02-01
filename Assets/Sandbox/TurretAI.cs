@@ -108,7 +108,7 @@ public class TurretAI : MonoBehaviour
         Vector3 dir = target.position - transform.position;
         Quaternion lookRotation = Quaternion.LookRotation(dir);
         Vector3 rotation = Quaternion.Lerp(gunToRotate.rotation, lookRotation, Time.deltaTime * turretTurnSpeed).eulerAngles;
-        gunToRotate.localRotation = Quaternion.Euler(rotation.x, 0f, 0f);
+        gunToRotate.localRotation = Quaternion.Euler(rotation.x - 0.1f, 0f, 0f);
     }
 
     private void Fire()
@@ -125,8 +125,9 @@ public class TurretAI : MonoBehaviour
 
             GameObject shootBullet;
             shootBullet = Instantiate(bullet, ps.transform.position, partToRotate.rotation);
-            shootBullet.GetComponent<Rigidbody>().AddForce(shootBullet.transform.forward * 100f);
+            shootBullet.GetComponent<Rigidbody>().AddForce(shootBullet.transform.forward * 90f);
             Destroy(shootBullet,0.4f);
+            GetComponent<AudioSource>().Play();
             nextFire = nextFire - myTime;
             myTime = 0.0f;
         }

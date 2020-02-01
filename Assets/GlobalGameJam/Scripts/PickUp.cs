@@ -1,19 +1,29 @@
-﻿using UnityEngine;
+﻿using System;
+using UnityEngine;
 
 [RequireComponent(typeof(BoxCollider))]
 public class PickUp : MonoBehaviour
 {
-    private PickUpProfile _contains;
+    [SerializeField] private PickUpProfile _contains;
+
+    private void Awake()
+    {
+        if (_contains != null)
+        {
+            SetProfile(_contains);
+        }
+    }
 
     public void SetProfile(PickUpProfile contain)
     {
         _contains = contain;
-       Instantiate(_contains.GameObject);
+       Instantiate(_contains.GameObject,transform);
     }
     
-    private void OnCollisionEnter(Collision other)
+    private void OnTriggerEnter(Collider other)
     {
-        var collidedWith = other.transform.GetComponent<ICanPickUp>();
+        Debug.Log($"entered {other.name}" );
+        var collidedWith = other.GetComponent<ICanPickUp>();
         if (collidedWith == null) 
             return;
         if (collidedWith.TryPickUp(_contains.Element))

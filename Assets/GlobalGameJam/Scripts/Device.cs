@@ -6,6 +6,8 @@ using UnityEngine;
 public abstract class Device:MonoBehaviour,IRepairable
 {
     protected AudioSource audioSource;
+    protected Boat Boat;
+    
     private void Awake()
     {
         audioSource = this.GetComponent<AudioSource>();
@@ -23,11 +25,11 @@ public abstract class Device:MonoBehaviour,IRepairable
         }
     }
 
-    public void SetConfig(DeviceConfig _config)
+    public void InitDevice(DeviceConfig _config, Boat boat)
     {
         config = _config;
         Health = config.health;
-        
+        Boat = boat;
 
     }
 
