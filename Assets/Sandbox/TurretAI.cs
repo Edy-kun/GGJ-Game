@@ -3,7 +3,7 @@ using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.AI;
 
-public class CrocScript : MonoBehaviour
+public class TurretAI : MonoBehaviour
 {
     [SerializeField] private NavMeshAgent agent;
     [SerializeField] private Transform player, partToRotate;
@@ -11,16 +11,21 @@ public class CrocScript : MonoBehaviour
     [SerializeField] private float minFollowRange, maxFollowRange, minTurretRange, maxTurretRange, turretTurnSpeed;
     [SerializeField] private string boatTag;
 
+    private float cachedSpeed;
+
 
     private void Start()
     {
+        player = GameObject.FindGameObjectWithTag(boatTag).transform;
         agent.destination = player.position;
+        cachedSpeed = agent.speed;
     }
 
     private void Update()
     {
         RayCastUpdate();
-        //Follow
+
+        //Range
         if (DetectPlayerInRange(minFollowRange, maxFollowRange, player) == true)
         {
             agent.destination = player.position;
@@ -30,7 +35,6 @@ public class CrocScript : MonoBehaviour
         if (DetectPlayerInRange(minTurretRange, maxTurretRange, player) == true)
         {
             RotateTowardsTarget();
-            Fire();
         }
     }
 
@@ -63,24 +67,31 @@ public class CrocScript : MonoBehaviour
         partToRotate.rotation = Quaternion.Euler(0f, rotation.y, 0f);
     }
 
-    private void Fire()
-    {
-
-        RaycastHit hit;
-        if (Physics.Raycast(partToRotate.position, partToRotate.TransformDirection(Vector3.forward), out hit, maxTurretRange)){
-        }
-    }
 
     private void RayCastUpdate()
     {
-        Vector3 forward = partToRotate.TransformDirection(Vector3.forward) * maxTurretRange;
-        Debug.DrawRay(partToRotate.position, forward, Color.green);
-
+        //Debug Turret
         Vector3 forwardF = transform.TransformDirection(Vector3.forward) * maxFollowRange;
         Debug.DrawRay(transform.position, forwardF, Color.red);
+
+        Vector3 forward = partToRotate.TransformDirection(Vector3.forward) * maxTurretRange;
+        Debug.DrawRay(partToRotate.position, forward, Color.yellow);
+
+        RaycastHit hit;
+        if (Physics.Raycast(partToRotate.position, partToRotate.TransformDirection(Vector3.forward), out hit, maxTurretRange) || Physics.Raycast(transform.position, transform.TransformDirection(Vector3.forward), out hit, maxTurretRange))
+        {
+            if (hit.transform.gameObject.tag == "Enemy")
+            {
+                agent.speed = 0f;
+            }
+        }
+        else
+        {
+            agent.speed = cachedSpeed;
+        }
     }
 
-    private void OnDrawGizmos()
+    private void OnDrawGizmosSelected()
     {
         Gizmos.color = Color.blue;
         Gizmos.DrawWireSphere(transform.position, maxFollowRange);
