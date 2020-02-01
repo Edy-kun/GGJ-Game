@@ -12,7 +12,7 @@ public class Player : MonoBehaviour, ICanPickUp, IControlled
     public Element holds;
     private Vector3 _aimDirection;
     private IControlled _controller;
-    private IReceiveInput _recieveInput;
+    private IReceiveInput _recieveInput = null;
     public InputDevice InputDevice;
     public event Action<object, Player> OnLeave;
     private static HashSet<InputDevice> _knownControllers= new HashSet<InputDevice>();
@@ -44,7 +44,7 @@ public class Player : MonoBehaviour, ICanPickUp, IControlled
 
     public void DoMove(Vector3 vec)
     {
-        if (_recieveInput != null)
+        if (_recieveInput == null)
         {
             this.transform.position += vec * (movespeed);
         }

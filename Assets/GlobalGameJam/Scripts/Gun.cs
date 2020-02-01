@@ -1,6 +1,7 @@
 ﻿using System;
 using UnityEngine;
 
+[RequireComponent(typeof(BoxCollider))]
 public class Gun : Device, IWeapon, IControlled, IReceiveInput
 {
     public float fireRate { get; set; }
@@ -65,5 +66,14 @@ public class Gun : Device, IWeapon, IControlled, IReceiveInput
     public void Interact()
     {
         throw new NotImplementedException();
+    }
+    
+    
+    public void OnDrawGizmos()
+    {
+        Gizmos.color = Color.blue;
+        Gizmos.DrawSphere(transform.TransformPoint(begin), .5f);
+        
+        Gizmos.DrawSphere(transform.TransformPoint(end), .5f);
     }
 }
