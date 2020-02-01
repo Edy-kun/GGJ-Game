@@ -1,4 +1,5 @@
-﻿using System.Collections;
+﻿using System;
+using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.AI;
@@ -19,12 +20,14 @@ public class TurretAI : MonoBehaviour
     private Transform target;
     private float cachedSpeed, nextFire = 0.4f, myTime = 0.0f;
     private AudioSource audioSource;
+    public List<TurretAI> ListOfEnemies { get; set; }
 
     private void Start()
     {
         audioSource = this.GetComponent<AudioSource>();
         InvokeRepeating("UpdateTarget", 0.0f, 0.5f);
         cachedSpeed = agent.speed;
+        ListOfEnemies.Add(this);
     }
 
     private void Update()
@@ -151,6 +154,11 @@ public class TurretAI : MonoBehaviour
         {
             agent.speed = cachedSpeed;
         }
+    }
+
+    private void OnDestroy()
+    {
+        ListOfEnemies.Remove(this);
     }
 
     private void OnDrawGizmosSelected()
