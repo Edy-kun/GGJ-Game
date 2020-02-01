@@ -1,5 +1,9 @@
 fileFormatVersion: 2
+<<<<<<< HEAD:Assets/GlobalGameJam/Plugins/DOTween/Editor/Imgs.meta
+guid: 75c2f618f636f3641a41cd47aa5f4697
+=======
 guid: 28891a314f13950488c100eee49b2283
+>>>>>>> origin/Art:Assets/GlobalGameJam/Art/Mats/Materials.meta
 folderAsset: yes
 DefaultImporter:
   externalObjects: {}
