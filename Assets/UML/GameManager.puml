@@ -1,0 +1,10 @@
+﻿@startuml
+!define DARKBLUE
+!includeurl https://raw.githubusercontent.com/Drakemor/RedDress-PlantUML/master/style.puml
+
+class GameManager{
+
+}
+
+
+@enduml
