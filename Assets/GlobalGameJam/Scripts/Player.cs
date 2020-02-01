@@ -3,20 +3,15 @@
 public class Player : MonoBehaviour, ICanPickUp
 {
     public Element holds;
-    public IWeapon Weapon;
+   
     private Vector3 _aimDirection;
-
+    private ControllerStrategy _controller;
+    
     
     void Rotate(Vector3 aimDir)
     {
         _aimDirection += aimDir;
     }
-    
-    public void Shoot()
-    {
-        
-    }
-
 
     public bool TryPickUp(Element contains)
     {
@@ -26,4 +21,12 @@ public class Player : MonoBehaviour, ICanPickUp
         holds = contains;
         return true;
     }
+}
+
+public abstract class ControllerStrategy
+{
+    public abstract void Rotate(Vector2 rotation);
+    public abstract void Move(Vector2 movement);
+    public abstract void Interact();
+    public abstract void EndInteraction();
 }

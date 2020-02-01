@@ -1,5 +1,6 @@
 ﻿using UnityEngine;
 
+[CreateAssetMenu(fileName = "DeviceConfig", menuName = "Custom/DeviceConfig")]
 public class DeviceConfig : ScriptableObject
 {
     public int health;
