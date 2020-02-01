@@ -1,4 +1,5 @@
 ﻿using UnityEngine;
+using UnityEngine.Serialization;
 
 namespace GlobalGameJam.Hovercraft
 {
@@ -12,12 +13,24 @@ namespace GlobalGameJam.Hovercraft
         [SerializeField] private AnimationCurve _forceMultiplier = AnimationCurve.Linear(0, 1, 1, 0);
         [SerializeField] private LayerMask _hoverOverLayer;
         [SerializeField, Range(0,1)] private float[] _thrusterEffectiveness;
-        [SerializeField, Range(0,1)] private float _power = 0;
+        [SerializeField, Range(0,1)] private float _powerSetting = 0;
+        
+        /// <summary>
+        /// The power level the engine is currently at.
+        /// </summary>
+        public float ActualPower { get; private set; }
+        /// <summary>
+        /// The rate at which the output power changes to the set power.
+        /// </summary>
+        public float PowerRate { get; set; } = 1f;
 
-        public float Power
+        /// <summary>
+        /// The desired power from the thrusters.
+        /// </summary>
+        public float PowerSetting
         {
-            get => _power;
-            set => _power = Mathf.Clamp01(value);
+            get => _powerSetting;
+            set => _powerSetting = Mathf.Clamp01(value);
         }
 
         public float[] Forces { get; private set; }
@@ -45,6 +58,10 @@ namespace GlobalGameJam.Hovercraft
 
         public void ApplyThrustUpwards(Rigidbody rigidBody)
         {
+            var powerDifference = PowerSetting - ActualPower;
+            var limitedPowerDifference = Mathf.Min(PowerRate * Time.fixedDeltaTime, Mathf.Abs(powerDifference)) * Mathf.Sign(powerDifference);
+            ActualPower += limitedPowerDifference;
+            
             for (var i = 0; i < HoverCraftFloatForcePoints.Length; i++)
             {
                 var thruster = HoverCraftFloatForcePoints[i];
@@ -52,7 +69,7 @@ namespace GlobalGameJam.Hovercraft
                 {
                     var d = Mathf.Clamp(hit.distance, _minDistance, _maxDistance);
                     d = Mathf.InverseLerp(_minDistance, _maxDistance, d);
-                    var upForceAmount = ThrusterEffectiveness[i] * _forceMultiplier.Evaluate(d) * _force * Power;
+                    var upForceAmount = ThrusterEffectiveness[i] * _forceMultiplier.Evaluate(d) * _force * ActualPower;
                     rigidBody.AddForceAtPosition(Vector3.up * upForceAmount, thruster.position);
                     Forces[i] = upForceAmount;
                 }

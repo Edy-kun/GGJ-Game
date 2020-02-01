@@ -70,5 +70,10 @@ namespace GlobalGameJam.Hovercraft
             var dir = new Vector3(Direction.x, 0, Direction.y);
             Gizmos.DrawRay(_pivot.position, _hoverCraft.TransformDirection(dir) * 10);
         }
+
+        public void ApplyThrust(Rigidbody rigidbody)
+        {
+            rigidbody.AddForceAtPosition(Thruster.forward * Thrust, Thruster.position);
+        }
     }
 }

@@ -1,34 +1,64 @@
-﻿using UnityEngine;
+﻿using System;
+using System.Collections;
+using UnityEngine;
 using UnityEngine.InputSystem;
 using UnityEngine.Rendering.PostProcessing;
+using UnityEngine.Serialization;
 
 namespace GlobalGameJam.Hovercraft
 {
-    public class ThirdPersonHoverCraftController : MonoBehaviour
+    public class ThirdPersonHoverCraftController : MonoBehaviour, IControlled
     {
+        public bool IsActivelyControlled
+        {
+            get => _isActivelyControlled;
+            private set
+            {
+                if(_isActivelyControlled != value)
+                {
+                    _isActivelyControlled = value;
+                    Debug.Log($"{nameof(IsActivelyControlled)} changed to {value}");
+                }
+            }
+        }
+
+        [SerializeField] private bool _isActivelyControlled = false;
         [SerializeField] private Transform _thrustersRoot;
         [SerializeField] private DownThrusterController _downThrusterController;
-        [SerializeField] private HoverCraftEngine LeftEngine;
-        [SerializeField] private HoverCraftEngine RightEngine;
+
+        
+        public HoverCraftEngine LeftEngine => _leftEngine;
+
+
+        public HoverCraftEngine RightEngine => _rightEngine;
+
+        public DownThrusterController ThrusterController => _downThrusterController;
 
         [SerializeField] private Rigidbody _rigidbody;
         private HoverCraftEngine[] _engines = new HoverCraftEngine[0];
 
         private LayerMask _hoverOverLayer;
-        
+
         [SerializeField, Range(0,1)] private float _powerDistribution;
         private float _leftThrustUp;
         private float _rightThrustUp;
+        
+        [FormerlySerializedAs("LeftEngine"), SerializeField] private HoverCraftEngine _leftEngine;
+        [FormerlySerializedAs("RightEngine"), SerializeField] private HoverCraftEngine _rightEngine;
 
         private void OnValidate()
         {
-            if(_downThrusterController != null)_downThrusterController.HoverCraftFloatForcePoints = _thrustersRoot.GetComponentsInChildren<Transform>();
+            if(ThrusterController != null)ThrusterController.HoverCraftFloatForcePoints = _thrustersRoot.GetComponentsInChildren<Transform>();
         }
 
         private void Awake()
         {
             _engines = new[] {LeftEngine, RightEngine};
-            _downThrusterController.HoverCraftFloatForcePoints = _thrustersRoot.GetComponentsInChildren<Transform>();
+            ThrusterController.HoverCraftFloatForcePoints = _thrustersRoot.GetComponentsInChildren<Transform>();
+            StartControl();
+            
+            //for debug purposes. pretend the exit control was accepted
+            OnControlEnd += (a) => EndControl();
         }
 
         private void OnDrawGizmosSelected()
@@ -38,7 +68,7 @@ namespace GlobalGameJam.Hovercraft
                 engine.DrawGizmo();
             }
 
-            _downThrusterController?.DrawGizmos();
+            ThrusterController?.DrawGizmos();
         }
 
         private void Update()
@@ -47,12 +77,14 @@ namespace GlobalGameJam.Hovercraft
         }
         private void FixedUpdate()
         {
-            _downThrusterController.ApplyThrustUpwards(_rigidbody);
-            ApplyEngineThrust();
+            ThrusterController.ApplyThrustUpwards(_rigidbody);
+            
             LeftEngine.RotateThruster();
             LeftEngine.UpdateParticles();
             RightEngine.RotateThruster();
             RightEngine.UpdateParticles();
+            LeftEngine.ApplyThrust(_rigidbody);
+            RightEngine.ApplyThrust(_rigidbody);
         }
 
         public void ControlLeftThruster(InputAction.CallbackContext value)
@@ -67,6 +99,8 @@ namespace GlobalGameJam.Hovercraft
 
         private void ControlThruster(HoverCraftEngine thruster, Vector2 direction)
         {
+            if (!IsActivelyControlled) return;
+            
             thruster.EnginePower = direction.magnitude;
             thruster.Direction = new Vector3(direction.x, 0, direction.y);
         }
@@ -80,20 +114,44 @@ namespace GlobalGameJam.Hovercraft
         {
             _rightThrustUp = value.ReadValue<float>();
         }
-        public void ControlThrustUp()
+
+        public void RequestEndControl(InputAction.CallbackContext value)
         {
-            var totalPower = _leftThrustUp * (_powerDistribution) + _rightThrustUp * (1f - _powerDistribution);
-            _downThrusterController.Power = totalPower;
+            if (IsActivelyControlled)
+            {
+                OnControlEnd?.Invoke(this);
+            }
+            else StartControl();
         }
 
-        
-
-        private void ApplyEngineThrust()
+        private void ControlThrustUp()
         {
+            if (!IsActivelyControlled) return;
+            
+            var totalPower = _leftThrustUp * (_powerDistribution) + _rightThrustUp * (1f - _powerDistribution);
+            ThrusterController.PowerSetting = totalPower;
+        }
+
+
+        public void StartControl()
+        {
+            IsActivelyControlled = true;
+            Debug.Log("Winding down engines");
+            ThrusterController.PowerSetting = 0;
             foreach (var engine in _engines)
             {
-                _rigidbody.AddForceAtPosition(engine.Thruster.forward * engine.Thrust, engine.Thruster.position);
+                engine.Direction = Vector3.forward;
+                engine.EnginePower = 0;
             }
+        }
+
+        public event Action<IControlled> OnControlEnd;
+        public void EndControl()
+        {
+            IsActivelyControlled = false;
+            LeftEngine.EnginePower = 0;
+            RightEngine.EnginePower = 0;
+            ThrusterController.PowerSetting = 0;
         }
     }
 }
