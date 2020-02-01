@@ -2,7 +2,8 @@
 using System.Collections.Generic;
 
 public class Team
-{
+{ 
+   
     private int _score;
     public int Score
     {
@@ -16,10 +17,11 @@ public class Team
 
         }
     }
-
-    public Boat boat;
-    public List<Player> players;
     public event Action<int> OnScoreChanged;
+    
+    public Boat Boat;
+    public List<Player> Players;
+   
     
   
 }

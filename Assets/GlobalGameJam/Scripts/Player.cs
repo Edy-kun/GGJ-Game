@@ -52,17 +52,7 @@ public class Player : MonoBehaviour, ICanPickUp, IControlled
         //do cleanup here
     }
     public event Action<IControlled> OnControlEnd;
-
-    public void Rotate(Vector2 rotation)
-    {
-        this.transform.Rotate(Vector3.up, Vector2.Angle(Vector2.zero, rotation));
-    }
-
-    public void Move(Vector2 movement)
-    {
-       this.transform.Translate(movement);
-    }
-
+    
     public void Interact()
     {
         if (Physics.Raycast(this.transform.position, this.transform.forward, out var hit))
@@ -85,10 +75,6 @@ public class Player : MonoBehaviour, ICanPickUp, IControlled
         controlled.EndControl();
     }
 
-    public void EndInteraction()
-    {
-        throw new NotImplementedException();
-    }
 }
 
 public interface IControlled

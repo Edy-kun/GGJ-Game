@@ -3,4 +3,5 @@
     Tape,
     Cog,
     Prop,
+    Ammo,
 }
