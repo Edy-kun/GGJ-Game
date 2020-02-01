@@ -3,6 +3,7 @@ using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.AI;
 
+[RequireComponent(typeof(AudioSource))]
 public class TurretAI : MonoBehaviour
 {
     [SerializeField] private NavMeshAgent agent;
@@ -17,10 +18,11 @@ public class TurretAI : MonoBehaviour
 
     private Transform target;
     private float cachedSpeed, nextFire = 0.4f, myTime = 0.0f;
-
+    private AudioSource audioSource;
 
     private void Start()
     {
+        audioSource = this.GetComponent<AudioSource>();
         InvokeRepeating("UpdateTarget", 0.0f, 0.5f);
         cachedSpeed = agent.speed;
     }
