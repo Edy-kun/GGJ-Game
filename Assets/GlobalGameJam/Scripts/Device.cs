@@ -8,7 +8,7 @@ public abstract class Device:MonoBehaviour,IRepairable
     protected AudioSource audioSource;
     protected Boat Boat;
     
-    private void Awake()
+    protected virtual void Awake()
     {
         audioSource = this.GetComponent<AudioSource>();
     }

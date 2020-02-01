@@ -29,19 +29,29 @@ public class Player : MonoBehaviour, ICanPickUp, IControlled
     }
 
 
-    public float movespeed = 5;
+    public float movespeed = 10;
     private Vector3 _movevec;
 
+    private bool TriggerActive;
     public void Update()
     {
         DoMove(_movevec * Time.deltaTime);
+        if (TriggerActive)
+        {
+            if (_recieveInput != null)
+            {
+                _recieveInput.OnTrigger();
+            }
+        }
+            
     }
 
     public void DoMove(Vector3 vec)
     {
         if (_recieveInput == null)
         {
-            this.transform.position += vec * (movespeed);
+            var move = new Vector3(vec.x,0,vec.y);
+            transform.position += move * movespeed;
         }
         else
         {
@@ -58,10 +68,9 @@ public class Player : MonoBehaviour, ICanPickUp, IControlled
         {
             hoverCraftController.ControlLeftThruster(context);
             return;
-        }
-
-        var temp = context.ReadValue<Vector2>();
-        _movevec = new Vector3(temp.x, 0, temp.y);
+            }
+        _movevec = context.ReadValue<Vector2>();
+   
     }
 
     private bool IsMine(InputAction.CallbackContext context)
@@ -81,10 +90,17 @@ public class Player : MonoBehaviour, ICanPickUp, IControlled
         }
 
         var rotvec = context.ReadValue<Vector2>();
-        this.transform.rotation = Quaternion.Euler(0, Angle(rotvec), 0);
+        if (_recieveInput != null)
+        {
+            _recieveInput.Rotate(rotvec);
+        }
+        else
+        {
+            this.transform.rotation = Quaternion.Euler(0, Angle(rotvec), 0);
+        }
     }
 
-    private static float Angle(Vector2 p_vector2)
+    public static float Angle(Vector2 p_vector2)
     {
         if (p_vector2.x < 0)
         {
@@ -98,16 +114,30 @@ public class Player : MonoBehaviour, ICanPickUp, IControlled
 
     public void Yes(InputAction.CallbackContext context)
     {
-        if (!IsMine(context)) return;
-
-        if (Physics.Raycast(transform.position, transform.TransformDirection(Vector3.forward), out var hit, 1f))
+        if (!IsMine(context)) 
+            return;
+        if (_recieveInput == null)
         {
-            _recieveInput = hit.rigidbody.GetComponent<IReceiveInput>();
+
+            if (Physics.Raycast(transform.position, transform.TransformDirection(Vector3.forward), out var hit, 1f))
+            {
+                _recieveInput = hit.transform.GetComponent<IReceiveInput>();
+                _controller = _recieveInput;
+                _recieveInput.OnControlEnd += EndControl;
+            }
+        }
+        else
+        {
+            _recieveInput.Yes();
         }
     }
 
     public void No(InputAction.CallbackContext context)
     {
+        if (_recieveInput != null)
+        {
+            _recieveInput.No();
+        }
     }
 
 
@@ -138,6 +168,7 @@ public class Player : MonoBehaviour, ICanPickUp, IControlled
 
     public void LeftTrigger(InputAction.CallbackContext context)
     {
+        
         if (_controller is ThirdPersonHoverCraftController hoverCraftController)
         {
             hoverCraftController.ControlThrustUpLeft(context);
@@ -146,6 +177,14 @@ public class Player : MonoBehaviour, ICanPickUp, IControlled
 
     public void RightTrigger(InputAction.CallbackContext context)
     {
+        if (!IsMine(context))
+            return;
+        if (_recieveInput != null)
+        {
+            TriggerActive =     context.ReadValue<float>() > .1f;
+            //_recieveInput.OnTrigger();
+        }
+        
         if (_controller is ThirdPersonHoverCraftController hoverCraftController)
         {
             hoverCraftController.ControlThrustUpRight(context);
@@ -159,13 +198,16 @@ public class Player : MonoBehaviour, ICanPickUp, IControlled
     public void EndControl()
     {
         //do cleanup here
+        _recieveInput = null;
     }
 
     public event Action<IControlled> OnControlEnd;
 
     public void Interact(InputAction.CallbackContext context)
     {
-        if (!context.performed) return;
+        if (!context.performed || !IsMine(context)) 
+            return;
+        
 
         if (_controller is ThirdPersonHoverCraftController hoverCraftController)
         {
@@ -173,13 +215,24 @@ public class Player : MonoBehaviour, ICanPickUp, IControlled
             return;
         }
 
+        if (_recieveInput != null)
+        {
+            _recieveInput.Interact();
+            return;
+        }
+
         Debug.Log("Interacted");
         if (Physics.Raycast(this.transform.position, this.transform.forward, out var hit, 5.0f))
         {
+            
             Debug.Log($"{name} tried to interact with {hit.rigidbody.name}");
             var con = hit.rigidbody.GetComponent<IControlled>();
             if (con == null)
                 return;
+            else if (con is IReceiveInput input)
+            {
+                _recieveInput = input;
+            }
             con.OnControlEnd += EndControl;
             con.StartControl();
             _controller = con;
@@ -190,18 +243,25 @@ public class Player : MonoBehaviour, ICanPickUp, IControlled
     {
         Debug.Assert(_controller == controlled);
         _controller = null;
+        _recieveInput = null;
         controlled.OnControlEnd -= EndControl;
         controlled.EndControl();
     }
 
     public event Action<object, Player> OnJoined;
+
+    private void OnDrawGizmos()
+    {
+        Gizmos.DrawLine(transform.position, transform.forward);
+    }
 }
 
-public interface IReceiveInput
+public interface IReceiveInput : IControlled
 {
-    void Move(Vector3 move);
-    void Rotate(Vector3 rotate);
+    void Move(Vector2 move);
+    void Rotate(Vector2 rotate);
 
+    void OnTrigger();
     void Yes();
     void No();
     void Interact();
