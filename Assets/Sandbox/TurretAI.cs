@@ -6,11 +6,12 @@ using UnityEngine.AI;
 public class TurretAI : MonoBehaviour
 {
     [SerializeField] private NavMeshAgent agent;
-    [SerializeField] private Transform player, partToRotate;
+    [SerializeField] private Transform partToRotate;
 
-    [SerializeField] private float minFollowRange, maxFollowRange, minTurretRange, maxTurretRange, turretTurnSpeed;
+    [SerializeField] private float minFollowRange, maxFollowRange, minTurretRange, maxTurretRange, turretTurnSpeed, collisionRange;
     [SerializeField] private string boatTag;
 
+    private Transform player;
     private float cachedSpeed;
 
 
@@ -67,7 +68,6 @@ public class TurretAI : MonoBehaviour
         partToRotate.rotation = Quaternion.Euler(0f, rotation.y, 0f);
     }
 
-
     private void RayCastUpdate()
     {
         //Debug Turret
@@ -78,7 +78,7 @@ public class TurretAI : MonoBehaviour
         Debug.DrawRay(partToRotate.position, forward, Color.yellow);
 
         RaycastHit hit;
-        if (Physics.Raycast(partToRotate.position, partToRotate.TransformDirection(Vector3.forward), out hit, maxTurretRange) || Physics.Raycast(transform.position, transform.TransformDirection(Vector3.forward), out hit, maxTurretRange))
+        if (Physics.Raycast(partToRotate.position, partToRotate.TransformDirection(Vector3.forward), out hit, collisionRange) || Physics.Raycast(transform.position, transform.TransformDirection(Vector3.forward), out hit, collisionRange))
         {
             if (hit.transform.gameObject.tag == "Enemy")
             {

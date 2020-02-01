@@ -230,9 +230,11 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   crocPrefab: {fileID: 7442394386147500029, guid: 06b82abb264c1a040840074031d16936,
     type: 3}
-  minSpawnRange: 6.39
-  maxSpawnRange: 17
-  maxEnemies: 1
+  minSpawnRange: 11.42
+  maxSpawnRange: 51.6
+  minSpawnTime: 1
+  maxSpawnTime: 5
+  maxEnemies: 2
 --- !u!1 &1232920452
 GameObject:
   m_ObjectHideFlags: 0
