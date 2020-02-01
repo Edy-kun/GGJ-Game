@@ -4,7 +4,8 @@ using UnityEngine;
 
 public class RandomEnemyPlacement : MonoBehaviour
 {
-    [SerializeField] private GameObject crocPrefab;
+    [SerializeField] private bool isBandit;
+    [SerializeField] private GameObject[] enemyPrefabs;
     [SerializeField] private float minSpawnRange, maxSpawnRange, minSpawnTime, maxSpawnTime;
     [SerializeField] private int maxEnemies;
 
@@ -25,7 +26,7 @@ public class RandomEnemyPlacement : MonoBehaviour
         {
             if (numberOfEnemies < maxEnemies)
             {
-                StartCoroutine(SpawnEnemy());
+                StartCoroutine(SpawnEnemy(enemyPrefabs[Random.Range(0,enemyPrefabs.Length)]));
             }
         }
     }
@@ -36,19 +37,20 @@ public class RandomEnemyPlacement : MonoBehaviour
         {
             if (Vector3.Distance(allEnemiesInScene[i].transform.position, transform.position) > maxSpawnRange)
             {
-                GameObject deleteObject = allEnemiesInScene[i];
-                allEnemiesInScene.Remove(deleteObject);
-                Destroy(deleteObject);
+                GameObject x = allEnemiesInScene[i];
+                allEnemiesInScene.Remove(x);
+                Destroy(x);
+                numberOfEnemies = allEnemiesInScene.Count;
             }
         }
     }
 
 
-    IEnumerator SpawnEnemy()
+    IEnumerator SpawnEnemy(GameObject prefab)
     {
         isBusyWithSpawning = true;
-        GameObject croc = Instantiate(crocPrefab, transform.position + RandomBetweenRadius3D(minSpawnRange, maxSpawnRange), Quaternion.identity);
-        allEnemiesInScene.Add(croc);
+        GameObject enem = Instantiate(prefab, transform.position + RandomBetweenRadius3D(minSpawnRange, maxSpawnRange), Quaternion.identity);
+        allEnemiesInScene.Add(enem);
         numberOfEnemies = allEnemiesInScene.Count;
         yield return new WaitForSeconds(Random.Range(minSpawnTime, maxSpawnTime));
         isBusyWithSpawning = false;
