@@ -388,7 +388,7 @@ NavMeshAgent:
   m_Enabled: 1
   m_AgentTypeID: 0
   m_Radius: 2.25
-  m_Speed: 3.5
+  m_Speed: 10
   m_Acceleration: 8
   avoidancePriority: 50
   m_AngularSpeed: 110
@@ -413,15 +413,15 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   agent: {fileID: 7442394386147500030}
-  player: {fileID: 0}
   partToRotate: {fileID: 7442394387138750577}
   minFollowRange: 5
   maxFollowRange: 60
   minTurretRange: 1
   maxTurretRange: 20
-  turretTurnSpeed: 7
-  collisionRange: 10
+  turretTurnSpeed: 6
+  collisionRange: 4
   boatTag: Player
+  fireDelta: 0.5
 --- !u!65 &1747076854
 BoxCollider:
   m_ObjectHideFlags: 0

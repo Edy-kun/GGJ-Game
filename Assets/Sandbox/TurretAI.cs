@@ -11,8 +11,10 @@ public class TurretAI : MonoBehaviour
     [SerializeField] private float minFollowRange, maxFollowRange, minTurretRange, maxTurretRange, turretTurnSpeed, collisionRange;
     [SerializeField] private string boatTag;
 
+    [SerializeField] private float fireDelta;
+
     private Transform player;
-    private float cachedSpeed;
+    private float cachedSpeed, nextFire = 0.5f, myTime = 0.0f;
 
 
     private void Start()
@@ -36,6 +38,7 @@ public class TurretAI : MonoBehaviour
         if (DetectPlayerInRange(minTurretRange, maxTurretRange, player) == true)
         {
             RotateTowardsTarget();
+            Fire();
         }
     }
 
@@ -68,14 +71,26 @@ public class TurretAI : MonoBehaviour
         partToRotate.rotation = Quaternion.Euler(0f, rotation.y, 0f);
     }
 
+    private void Fire()
+    {
+        myTime = myTime + Time.deltaTime;
+
+        RaycastHit hit;
+        if (Physics.Raycast(partToRotate.position,partToRotate.TransformDirection(Vector3.forward), out hit, maxTurretRange) && myTime > nextFire)
+        {
+            nextFire = myTime + fireDelta;
+
+            Vector3 forward = partToRotate.TransformDirection(Vector3.forward) * maxTurretRange;
+            Debug.DrawRay(partToRotate.position, forward, Color.yellow);
+
+            nextFire = nextFire - myTime;
+            myTime = 0.0f;
+        }
+
+    }
+
     private void RayCastUpdate()
     {
-        //Debug Turret
-        Vector3 forwardF = transform.TransformDirection(Vector3.forward) * maxFollowRange;
-        Debug.DrawRay(transform.position, forwardF, Color.red);
-
-        Vector3 forward = partToRotate.TransformDirection(Vector3.forward) * maxTurretRange;
-        Debug.DrawRay(partToRotate.position, forward, Color.yellow);
 
         RaycastHit hit;
         if (Physics.Raycast(partToRotate.position, partToRotate.TransformDirection(Vector3.forward), out hit, collisionRange) || Physics.Raycast(transform.position, transform.TransformDirection(Vector3.forward), out hit, collisionRange))
