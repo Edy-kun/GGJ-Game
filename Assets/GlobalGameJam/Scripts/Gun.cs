@@ -1,11 +1,15 @@
 ﻿using System;
 using UnityEngine;
 
-public class Gun : Device, IWeapon, IControlled
+public class Gun : Device, IWeapon, IControlled, IReceiveInput
 {
     public float fireRate { get; set; }
     public float _previousFire;
     private Element Cost;
+
+    private float position;
+    public Vector3 begin;
+    public Vector3 end;
  
     public void Shoot()
     {
@@ -34,5 +38,32 @@ public class Gun : Device, IWeapon, IControlled
     private void EndInteraction()
     {
         OnControlEnd?.Invoke(this);
+    }
+
+    public void Move(Vector3 move)
+    {
+        position += move.x * .1f;
+        Mathf.Clamp(position, 0, 1);
+        this.transform.position = Vector3.Lerp(begin, end, position);
+    }
+
+    public void Rotate(Vector3 rotate)
+    {
+        throw new NotImplementedException();
+    }
+
+    public void Yes()
+    {
+       Shoot();
+    }
+
+    public void No()
+    {
+        EndInteraction();
+    }
+
+    public void Interact()
+    {
+        throw new NotImplementedException();
     }
 }
