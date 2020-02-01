@@ -7,6 +7,7 @@ using UnityEngine;
 using UnityEngine.InputSystem;
 
 
+[RequireComponent(typeof(Animator))]
 public class Player : MonoBehaviour, ICanPickUp, IControlled
 {
     public GameObject character;
@@ -19,6 +20,11 @@ public class Player : MonoBehaviour, ICanPickUp, IControlled
     public event Action<object, Player> OnLeave;
     private static HashSet<InputDevice> _knownControllers = new HashSet<InputDevice>();
     public Boat Boat { get; set; }
+
+    public Transform BoxSnap;
+    public Transform ToolSnap;
+    public Animator Anim;
+    
 
     public bool TryPickUp(Element contains)
     {
@@ -77,7 +83,7 @@ public class Player : MonoBehaviour, ICanPickUp, IControlled
 
     private bool IsMine(InputAction.CallbackContext context)
     {
-        return true; //(context.control.device == InputDevice);
+        return (context.control.device == InputDevice);
     }
 
     public void Rotate(InputAction.CallbackContext context)
@@ -159,6 +165,7 @@ public class Player : MonoBehaviour, ICanPickUp, IControlled
 
     public void Leave(InputAction.CallbackContext context)
     {
+        
         if (InputDevice != null && (context.phase == InputActionPhase.Performed))
         {
             var device = context.control.device;
