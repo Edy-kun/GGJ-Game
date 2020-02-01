@@ -5,29 +5,34 @@ using UnityEngine;
 public class RandomEnemyPlacement : MonoBehaviour
 {
     [SerializeField] private bool isBandit;
-    [SerializeField] private GameObject[] enemyPrefabs;
+    [SerializeField] private TurretAI[] enemyPrefabs;
     [SerializeField] private float minSpawnRange, maxSpawnRange, minSpawnTime, maxSpawnTime;
     [SerializeField] private int maxEnemies;
 
-    private List<GameObject> allEnemiesInScene = new List<GameObject>();
-    private int numberOfEnemies;
+    [SerializeField] private Transform _hoverCraft;
 
-    private bool isBusyWithSpawning;
+    public readonly List<TurretAI> allEnemiesInScene = new List<TurretAI>();
+
+    private bool spawnEnemies = true;
 
     private void Start()
     {
-        
+        StartCoroutine(SpawnEnemies());
     }
 
-    private void Update()
+    private IEnumerator SpawnEnemies()
     {
         LastTimeInRange();
-        if (!isBusyWithSpawning)
+        while(spawnEnemies)
         {
-            if (numberOfEnemies < maxEnemies)
+            if (allEnemiesInScene.Count < maxEnemies)
             {
-                StartCoroutine(SpawnEnemy(enemyPrefabs[Random.Range(0,enemyPrefabs.Length)]));
+                SpawnEnemy(enemyPrefabs[Random.Range(0,enemyPrefabs.Length)]);
+                
+                yield return new WaitForSeconds(Random.Range(minSpawnTime, maxSpawnTime));
             }
+
+            yield return null;
         }
     }
 
@@ -35,37 +40,31 @@ public class RandomEnemyPlacement : MonoBehaviour
     {
         for (var i = 0; i < allEnemiesInScene.Count; i++)
         {
-            if (Vector3.Distance(allEnemiesInScene[i].transform.position, transform.position) > maxSpawnRange)
+            if (Vector3.Distance(allEnemiesInScene[i].transform.position, _hoverCraft.position) > maxSpawnRange)
             {
-                GameObject x = allEnemiesInScene[i];
-                allEnemiesInScene.Remove(x);
+                var x = allEnemiesInScene[i];
                 Destroy(x);
-                numberOfEnemies = allEnemiesInScene.Count;
             }
         }
     }
 
 
-    IEnumerator SpawnEnemy(GameObject prefab)
+    void SpawnEnemy(TurretAI prefab)
     {
-        isBusyWithSpawning = true;
-        GameObject enem = Instantiate(prefab, transform.position + RandomBetweenRadius3D(minSpawnRange, maxSpawnRange), Quaternion.identity);
-        allEnemiesInScene.Add(enem);
-        numberOfEnemies = allEnemiesInScene.Count;
-        yield return new WaitForSeconds(Random.Range(minSpawnTime, maxSpawnTime));
-        isBusyWithSpawning = false;
+        var enem = Instantiate(prefab, _hoverCraft.position + RandomBetweenRadius3D(minSpawnRange, maxSpawnRange), Quaternion.identity);
+        enem.ListOfEnemies = allEnemiesInScene;
     }
 
     private void OnDrawGizmosSelected()
     {
         Gizmos.color = Color.red;
-        Gizmos.DrawWireSphere(transform.position, minSpawnRange);
+        Gizmos.DrawWireSphere(_hoverCraft.position, minSpawnRange);
 
         Gizmos.color = Color.yellow;
-        Gizmos.DrawWireSphere(transform.position, maxSpawnRange);
+        Gizmos.DrawWireSphere(_hoverCraft.position, maxSpawnRange);
     }
 
-    Vector3 RandomBetweenRadius3D(float minRad, float maxRad)
+    static Vector3 RandomBetweenRadius3D(float minRad, float maxRad)
     {
         float diff = maxRad - minRad;
         Vector3 point = Vector3.zero;
