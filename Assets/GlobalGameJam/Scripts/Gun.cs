@@ -20,6 +20,17 @@ public class Gun : Device, IWeapon, IControlled
 
     public Action OnControlEnd { get; set; }
 
+    public void StartControl()
+    {
+        throw new NotImplementedException();
+    }
+
+    event Action IControlled.OnControlEnd
+    {
+        add => throw new NotImplementedException();
+        remove => throw new NotImplementedException();
+    }
+
     public void Rotate(Vector2 rotation)
     {
         throw new System.NotImplementedException();

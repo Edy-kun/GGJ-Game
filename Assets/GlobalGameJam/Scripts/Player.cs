@@ -42,6 +42,13 @@ public class Player : MonoBehaviour, ICanPickUp, IControlled
         
     }
 
+    public void StartControl()
+    {
+        throw new NotImplementedException();
+    }
+
+    public event Action OnControlEnd;
+
     public void Rotate(Vector2 rotation)
     {
         this.transform.Rotate(Vector3.up, Vector2.Angle(Vector2.zero, rotation));
