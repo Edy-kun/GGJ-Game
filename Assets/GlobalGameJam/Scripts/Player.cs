@@ -1,8 +1,8 @@
 ﻿using System;
 using System.Collections.Generic;
 using System.Linq;
+using GlobalGameJam.Hovercraft;
 using DG.Tweening;
-using UnityEditor;
 using UnityEngine;
 using UnityEngine.InputSystem;
 
@@ -14,16 +14,10 @@ public class Player : MonoBehaviour, ICanPickUp, IControlled
     private IControlled _controller;
     private IReceiveInput _recieveInput = null;
     public InputDevice InputDevice;
+    [SerializeField] private PlayerInput _playerInput;
     public event Action<object, Player> OnLeave;
     private static HashSet<InputDevice> _knownControllers= new HashSet<InputDevice>();
-
-
-    private void Awake()
-    {
-        character.SetActive(false);
-    }
-
-
+    
     public bool TryPickUp(Element contains)
     {
         if (holds != null)
@@ -56,6 +50,8 @@ public class Player : MonoBehaviour, ICanPickUp, IControlled
 
     public void Move(InputAction.CallbackContext context)
     {
+    if(_controller is ThirdPersonHoverCraftController hoverCraftController)
+     hoverCraftController.ControlLeftThruster(context);
         if (!IsMine(context)) 
             return;
         var temp = context.ReadValue<Vector2>();
@@ -71,9 +67,10 @@ public class Player : MonoBehaviour, ICanPickUp, IControlled
 
     public void Rotate(InputAction.CallbackContext context)
     {
-        if (!IsMine(context)) return;
-       
-            var rotvec = context.action.ReadValue<Vector2>();
+    if (_controller is ThirdPersonHoverCraftController hoverCraftController)
+           hoverCraftController.ControlRightThruster(context);        
+           if (!IsMine(context))
+            return;
             this.transform.rotation = Quaternion.Euler(0, Angle(rotvec), 0);
         
     }
@@ -135,11 +132,26 @@ public class Player : MonoBehaviour, ICanPickUp, IControlled
             character.SetActive(false);
         }
     }
-    
+
+    public void LeftTrigger(InputAction.CallbackContext context)
+    {
+        if (_controller is ThirdPersonHoverCraftController hoverCraftController)
+        {
+            hoverCraftController.ControlThrustUpLeft(context);
+        }
+    }
+
+    public void RightTrigger(InputAction.CallbackContext context)
+    {
+        if (_controller is ThirdPersonHoverCraftController hoverCraftController)
+        {
+            hoverCraftController.ControlThrustUpRight(context);
+        }
+    }
 
     public void StartControl()
     {
-        throw new NotImplementedException();
+        
     }
 
     public void EndControl()
@@ -148,18 +160,27 @@ public class Player : MonoBehaviour, ICanPickUp, IControlled
     }
     public event Action<IControlled> OnControlEnd;
     
-    public void Interact()
+    public void Interact(InputAction.CallbackContext context)
     {
-        if (Physics.Raycast(this.transform.position, this.transform.forward, out var hit))
+        if (!context.performed) return;
+
+        if (_controller is ThirdPersonHoverCraftController hoverCraftController)
         {
+            hoverCraftController.RequestEndControl(context);
+            return;
+        }
+
+        Debug.Log("Interacted");
+        if (Physics.Raycast(this.transform.position, this.transform.forward, out var hit, 5.0f))
+        {
+            Debug.Log($"{name} tried to interact with {hit.rigidbody.name}");
             var con = hit.rigidbody.GetComponent<IControlled>();
             if (con == null) 
                 return;
-            con.StartControl();
             con.OnControlEnd += EndControl;
-            
+            con.StartControl();
+            _controller = con;
         }
-        
     }
 
     private void EndControl(IControlled controlled)
