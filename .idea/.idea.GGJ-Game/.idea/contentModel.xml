@@ -31,6 +31,9 @@
             <e p="Element.cs" t="Include" />
             <e p="ElementType.cs" t="Include" />
             <e p="EnemyManager.cs" t="Include" />
+            <e p="Game" t="Include">
+              <e p="Game.cs" t="Include" />
+            </e>
             <e p="GameManager.cs" t="Include" />
             <e p="Gun.cs" t="Include" />
             <e p="ICanPickUp.cs" t="Include" />
@@ -50,16 +53,31 @@
             <e p="PickUp.cs" t="Include" />
             <e p="PickUpProfile.cs" t="Include" />
             <e p="Player.cs" t="Include" />
+            <e p="Scenes.cs" t="Include" />
             <e p="SceneSwitcher.cs" t="Include" />
             <e p="ScriptableObjects" t="Include">
               <e p="DeviceConfig.cs" t="Include" />
               <e p="SettingsConfig.cs" t="Include" />
             </e>
             <e p="Team.cs" t="Include" />
+            <e p="UI" t="Include">
+              <e p="HUD.cs" t="Include" />
+            </e>
+          </e>
+        </e>
+        <e p="JMO Assets" t="Include">
+          <e p="WarFX" t="Include">
+            <e p="Scripts" t="Include">
+              <e p="WFX_LightFlicker.cs" t="Include" />
+            </e>
+            <e p="Shaders" t="Include">
+              <e p="WFX_S Particle Add A8.shader" t="Include" />
+            </e>
           </e>
         </e>
         <e p="Sandbox" t="Include">
           <e p="RandomEnemyPlacement.cs" t="Include" />
+          <e p="ShowSpawn.cs" t="Include" />
           <e p="TurretAI.cs" t="Include" />
         </e>
         <e p="Standard Assets" t="Include">
