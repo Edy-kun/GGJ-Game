@@ -92,6 +92,14 @@
                     "expectedControlType": "Button",
                     "processors": "",
                     "interactions": ""
+                },
+                {
+                    "name": "BlowUp",
+                    "type": "Button",
+                    "id": "64fe8be3-e51f-4c36-9109-099e9de26c81",
+                    "expectedControlType": "",
+                    "processors": "",
+                    "interactions": ""
                 }
             ],
             "bindings": [
@@ -510,6 +518,17 @@
                     "processors": "",
                     "groups": "Gamepad",
                     "action": "Leave",
+                    "isComposite": false,
+                    "isPartOfComposite": false
+                },
+                {
+                    "name": "",
+                    "id": "bd57151b-d88c-4d27-bede-4720b856f580",
+                    "path": "<Keyboard>/space",
+                    "interactions": "",
+                    "processors": "",
+                    "groups": "Keyboard&Mouse",
+                    "action": "BlowUp",
                     "isComposite": false,
                     "isPartOfComposite": false
                 }
