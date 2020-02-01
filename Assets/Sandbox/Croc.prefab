@@ -73,8 +73,8 @@ MonoBehaviour:
   gunToRotate: {fileID: 7664521487184035711}
   minFollowRange: 5
   maxFollowRange: 70
-  minTurretRange: 1
-  maxTurretRange: 50
+  minTurretRange: 0
+  maxTurretRange: 61.19
   turretTurnSpeed: 7
   collisionRange: 4
   boatTag: Player
