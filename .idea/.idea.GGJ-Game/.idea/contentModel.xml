@@ -51,12 +51,12 @@
               <e p="UIPanel.cs" t="Include" />
             </e>
             <e p="PickUp.cs" t="Include" />
-            <e p="PickUpProfile.cs" t="Include" />
             <e p="Player.cs" t="Include" />
             <e p="Scenes.cs" t="Include" />
             <e p="SceneSwitcher.cs" t="Include" />
             <e p="ScriptableObjects" t="Include">
               <e p="DeviceConfig.cs" t="Include" />
+              <e p="PickUpProfile.cs" t="Include" />
               <e p="SettingsConfig.cs" t="Include" />
             </e>
             <e p="Team.cs" t="Include" />

@@ -47,7 +47,11 @@ public class Player : MonoBehaviour, ICanPickUp, IControlled
         throw new NotImplementedException();
     }
 
-    public event Action OnControlEnd;
+    public void EndControl()
+    {
+        //do cleanup here
+    }
+    public event Action<IControlled> OnControlEnd;
 
     public void Rotate(Vector2 rotation)
     {
@@ -69,14 +73,16 @@ public class Player : MonoBehaviour, ICanPickUp, IControlled
             con.StartControl();
             con.OnControlEnd += EndControl;
             
-
         }
         
     }
 
-    private void EndControl()
+    private void EndControl(IControlled controlled)
     {
+        Debug.Assert(_controller == controlled);
         _controller = null;
+        controlled.OnControlEnd -= EndControl;
+        controlled.EndControl();
     }
 
     public void EndInteraction()
@@ -88,10 +94,8 @@ public class Player : MonoBehaviour, ICanPickUp, IControlled
 public interface IControlled
 {
     void StartControl();
-    event Action OnControlEnd;
-    void Rotate(Vector2 rotation);
-    void Move(Vector2 movement);
-    void Interact();
-    void EndInteraction();
-    
+    event Action<IControlled> OnControlEnd;
+    void EndControl();
+
+
 }

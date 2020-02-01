@@ -1,5 +1,6 @@
 ﻿using UnityEngine;
 
+[RequireComponent(typeof(BoxCollider))]
 public class PickUp : MonoBehaviour
 {
     private PickUpProfile _contains;
@@ -7,7 +8,7 @@ public class PickUp : MonoBehaviour
     public void SetProfile(PickUpProfile contain)
     {
         _contains = contain;
-        GameObject.Instantiate(_contains.GameObject);
+       Instantiate(_contains.GameObject);
     }
     
     private void OnCollisionEnter(Collision other)
