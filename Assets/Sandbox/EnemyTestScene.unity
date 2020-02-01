@@ -210,32 +210,6 @@ Transform:
   m_Father: {fileID: 458355744}
   m_RootOrder: 3
   m_LocalEulerAnglesHint: {x: 14, y: 0, z: 0}
---- !u!1 &824853983 stripped
-GameObject:
-  m_CorrespondingSourceObject: {fileID: 149790, guid: 7737647c22c1fc64a88d5cd030c352ce,
-    type: 3}
-  m_PrefabInstance: {fileID: 1783179774}
-  m_PrefabAsset: {fileID: 0}
---- !u!114 &824853989
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 824853983}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 7737e34e4b5641f4493e6729e438873d, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  isBandit: 0
-  enemyPrefabs:
-  - {fileID: 4297800192390864214, guid: d93ae2371e608d443b054bc022c15fd0, type: 3}
-  minSpawnRange: 80
-  maxSpawnRange: 100
-  minSpawnTime: 1
-  maxSpawnTime: 1
-  maxEnemies: 15
 --- !u!1 &1232920452
 GameObject:
   m_ObjectHideFlags: 0
