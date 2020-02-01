@@ -76,12 +76,3 @@ public class Player : MonoBehaviour, ICanPickUp, IControlled
     }
 
 }
-
-public interface IControlled
-{
-    void StartControl();
-    event Action<IControlled> OnControlEnd;
-    void EndControl();
-
-
-}
