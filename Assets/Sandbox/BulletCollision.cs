@@ -4,8 +4,9 @@ using UnityEngine;
 
 public class BulletCollision : MonoBehaviour
 {
-    private void OnTriggerStay(Collider other)
+    private void OnTriggerEnter(Collider other)
     {
+        Debug.Log(other);
         if (other.gameObject.tag == "Player")
         {
             Destroy(gameObject);
