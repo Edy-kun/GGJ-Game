@@ -76,6 +76,7 @@
           </e>
         </e>
         <e p="Sandbox" t="Include">
+          <e p="BulletCollision.cs" t="Include" />
           <e p="RandomEnemyPlacement.cs" t="Include" />
           <e p="ShowSpawn.cs" t="Include" />
           <e p="TurretAI.cs" t="Include" />

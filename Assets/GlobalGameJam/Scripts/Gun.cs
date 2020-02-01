@@ -1,4 +1,5 @@
-﻿using UnityEngine;
+﻿using System;
+using UnityEngine;
 
 public class Gun : Device, IWeapon, IControlled
 {
@@ -17,6 +18,8 @@ public class Gun : Device, IWeapon, IControlled
         
     }
 
+    public Action OnControlEnd { get; set; }
+
     public void Rotate(Vector2 rotation)
     {
         throw new System.NotImplementedException();
@@ -34,6 +37,6 @@ public class Gun : Device, IWeapon, IControlled
 
     public void EndInteraction()
     {
-        throw new System.NotImplementedException();
+        OnControlEnd?.Invoke();
     }
 }
