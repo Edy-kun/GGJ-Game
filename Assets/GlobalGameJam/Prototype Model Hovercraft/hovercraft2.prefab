@@ -1355,20 +1355,29 @@ MonoBehaviour:
       - serializedVersion: 3
         time: 0
         value: 1
-        inSlope: -2.056791
-        outSlope: -2.056791
+        inSlope: -4.308682
+        outSlope: -4.308682
         tangentMode: 0
         weightedMode: 0
         inWeight: 0
-        outWeight: 0.03975535
+        outWeight: 0.050366413
+      - serializedVersion: 3
+        time: 0.51311165
+        value: 0.40807635
+        inSlope: -0.20689188
+        outSlope: -0.20689188
+        tangentMode: 0
+        weightedMode: 0
+        inWeight: 0.09607892
+        outWeight: 0.10811016
       - serializedVersion: 3
         time: 1
         value: 0.009433746
-        inSlope: -2.152105
-        outSlope: -2.152105
+        inSlope: -2.233087
+        outSlope: -2.233087
         tangentMode: 0
         weightedMode: 0
-        inWeight: 0.08358818
+        inWeight: 0.081651874
         outWeight: 0
       m_PreInfinity: 2
       m_PostInfinity: 2
@@ -1376,6 +1385,18 @@ MonoBehaviour:
     _hoverOverLayer:
       serializedVersion: 2
       m_Bits: 272
+    _thrusterEffectiveness:
+    - 1
+    - 1
+    - 1
+    - 1
+    - 1
+    - 1
+    - 1
+    - 1
+    - 1
+    - 1
+    _power: 0
   LeftEngine:
     _hoverCraft: {fileID: 5577558014956439449}
     _pivot: {fileID: 7482463659172043854}
@@ -1398,9 +1419,8 @@ MonoBehaviour:
     _particleSystem: {fileID: 975381883771127027}
     _minLifeTime: 0
     _maxLifeTime: 0.5
-  upForceMode: 0
-  upForceAmount: -1.35
   _rigidbody: {fileID: 381988823860458851}
+  _powerDistribution: 0.7
 --- !u!54 &381988823860458851
 Rigidbody:
   m_ObjectHideFlags: 0
