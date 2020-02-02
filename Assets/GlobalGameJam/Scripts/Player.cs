@@ -66,12 +66,14 @@ public class Player : MonoBehaviour, ICanPickUp, IControlled
 
             if (inv.x < 3 && inv.x > -3 && inv.z > -4 && inv.z < 3)
             {
-
-                this.transform.position = new Vector3(this.transform.position.x, Boat.GetEmbarkLocation().y,
-                    this.transform.position.z);
-                this.transform.parent = Boat.transform;
-                Boat.TryPickUp(holds);
-                col.isTrigger = true;
+                if (Physics.Raycast(this.transform.position, Vector3.down, out var hit, 10, 1 << 9))
+                {
+                   
+                    this.transform.position = hit.point;
+                    this.transform.parent = Boat.transform;
+                    Boat.TryPickUp(holds);
+                    col.isTrigger = true;
+                }
             }
         }
 
@@ -207,13 +209,7 @@ public class Player : MonoBehaviour, ICanPickUp, IControlled
         {
             _receiveInput.No();
         }
-        else
-        {
-
-            //Debug.Log("Disembark");
-            this.transform.position = Boat.GetDisembarkLocation();
-            this.transform.parent = null;
-        }
+      
     }
 
 
