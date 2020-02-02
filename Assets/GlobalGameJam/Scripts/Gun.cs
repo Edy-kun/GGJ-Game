@@ -71,13 +71,14 @@ public class Gun : Device, IWeapon, IControlled, IReceiveInput
         shootBullet.GetComponent<Rigidbody>().AddForce(Turret.TransformDirection(shotDir) * 90f);
         Destroy(shootBullet, 0.4f);
         audioSource.PlayOneShot(shotsound);
+        
+        
 
-        var hits =GameManager.Instance._spawner.CheckHit(this.transform.position,
-            Vector3.Angle(Turret.position, Turret.position + Turret.right));
-        if (hits.Count > 0)
+        var hitable =GameManager.Instance._spawner.CheckHit(Turret.position, Turret.right).FirstOrDefault();
+        if (hitable)
         {
             Debug.Log("HIT");
-            hits[0].TakeDamage(50);
+           hitable.TakeDamage(50);
         }
         
 
@@ -126,11 +127,10 @@ public class Gun : Device, IWeapon, IControlled, IReceiveInput
         
         Turret.localRotation = Quaternion.Euler(Vector3.Lerp(AimDirMin, AimDirMax, percentage)+ new Vector3(0,flip?180:0,0));
 
-        var hitable = GameManager.Instance._spawner.CheckHit(Turret.position,
-            Vector3.Angle(Turret.position, Turret.position + Turret.forward));
-        if (hitable.Count != 0)
+        var hitable = GameManager.Instance._spawner.CheckHit(Turret.position, Turret.right).FirstOrDefault();
+        if (hitable)
         {
-            hitable.First().TakeDamage(25);
+            hitable.TakeDamage(25);
         }
         
 

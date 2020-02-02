@@ -3,6 +3,7 @@ using System.Collections;
 using System.Collections.Generic;
 using System.Linq;
 using UnityEngine;
+using UnityEngine.UI;
 using Random = UnityEngine.Random;
 
 public class RandomEnemyPlacement : MonoBehaviour
@@ -88,11 +89,22 @@ public class RandomEnemyPlacement : MonoBehaviour
         return point;
     }
     
-    private float tollerance = 10f;
+    private float tollerance = 0.1f;
 
-    public List<TurretAI> CheckHit(Vector3 orig, float angle)
+    public IEnumerable<TurretAI> CheckHit(Vector3 orig, Vector3 forward)
     {
-        return allEnemiesInScene.Where(item => Math.Abs(Vector3.Angle(new Vector3(orig.x,0,orig.y), item.transform.position) - angle) < tollerance).ToList();
+        forward.y = 0;
+        orig.y = 0;
+        foreach (var item in allEnemiesInScene)
+        {
+            var itemPosition = item.transform.position;
+            itemPosition.y = 0;
+            var direction = (itemPosition - orig).normalized;
+            var dot = Vector3.Dot(direction, forward);
+            Debug.DrawRay(orig, forward);
+            if( dot > 1-tollerance)
+                yield return (item);
+        }
     }
 }
 
