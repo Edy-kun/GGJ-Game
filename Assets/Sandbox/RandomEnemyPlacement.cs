@@ -17,10 +17,12 @@ public class RandomEnemyPlacement : MonoBehaviour
     public readonly List<TurretAI> allEnemiesInScene = new List<TurretAI>();
 
     private bool spawnEnemies = true;
+    private Collider _terrainCollider;
 
     private void Start()
     {
         StartCoroutine(SpawnEnemies());
+        _terrainCollider = Terrain.activeTerrain.GetComponent<Collider>();
     }
 
     private IEnumerator SpawnEnemies()
@@ -54,7 +56,15 @@ public class RandomEnemyPlacement : MonoBehaviour
 
     void SpawnEnemy(TurretAI prefab)
     {
-        var enem = Instantiate(prefab, _hoverCraft.position + RandomBetweenRadius3D(minSpawnRange, maxSpawnRange), Quaternion.identity);
+        var position = _hoverCraft.position + RandomBetweenRadius3D(minSpawnRange, maxSpawnRange);
+
+        if (_terrainCollider
+            .Raycast(new Ray(position + Vector3.up * 100, Vector3.down), out var hitInfo, 2000))
+        {
+            position = hitInfo.point;
+        }
+        
+        var enem = Instantiate(prefab, position, Quaternion.identity);
         enem.ListOfEnemies = allEnemiesInScene;
     }
 
@@ -70,12 +80,8 @@ public class RandomEnemyPlacement : MonoBehaviour
     static Vector3 RandomBetweenRadius3D(float minRad, float maxRad)
     {
         float diff = maxRad - minRad;
-        Vector3 point = Vector3.zero;
-        while (point == Vector3.zero)
-        {
-            point = Random.insideUnitSphere;
-        }
-        point = point.normalized * (Random.value * diff + minRad);
+        var point = Random.onUnitSphere;
+        point = point * (Random.value * diff + minRad);
         point.y = 0;
         return point;
     }

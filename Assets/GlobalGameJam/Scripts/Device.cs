@@ -2,50 +2,66 @@
 using System.Collections.Generic;
 using UnityEngine;
 
-[RequireComponent(typeof(AudioSource))]
-public abstract class Device:MonoBehaviour,IRepairable
+public abstract class Device : MonoBehaviour, IRepairable
 {
+    protected Transform effectParent;
     protected AudioSource audioSource;
     protected Boat Boat;
-    
+
     protected virtual void Awake()
     {
+        effectParent = transform;
         audioSource = this.GetComponent<AudioSource>();
+        Health = config.health;
+        Boat = GetComponentInParent<Boat>();
     }
 
     public DeviceConfig config;
-    
+    private ParticleSystem _brokenParticles;
+    private ParticleSystem _repairParticles;
+
     public int Health { get; set; }
-    public void TakeDamage(int dmg)
+
+    public virtual void TakeDamage(int dmg)
     {
-        Health -= dmg;
-        if (Health < 0)
+        Debug.Log($"{name} taking {dmg} damage");
+        
+        if (Health > 0 && Health - dmg <= 0)
         {
-            
+            Break();
         }
+
+        Health = Mathf.Clamp(Health - dmg, 0, config.health);
     }
+
+    protected float PercentHealth => (float) Health / config.health;
 
     public void InitDevice(DeviceConfig _config, Boat boat)
     {
         config = _config;
         Health = config.health;
         Boat = boat;
-
     }
 
-    public List<Element> GetRequiredItem()
-    {
-        throw new System.NotImplementedException();
-    }
+    public abstract List<Element> GetRequiredItem();
 
-    public void Repair()
+    public virtual void Repair()
     {
         Health = config.health;
-        audioSource.PlayOneShot(config.RepairSound);
+        if (config.RepairParticle)
+        {
+            _repairParticles = Instantiate(config.RepairParticle, effectParent, false);
+            _repairParticles.transform.localPosition = Vector3.zero;
+            Destroy(_repairParticles, _repairParticles.main.duration);
+        }
+
+        if (config.RepairSound) audioSource.PlayOneShot(config.RepairSound);
+        if (_brokenParticles) Destroy(_brokenParticles.gameObject);
     }
 
-    public void Break()
+    public virtual void Break()
     {
-        audioSource.PlayOneShot(config.BreakSound);
+        if (config.BreakSound) audioSource.PlayOneShot(config.BreakSound);
+        _brokenParticles = Instantiate(config.BrokenParticle, effectParent, false);
     }
 }

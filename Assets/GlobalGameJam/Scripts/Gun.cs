@@ -1,6 +1,7 @@
 ﻿using System;
 using System.Linq;
-using System.Runtime.CompilerServices;
+using System.Collections.Generic;
+
 using UnityEngine;
 
 [RequireComponent(typeof(BoxCollider))]
@@ -27,16 +28,16 @@ public class Gun : Device, IWeapon, IControlled, IReceiveInput
     public Vector3 shotDir;
     public AudioClip shotsound;
     public GameObject bullet;
-
+    
     protected override void Awake()
     {
         base.Awake();
         turrentCartStartPos = TurrentCart.transform.localPosition;
     }
-
-    private void Start()
+    
+    public List<Element> GetRequiredItem()
     {
-       // _spawner = GameManager.Instance._Spwaner;
+        return new List<Element> {config.RequiredElemnt};
     }
 
     public void Shoot()
