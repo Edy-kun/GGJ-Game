@@ -77,12 +77,8 @@ public class RandomEnemyPlacement : MonoBehaviour
     static Vector3 RandomBetweenRadius3D(float minRad, float maxRad)
     {
         float diff = maxRad - minRad;
-        Vector3 point = Vector3.zero;
-        while (point == Vector3.zero)
-        {
-            point = Random.insideUnitSphere;
-        }
-        point = point.normalized * (Random.value * diff + minRad);
+        var point = Random.onUnitSphere;
+        point = point * (Random.value * diff + minRad);
         point.y = 0;
         return point;
     }
