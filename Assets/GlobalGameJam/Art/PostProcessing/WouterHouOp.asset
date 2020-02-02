@@ -12,21 +12,21 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 556797029e73b2347956b6579e77e05b, type: 3}
   m_Name: DepthOfField
   m_EditorClassIdentifier: 
-  active: 0
+  active: 1
   enabled:
     overrideState: 1
     value: 1
   focusDistance:
-    overrideState: 0
-    value: 10
+    overrideState: 1
+    value: 9.9
   aperture:
-    overrideState: 0
+    overrideState: 1
     value: 5.6
   focalLength:
-    overrideState: 0
+    overrideState: 1
     value: 50
   kernelSize:
-    overrideState: 0
+    overrideState: 1
     value: 1
 --- !u!114 &-3273334751398837588
 MonoBehaviour:
@@ -150,23 +150,23 @@ MonoBehaviour:
     overrideState: 0
     value: 0
   mixerGreenOutRedIn:
-    overrideState: 0
+    overrideState: 1
     value: 0
   mixerGreenOutGreenIn:
-    overrideState: 0
+    overrideState: 1
     value: 100
   mixerGreenOutBlueIn:
-    overrideState: 0
+    overrideState: 1
     value: 0
   mixerBlueOutRedIn:
-    overrideState: 0
+    overrideState: 1
     value: 0
   mixerBlueOutGreenIn:
-    overrideState: 0
+    overrideState: 1
     value: 0
   mixerBlueOutBlueIn:
-    overrideState: 0
-    value: 100
+    overrideState: 1
+    value: 93
   lift:
     overrideState: 0
     value: {x: 1, y: 1, z: 1, w: 0}
@@ -1493,7 +1493,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 6050e2d5de785ce4d931e4dbdbf2d755, type: 3}
   m_Name: ChromaticAberration
   m_EditorClassIdentifier: 
-  active: 0
+  active: 1
   enabled:
     overrideState: 1
     value: 1
@@ -1502,8 +1502,8 @@ MonoBehaviour:
     value: {fileID: 0}
     defaultState: 1
   intensity:
-    overrideState: 0
-    value: 0
+    overrideState: 1
+    value: 0.03
   fastMode:
     overrideState: 0
     value: 0
@@ -1519,13 +1519,13 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: c1cb7e9e120078f43bce4f0b1be547a7, type: 3}
   m_Name: AmbientOcclusion
   m_EditorClassIdentifier: 
-  active: 0
+  active: 1
   enabled:
     overrideState: 1
     value: 1
   mode:
-    overrideState: 0
-    value: 1
+    overrideState: 1
+    value: 0
   intensity:
     overrideState: 0
     value: 0
@@ -1568,15 +1568,15 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 40b924e2dad56384a8df2a1e111bb675, type: 3}
   m_Name: Vignette
   m_EditorClassIdentifier: 
-  active: 0
+  active: 1
   enabled:
     overrideState: 1
     value: 1
   mode:
-    overrideState: 0
+    overrideState: 1
     value: 0
   color:
-    overrideState: 0
+    overrideState: 1
     value: {r: 0, g: 0, b: 0, a: 1}
   center:
     overrideState: 0
@@ -1676,14 +1676,14 @@ MonoBehaviour:
     overrideState: 1
     value: 1
   colored:
-    overrideState: 0
-    value: 1
+    overrideState: 1
+    value: 0
   intensity:
-    overrideState: 0
+    overrideState: 1
     value: 0
   size:
-    overrideState: 0
+    overrideState: 1
     value: 1
   lumContrib:
-    overrideState: 0
+    overrideState: 1
     value: 0.8
