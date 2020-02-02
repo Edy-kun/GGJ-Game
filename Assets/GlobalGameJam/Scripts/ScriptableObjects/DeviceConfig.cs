@@ -5,7 +5,8 @@ public class DeviceConfig : ScriptableObject
 {
     public int health;
     public Element RequiredElemnt;
-    
+
+    public Sprite IconBroken;
     public ParticleSystem
         BrokenParticle,
         RepairParticle;

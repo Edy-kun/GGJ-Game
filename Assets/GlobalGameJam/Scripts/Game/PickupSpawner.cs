@@ -17,7 +17,7 @@ public class PickupSpawner : MonoBehaviour
   private void Start()
   {
 
-      for (var i = 0; i < 30; i++)
+      for (var i = 0; i < 100; i++)
       {
           SpawnPickup();
       }

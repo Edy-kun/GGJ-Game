@@ -36,6 +36,7 @@ public class HoverCraftUI : MonoBehaviour
     {
         GameManager.Instance._boat.Inventory.OnElementsChanged+=OnInventoryChanged;
         GameManager.Instance._team.OnScoreChanged += OnScoreChange;
+        OnScoreChange(0);
     }
 
     public void Update()
