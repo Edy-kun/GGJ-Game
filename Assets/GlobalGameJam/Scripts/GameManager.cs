@@ -18,6 +18,8 @@ public class GameManager : MonoBehaviour
 
     public InputActionAsset map;
     private Boat _boat;
+    private HoverCraftUI _ui;
+    private Team _team;
     public event Action<int> OnJoined;
 
     private void Awake()
@@ -31,7 +33,16 @@ public class GameManager : MonoBehaviour
 
         SceneManager.sceneLoaded += (arg0, mode) =>
         {
+           
+            _ui = FindObjectOfType<HoverCraftUI>();
             _boat = FindObjectOfType<Boat>();
+            _team = new Team()
+            {
+                Boat = _boat,
+                Score = 0
+            };
+            _team.OnScoreChanged += _ui.OnScoreChange;
+            _boat.Inventory.OnElementsChanged += _ui.OnInventoryChanged;
             _spawner = FindObjectOfType<RandomEnemyPlacement>();
             if(!_boat)
                 return;
@@ -39,11 +50,13 @@ public class GameManager : MonoBehaviour
             {
                 var player = Instantiate(playerPrototype,_boat.transform);
                 player.GetComponent<PlayerInput>().actions = map;
+                
                 players.Add(player);
                 player.character.SetActive(false);
                 player.OnJoined += JoinPlayer;
             }
 
+            _team.Players = players;
             players.ForEach(p => p.Boat = _boat);
         
     };

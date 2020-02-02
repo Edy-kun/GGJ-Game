@@ -1,6 +1,8 @@
 ﻿using System.Collections;
 using System.Collections.Generic;
+using DG.Tweening;
 using GlobalGameJam.Hovercraft;
+using TMPro;
 using UnityEngine;
 using UnityEngine.UI;
 
@@ -17,8 +19,12 @@ public class HoverCraftUI : MonoBehaviour
     [SerializeField] private Slider _rightEngineRealOutput;
     [SerializeField] private Slider _upSliderRealOutput;
 
-    
-    
+    public TMP_Text
+        lbl_ammo,
+        lbl_tape,
+        lbl_prop,
+        lbl_score;
+
     public void Update()
     {
         _leftEngineSlider.value = _hoverCraftController.LeftEngine.EnginePower;
@@ -31,4 +37,20 @@ public class HoverCraftUI : MonoBehaviour
                                       _hoverCraftController.RightEngine.EnginePower;
         
     }
+
+    public void OnInventoryChanged(Inventory inv)
+         {
+             lbl_ammo.text = $"Ammo: {inv.elements[ElementType.Ammo]}";
+             lbl_tape.text = $"Tape: {inv.elements[ElementType.Tape]}";
+             lbl_prop.text = $"Engines: {inv.elements[ElementType.Prop]}";
+             
+         }
+    public void OnScoreChange(int poins)
+    {
+        lbl_score.text = $"{poins}";
+        lbl_score.DOKill(true);
+        lbl_score.transform.DOShakeScale(.2f);
+
+    }
+    
 }

@@ -2,7 +2,8 @@
 
 public interface IControlled
 {
-    void StartControl();
+    Player ControlledBy { get; set; }
+    void StartControl(Player controlledby);
     event Action<IControlled> OnControlEnd;
     void EndControl();
 }

@@ -26,7 +26,8 @@ namespace GlobalGameJam.Hovercraft
         [SerializeField, Range(0,1)] private float _powerDistribution;
         private float _leftThrustUp;
         private float _rightThrustUp;
-        
+        public Player ControlledBy { get; set; }
+
         [FormerlySerializedAs("LeftEngine"), SerializeField] private HoverCraftEngine _leftEngine;
         [FormerlySerializedAs("RightEngine"), SerializeField] private HoverCraftEngine _rightEngine;
 
@@ -105,8 +106,9 @@ namespace GlobalGameJam.Hovercraft
         }
 
 
-        public void StartControl()
+        public void StartControl(Player _controlledby)
         {
+            ControlledBy = _controlledby;
             foreach (var engine in _engines)
             {
                 engine.Direction = Vector3.forward;

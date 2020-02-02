@@ -9,7 +9,7 @@ using UnityEngine.InputSystem;
 
 
 [RequireComponent(typeof(Animator),typeof(Collider),typeof(Rigidbody))]
-public class Player : MonoBehaviour, ICanPickUp, IControlled
+public class Player : MonoBehaviour, ICanPickUp//, IControlled
 {
     public GameObject character;
     public PickUpProfile holds;
@@ -66,14 +66,15 @@ public class Player : MonoBehaviour, ICanPickUp, IControlled
 
             if (inv.x < 3 && inv.x > -3 && inv.z > -4 && inv.z < 3)
             {
-                if (Physics.Raycast(this.transform.position, Vector3.down, out var hit, 10, 1 << 9))
+                /*if (Physics.Raycast(this.transform.position+(Vector3.up*5), Vector3.down, out var hit, 10,1<<10))
                 {
-                   
-                    this.transform.position = hit.point;
-                    this.transform.parent = Boat.transform;
+                    Debug.Log(hit.transform.name);*/
+                
+                    this.transform.parent = Boat.transform;   
+                    this.transform.localPosition = new Vector3(inv.x,1.6f,inv.z);
                     Boat.TryPickUp(holds);
                     col.isTrigger = true;
-                }
+             //   }
             }
         }
 
@@ -191,6 +192,7 @@ public class Player : MonoBehaviour, ICanPickUp, IControlled
                         _controller = _receiveInput;
                         _receiveInput.OnControlEnd += EndControl;
                     }
+                  
                 }
             }
             else
@@ -273,6 +275,7 @@ public class Player : MonoBehaviour, ICanPickUp, IControlled
     public void EndControl()
     {
         //do cleanup here
+        _controller = null;
         _receiveInput = null;
     }
 
@@ -312,11 +315,11 @@ public class Player : MonoBehaviour, ICanPickUp, IControlled
                 icon = hit.rigidbody.GetComponent<IControlled>();
             }
 
-            if (icon == null)
+            if (icon == null && icon.ControlledBy!=null)
                 return;
 
             icon.OnControlEnd += EndControl;
-            icon.StartControl();
+            icon.StartControl(this);
             _controller = icon;
         }
     }

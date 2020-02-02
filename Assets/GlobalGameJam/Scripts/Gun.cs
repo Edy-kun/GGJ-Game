@@ -14,11 +14,12 @@ public class Gun : Device, IWeapon, IControlled, IReceiveInput
     }
 
     public float _previousFire;
-    private Element Cost;
+    private Element Cost = new Element() { Amount =  1, type = ElementType.Ammo};
 
     private float position =.5f;
     public Transform begin;
     public Transform end;
+    public bool flip;
 
     public Vector3 AimDirMax;
     public Vector3 AimDirMin;
@@ -45,11 +46,11 @@ public class Gun : Device, IWeapon, IControlled, IReceiveInput
         var time = Time.timeSinceLevelLoad;
         if (_previousFire +fireRate < time)
         {
-            
-            Boat?.Inventory.TrySubstract(Cost);
+            if (!Boat.Inventory.TrySubstract(Cost)) 
+                return;
             Fire();
             _previousFire = time;
-            
+
         }
     }
 
@@ -74,8 +75,9 @@ public class Gun : Device, IWeapon, IControlled, IReceiveInput
     }
 
 
-    public void StartControl()
+    public void StartControl(Player controlledBy)
     {
+        ControlledBy = controlledBy;
         position = 0.5f;
     }
 
@@ -97,14 +99,20 @@ public class Gun : Device, IWeapon, IControlled, IReceiveInput
     {
         position += move.y * .5f;
         position= Mathf.Clamp(position, 0, 1);
-        TurrentCart.transform.position = turrentCartStartPos+Vector3.Lerp(begin.position, end.position, position);
+        
+        var vecOffset = Vector3.Lerp( end.position, begin.position,position);
+        var playerOffset = TurrentCart.transform.position;
+        TurrentCart.transform.position = turrentCartStartPos + vecOffset;
+        playerOffset -= TurrentCart.transform.position;
+        ControlledBy.transform.localPosition -= playerOffset;
     }
 
     public void Rotate(Vector2 rotate)
     {
 
         var percentage = (rotate.y + 1) / 2;
-        Turret.rotation = Quaternion.Euler(Vector3.Lerp(AimDirMin, AimDirMax, percentage));
+        
+        Turret.rotation = Quaternion.Euler(Vector3.Lerp(AimDirMin, AimDirMax, percentage)+ new Vector3(0,flip?180:0,0));
 
         var hitable = GameManager.Instance._spawner.CheckHit(Turret.transform.position,
             Vector3.Angle(Turret.transform.position, Turret.transform.position + Turret.transform.forward));
@@ -124,7 +132,7 @@ public class Gun : Device, IWeapon, IControlled, IReceiveInput
 
     public void Yes()
     {
-    
+        
     }
 
     public void No()

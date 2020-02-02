@@ -7,13 +7,20 @@ public abstract class Device : MonoBehaviour, IRepairable
     protected Transform effectParent;
     protected AudioSource audioSource;
     protected Boat Boat;
+    public Player ControlledBy { get; set; }
 
     protected virtual void Awake()
     {
         effectParent = transform;
         audioSource = this.GetComponent<AudioSource>();
         Health = config.health;
-        Boat = GetComponentInParent<Boat>();
+    }
+
+    private void Start()
+    {
+  
+
+    Boat = GetComponentInParent<Boat>();
     }
 
     public DeviceConfig config;

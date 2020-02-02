@@ -1,32 +1,42 @@
-﻿using System.Collections.Generic;
+﻿using System;
+using System.Collections.Generic;
 
 public class Inventory
 {
     public List<Element> items = new List<Element>();
+    public Dictionary<ElementType, int> elements = new Dictionary<ElementType, int>();
 
-    public void TrySubstract(Element cost)
+    public Inventory()
     {
-        var element = items.Find(e => e.type == cost.type);
-        if (element.Amount > cost.Amount)
+        elements.Add(ElementType.Tape, 0);
+        elements.Add(ElementType.Cog, 0);
+        elements.Add(ElementType.Prop, 0);
+        elements.Add(ElementType.Ammo, 100);
+    }
+
+    public event Action<Inventory> OnElementsChanged;
+    public bool TrySubstract(Element cost)
+    {
+        //var element = items.Find(e => e.type == cost.type);
+        if (elements[cost.type] > cost.Amount)
         {
-            element -= cost;
+           
+            elements[cost.type] -= cost.Amount; 
+            OnElementsChanged?.Invoke(this);
+            return true;
         }
+
+        return false;
 
 
     }
 
     public void AddElement(Element element)
     {
-        var found =  items.Find(e => e.type == element.type);
-        if (found == null)
-        {
-            items.Add(element);
-        }
-        else
-        {
-            found += element;
-        }
-        
+        elements[element.type] += element.Amount;
+        OnElementsChanged?.Invoke(this);
     }
-    
+
+
+
 }

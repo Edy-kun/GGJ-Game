@@ -10,20 +10,12 @@ public class Boat : MonoBehaviour, ICanPickUp
     public Inventory Inventory = new Inventory();
     public RandomEnemyPlacement _spawner;
 
-    /*
-    public Transform DisembarkPosition;
-    public Transform EmbarkPosition;
-    
 
-    public Vector3 GetDisembarkLocation()
+    private void Awake()
     {
-        return new Vector3(DisembarkPosition.transform.position.x,0,DisembarkPosition.position.z);
+        Inventory.AddElement(new Element(){Amount = 100,type = ElementType.Ammo});
     }
-    public Vector3 GetEmbarkLocation()
-    {
-        return EmbarkPosition.position;
-    }
-   */
+
     public void TakeDamage(int dmg)
     {
         Devices[Random.Range(0, Devices.Count)].TakeDamage(dmg);
