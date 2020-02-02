@@ -38,7 +38,7 @@ RenderSettings:
   m_ReflectionIntensity: 1
   m_CustomReflection: {fileID: 0}
   m_Sun: {fileID: 0}
-  m_IndirectSpecularColor: {r: 0.49621558, g: 0.48404163, b: 0.42658857, a: 1}
+  m_IndirectSpecularColor: {r: 0.767221, g: 0.8741924, b: 0.64839995, a: 1}
   m_UseRadianceAmbientProbe: 0
 --- !u!157 &3
 LightmapSettings:
@@ -595,11 +595,6 @@ PrefabInstance:
   m_Modification:
     m_TransformParent: {fileID: 0}
     m_Modifications:
-    - target: {fileID: 542585681171610248, guid: 0fbe0bf0d4c453b4492d3af16fab0369,
-        type: 3}
-      propertyPath: Loop
-      value: 1
-      objectReference: {fileID: 0}
     - target: {fileID: 542585681171610252, guid: 0fbe0bf0d4c453b4492d3af16fab0369,
         type: 3}
       propertyPath: m_Name
@@ -625,11 +620,6 @@ PrefabInstance:
       propertyPath: points.Array.data[3]
       value: 
       objectReference: {fileID: 863845442}
-    - target: {fileID: 542585681171610254, guid: 0fbe0bf0d4c453b4492d3af16fab0369,
-        type: 3}
-      propertyPath: m_Speed
-      value: 0.1
-      objectReference: {fileID: 0}
     - target: {fileID: 542585681171610255, guid: 0fbe0bf0d4c453b4492d3af16fab0369,
         type: 3}
       propertyPath: m_LocalPosition.x
@@ -685,13 +675,7 @@ PrefabInstance:
       propertyPath: m_LocalEulerAnglesHint.z
       value: 0
       objectReference: {fileID: 0}
-    - target: {fileID: 5613409304823515655, guid: 0fbe0bf0d4c453b4492d3af16fab0369,
-        type: 3}
-      propertyPath: explosion
-      value: 
-      objectReference: {fileID: 100012, guid: 1f1aa87040db08846a4332981b0a6fa7, type: 3}
-    m_RemovedComponents:
-    - {fileID: 3805849520644609315, guid: 0fbe0bf0d4c453b4492d3af16fab0369, type: 3}
+    m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 0fbe0bf0d4c453b4492d3af16fab0369, type: 3}
 --- !u!1 &1764240853
 GameObject:
