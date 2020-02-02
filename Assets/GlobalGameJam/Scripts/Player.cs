@@ -220,10 +220,11 @@ public class Player : MonoBehaviour, ICanPickUp//, IControlled
                         Debug.Log("IREPAIING");
                         if (repaierable.NeedsRepair())
                         {
+                          
                             if (Boat.Inventory.TrySubstract(repaierable.GetRequiredItem()))
-                            {
+                            {repa = repaierable;
                                 transform.LookAt((repaierable as MonoBehaviour).transform);
-                                DoRepair();
+                                DoRepair();  
                             }
 
                         }
@@ -318,6 +319,7 @@ public class Player : MonoBehaviour, ICanPickUp//, IControlled
     }
 
     private bool IsRepairing = false;
+    private IRepairable repa;
     private static readonly int Repair1 = Animator.StringToHash("Repair");
 
     public void DoRepair()
@@ -332,6 +334,7 @@ public class Player : MonoBehaviour, ICanPickUp//, IControlled
         yield return new WaitForSeconds(time);
         IsRepairing = false;
         Anim.SetBool(Repair1, false);
+        repa.Repair();
     }
     
 
