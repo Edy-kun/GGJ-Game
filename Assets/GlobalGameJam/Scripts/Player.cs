@@ -8,7 +8,7 @@ using UnityEngine.InputSystem;
 
 
 
-[RequireComponent(typeof(Animator),typeof(Collider),typeof(Rigidbody))]
+[RequireComponent(typeof(Animator),typeof(Collider))]
 public class Player : MonoBehaviour, ICanPickUp//, IControlled
 {
     public GameObject character;
@@ -28,7 +28,7 @@ public class Player : MonoBehaviour, ICanPickUp//, IControlled
     public Transform ToolSnap;
     public Animator Anim;
     private Collider col;
-    
+    private Camera mainCamera = null;
 
     public bool TryPickUp(PickUpProfile contains)
     {
@@ -54,6 +54,8 @@ public class Player : MonoBehaviour, ICanPickUp//, IControlled
             var z = this.transform.localPosition.z;
             if (x > 3 || x < -3 || z < -4 || z > 3)
             {
+                rb = gameObject.AddComponent<Rigidbody>();
+                rb.isKinematic = true;
                 //Debug.Log("Disembark");
                 this.transform.position = new Vector3(this.transform.position.x, 0, this.transform.position.z);
                 this.transform.parent = null;
@@ -66,51 +68,68 @@ public class Player : MonoBehaviour, ICanPickUp//, IControlled
 
             if (inv.x < 3 && inv.x > -3 && inv.z > -4 && inv.z < 3)
             {
-                /*if (Physics.Raycast(this.transform.position+(Vector3.up*5), Vector3.down, out var hit, 10,1<<10))
-                {
-                    Debug.Log(hit.transform.name);*/
-                
-                    this.transform.parent = Boat.transform;   
-                    this.transform.localPosition = new Vector3(inv.x,1.6f,inv.z);
-                    Boat.TryPickUp(holds);
-                    col.isTrigger = true;
-             //   }
+                Destroy(rb);
+                this.transform.parent = Boat.transform;
+                this.transform.localPosition = new Vector3(inv.x, 1.6f, inv.z);
+                Boat.TryPickUp(holds);
+                col.isTrigger = true;
+
             }
         }
 
-        if (Onboat || _receiveInput == null)
+
+
+        DoMove(_movevec * Time.deltaTime);
+        if (TriggerActive)
         {
-
-
-
-            DoMove(_movevec * Time.deltaTime);
-            if (TriggerActive)
+            if (_receiveInput != null)
             {
-                if (_receiveInput != null)
-                {
-                    _receiveInput.OnTrigger();
-                }
+                _receiveInput.OnTrigger();
             }
-
         }
+
+
 
     }
 
+    private Rigidbody rb;
     private void Awake()
     {
         col = this.GetComponent<Collider>();
-    
-        
+        mainCamera = Camera.main;
+
+
+
     }
 
     public void DoMove(Vector3 vec)
     {
         if (_receiveInput == null && _controller==null)
         {
-           
-            var move = new Vector3(vec.x,0,vec.y)* movespeed;;
-            transform.LookAt(this.transform.position+move);
-            transform.position += move;
+            Vector3 move;
+            if (Onboat)
+            {  move = new Vector3(vec.x, 0, vec.y) * movespeed;
+
+                var rotation = Quaternion.LookRotation(Boat.transform.TransformDirection(move));
+                transform.rotation = rotation;
+                transform.localPosition += move;
+            }
+            else
+            {
+
+               
+                ;
+                var camRight = mainCamera.transform.right;
+                var forward = Vector3.Cross(camRight, Vector3.up);
+                var toCamera = Matrix4x4.TRS(Vector3.zero, Quaternion.LookRotation(forward, Vector3.up), Vector3.one);
+                var worldMove = toCamera.MultiplyVector(new Vector3(vec.x, 0, vec.y)) * (movespeed);
+              //  Debug.Log(string.Join(",", new[] {worldMove.x, worldMove.y, worldMove.z}));
+                transform.LookAt(this.transform.position + worldMove);
+
+                transform.position += worldMove;
+                move = worldMove;
+            }
+
             Anim.SetFloat("Speed", move.magnitude);
             
         }

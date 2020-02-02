@@ -1,4 +1,5 @@
-﻿using System.Collections;
+﻿using System;
+using System.Collections;
 using System.Collections.Generic;
 using DG.Tweening;
 using GlobalGameJam.Hovercraft;
@@ -24,6 +25,18 @@ public class HoverCraftUI : MonoBehaviour
         lbl_tape,
         lbl_prop,
         lbl_score;
+
+    private void Awake()
+    {
+       
+        
+    }
+
+    private void Start()
+    {
+        GameManager.Instance._boat.Inventory.OnElementsChanged+=OnInventoryChanged;
+        GameManager.Instance._team.OnScoreChanged += OnScoreChange;
+    }
 
     public void Update()
     {

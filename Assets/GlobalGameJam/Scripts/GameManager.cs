@@ -17,9 +17,9 @@ public class GameManager : MonoBehaviour
     public SettingsConfig Settings;
 
     public InputActionAsset map;
-    private Boat _boat;
-    private HoverCraftUI _ui;
-    private Team _team;
+    public Boat _boat;
+    public HoverCraftUI _ui;
+    public Team _team;
     public event Action<int> OnJoined;
 
     private void Awake()
@@ -29,28 +29,30 @@ public class GameManager : MonoBehaviour
         SceneSwitcher = new SceneSwitcher();
         SceneSwitcher.LoadScene(Scenes.Menu);
 
-     
+
 
         SceneManager.sceneLoaded += (arg0, mode) =>
         {
-           
+
             _ui = FindObjectOfType<HoverCraftUI>();
+            if (_ui == null)
+                Debug.Log("NO UI");
             _boat = FindObjectOfType<Boat>();
             _team = new Team()
             {
                 Boat = _boat,
                 Score = 0
             };
-            _team.OnScoreChanged += _ui.OnScoreChange;
-            _boat.Inventory.OnElementsChanged += _ui.OnInventoryChanged;
+
+         
             _spawner = FindObjectOfType<RandomEnemyPlacement>();
-            if(!_boat)
+            if (!_boat)
                 return;
             for (var i = 0; i < Settings.MaxPlayers; i++)
             {
-                var player = Instantiate(playerPrototype,_boat.transform);
+                var player = Instantiate(playerPrototype, _boat.transform);
                 player.GetComponent<PlayerInput>().actions = map;
-                
+
                 players.Add(player);
                 player.character.SetActive(false);
                 player.OnJoined += JoinPlayer;
@@ -58,16 +60,22 @@ public class GameManager : MonoBehaviour
 
             _team.Players = players;
             players.ForEach(p => p.Boat = _boat);
-        
-    };
-}
+
+        };
+    }
+
+    private void HandleInventoryUI(Inventory obj)
+    {
+     _ui.OnInventoryChanged(obj);
+    }
+
+    private void HandleUI(int obj)
+    {
+        _ui.OnScoreChange(obj);
+    }
 
 
-
-
-
-
-public void JoinPlayer(object sender, Player player)
+    public void JoinPlayer(object sender, Player player)
     {
         Debug.Log($"{player} joined. Update the UI.");
         player.OnJoined -= JoinPlayer;

@@ -181,7 +181,7 @@ public class TurretAI : MonoBehaviour, IDamageable
     public void TakeDamage(int dmg)
     {
         _health -= dmg;
-        if(dmg<=0)
+        if(_health<=0)
             Destroy(this.gameObject);
     }
 }

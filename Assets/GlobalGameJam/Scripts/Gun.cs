@@ -3,6 +3,7 @@ using System.Linq;
 using System.Collections.Generic;
 
 using UnityEngine;
+using UnityEngine.Rendering;
 
 [RequireComponent(typeof(BoxCollider))]
 public class Gun : Device, IWeapon, IControlled, IReceiveInput
@@ -71,8 +72,19 @@ public class Gun : Device, IWeapon, IControlled, IReceiveInput
         Destroy(shootBullet, 0.4f);
         audioSource.PlayOneShot(shotsound);
 
+        var hits =GameManager.Instance._spawner.CheckHit(this.transform.position,
+            Vector3.Angle(Turret.position, Turret.position + Turret.right));
+        if (hits.Count > 0)
+        {
+            Debug.Log("HIT");
+            hits[0].TakeDamage(50);
+        }
+        
+
 
     }
+    
+    
 
 
     public void StartControl(Player controlledBy)
@@ -101,10 +113,10 @@ public class Gun : Device, IWeapon, IControlled, IReceiveInput
         position= Mathf.Clamp(position, 0, 1);
         
         var vecOffset = Vector3.Lerp( end.position, begin.position,position);
-        var playerOffset = TurrentCart.transform.position;
+        var playerOffset = TurrentCart.transform.localPosition;
         TurrentCart.transform.position = turrentCartStartPos + vecOffset;
-        playerOffset -= TurrentCart.transform.position;
-        ControlledBy.transform.localPosition -= playerOffset;
+        playerOffset -= TurrentCart.transform.localPosition;
+        ControlledBy.transform.localPosition -= new Vector3(playerOffset.x, 0, playerOffset.z);
     }
 
     public void Rotate(Vector2 rotate)
@@ -112,10 +124,10 @@ public class Gun : Device, IWeapon, IControlled, IReceiveInput
 
         var percentage = (rotate.y + 1) / 2;
         
-        Turret.rotation = Quaternion.Euler(Vector3.Lerp(AimDirMin, AimDirMax, percentage)+ new Vector3(0,flip?180:0,0));
+        Turret.localRotation = Quaternion.Euler(Vector3.Lerp(AimDirMin, AimDirMax, percentage)+ new Vector3(0,flip?180:0,0));
 
-        var hitable = GameManager.Instance._spawner.CheckHit(Turret.transform.position,
-            Vector3.Angle(Turret.transform.position, Turret.transform.position + Turret.transform.forward));
+        var hitable = GameManager.Instance._spawner.CheckHit(Turret.position,
+            Vector3.Angle(Turret.position, Turret.position + Turret.forward));
         if (hitable.Count != 0)
         {
             hitable.First().TakeDamage(25);
@@ -150,7 +162,7 @@ public class Gun : Device, IWeapon, IControlled, IReceiveInput
     {
         Gizmos.color = Color.blue;
         Gizmos.DrawSphere(begin.position, .5f);
-        
+        Gizmos.DrawRay(Turret.position,  Turret.right*1000f);
         Gizmos.DrawSphere(end.position, .5f);
     }
 }

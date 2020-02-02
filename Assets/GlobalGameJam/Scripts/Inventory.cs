@@ -38,5 +38,8 @@ public class Inventory
     }
 
 
-
+    public void Init()
+    {
+     OnElementsChanged?.Invoke(this);
+    }
 }

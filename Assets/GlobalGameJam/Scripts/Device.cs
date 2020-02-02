@@ -69,6 +69,7 @@ public abstract class Device : MonoBehaviour, IRepairable
     public virtual void Break()
     {
         if (config.BreakSound) audioSource.PlayOneShot(config.BreakSound);
-        _brokenParticles = Instantiate(config.BrokenParticle, effectParent, false);
+        if(config.BrokenParticle!=null)
+            _brokenParticles = Instantiate(config.BrokenParticle, effectParent, false);
     }
 }

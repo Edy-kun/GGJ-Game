@@ -120,7 +120,7 @@ NavMeshSettings:
     accuratePlacement: 0
     debug:
       m_Flags: 0
-  m_NavMeshData: {fileID: 23800000, guid: d42e10fa9966f384faa45fcd03102dee, type: 2}
+  m_NavMeshData: {fileID: 23800000, guid: b709bb74cf279c74fa67e995299ddd54, type: 2}
 --- !u!1 &1809254248
 GameObject:
   m_ObjectHideFlags: 0
@@ -150,11 +150,15 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: f9298a06c1783914da5dab354c304ae3, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  _spawner: {fileID: 0}
+  _PickupSpawner: {fileID: 0}
   playerPrototype: {fileID: 1164777353589206795, guid: 42dfd2da58cd6684c95e59729d3721e0,
     type: 3}
   players: []
   Settings: {fileID: 11400000, guid: 2d945a435d9de1944a8554c2a024eec5, type: 2}
   map: {fileID: -944628639613478452, guid: c3350151389c88347bc1dacd495634f5, type: 3}
+  _boat: {fileID: 0}
+  _ui: {fileID: 0}
 --- !u!4 &1809254250
 Transform:
   m_ObjectHideFlags: 0

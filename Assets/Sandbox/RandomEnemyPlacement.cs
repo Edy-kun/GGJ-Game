@@ -21,8 +21,9 @@ public class RandomEnemyPlacement : MonoBehaviour
 
     private void Start()
     {
+     
+        _terrainCollider = Terrain.activeTerrain.GetComponent<Collider>();  
         StartCoroutine(SpawnEnemies());
-        _terrainCollider = Terrain.activeTerrain.GetComponent<Collider>();
     }
 
     private IEnumerator SpawnEnemies()
@@ -30,6 +31,7 @@ public class RandomEnemyPlacement : MonoBehaviour
         LastTimeInRange();
         while(spawnEnemies)
         {
+
             if (allEnemiesInScene.Count < maxEnemies)
             {
                 SpawnEnemy(enemyPrefabs[Random.Range(0,enemyPrefabs.Length)]);
@@ -63,8 +65,8 @@ public class RandomEnemyPlacement : MonoBehaviour
         {
             position = hitInfo.point;
         }
-        
-        var enem = Instantiate(prefab, position, Quaternion.identity);
+     
+        var enem = Instantiate(prefab,new Vector3(position.x, 0, position.z), Quaternion.identity);
         enem.ListOfEnemies = allEnemiesInScene;
     }
 
@@ -86,11 +88,11 @@ public class RandomEnemyPlacement : MonoBehaviour
         return point;
     }
     
-    private float tollerance = 0.5f;
+    private float tollerance = 10f;
 
     public List<TurretAI> CheckHit(Vector3 orig, float angle)
     {
-        return allEnemiesInScene.Where(item => Math.Abs(Vector3.Angle(orig, item.transform.position) - angle) < tollerance).ToList();
+        return allEnemiesInScene.Where(item => Math.Abs(Vector3.Angle(new Vector3(orig.x,0,orig.y), item.transform.position) - angle) < tollerance).ToList();
     }
 }
 
