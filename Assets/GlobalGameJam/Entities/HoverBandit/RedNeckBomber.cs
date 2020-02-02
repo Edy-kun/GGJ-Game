@@ -7,6 +7,7 @@ using UnityEngine.AI;
 public class RedNeckBomber : MonoBehaviour
 {
     [SerializeField] private NavMeshAgent agent;
+    [SerializeField] private Animator animator;
     [SerializeField] private Transform[] points;
 
     [SerializeField] private float remainingDistance = 1f, spawnAfter = 2f;
@@ -34,7 +35,14 @@ public class RedNeckBomber : MonoBehaviour
 
     private void ThrowRandomMine()
     {
-        Vector3 spawnPos = new Vector3(transform.position.x,transform.position.y * (spawnAfter + 5f), transform.position.z);
+        StartCoroutine(Throw());
+    }
+
+    private IEnumerator Throw()
+    {
+        animator.Play("Throw");
+        yield return new WaitForSeconds(0.6f);
+        Vector3 spawnPos = new Vector3(transform.position.x, transform.position.y * (60f), transform.position.z);
         Instantiate(minePrefab, spawnPos - transform.forward * spawnAfter, Quaternion.identity);
     }
 
