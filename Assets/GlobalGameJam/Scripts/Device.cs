@@ -70,6 +70,9 @@ public abstract class Device : MonoBehaviour, IRepairable
     {
         if (config.BreakSound) audioSource.PlayOneShot(config.BreakSound);
         if(config.BrokenParticle!=null)
+        {
             _brokenParticles = Instantiate(config.BrokenParticle, effectParent, false);
+            _brokenParticles.transform.localPosition = Vector3.zero;
+        }
     }
 }
