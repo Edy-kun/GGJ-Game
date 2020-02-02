@@ -53,7 +53,6 @@ public abstract class Device : MonoBehaviour, IRepairable
         config = _config;
         Health = config.health;
         Boat = boat;
-        
     }
 
     public abstract List<Element> GetRequiredItem();
@@ -78,7 +77,10 @@ public abstract class Device : MonoBehaviour, IRepairable
     {
         if (config.BreakSound) audioSource.PlayOneShot(config.BreakSound);
         if(config.BrokenParticle!=null)
+        {
             _brokenParticles = Instantiate(config.BrokenParticle, effectParent, false);
+            _brokenParticles.transform.localPosition = Vector3.zero;
+        }
         BrokenIcon.SetActive(true);
     }
 
