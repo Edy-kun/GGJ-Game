@@ -16,7 +16,7 @@ MonoBehaviour:
   RequiredElemnt:
     type: 2
     Amount: 1
-  BrokenParticle: {fileID: 1516894465842181368, guid: f392a3abacf548544a46257be8e7b1d4,
+  BrokenParticle: {fileID: 8378052001650860877, guid: 6420ed0cda9a4734895075149f358ed7,
     type: 3}
   RepairParticle: {fileID: 403841968385964864, guid: f4dfd3168f9945046a70e4f467ff6b99,
     type: 3}
