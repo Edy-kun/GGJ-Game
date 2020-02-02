@@ -212,8 +212,9 @@ public class Player : MonoBehaviour, ICanPickUp//, IControlled
             {
 
                 var vols = Physics.OverlapSphere(this.transform.position, 1f);
-                var repaierable = vols.Select(item => item.GetComponent<IRepairable>())
-                    .Where(item => item != null && item.NeedsRepair()).FirstOrDefault();
+                var objects = FindObjectsOfType<Device>();
+                IRepairable repaierable = objects.Where(item => item is IRepairable).Where(item => item.NeedsRepair()).FirstOrDefault();
+               
 
                 if (repaierable != null)
                 {

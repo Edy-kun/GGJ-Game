@@ -48,7 +48,7 @@ public class GameManager : MonoBehaviour
             _spawner = FindObjectOfType<RandomEnemyPlacement>();
             if (!_boat)
                 return;
-            for (var i = 0; i < Settings.MaxPlayers; i++)
+            for (var i = 0; i < 2; i++)
             {
                 var player = Instantiate(playerPrototype, _boat.transform);
                 player.GetComponent<PlayerInput>().actions = map;
