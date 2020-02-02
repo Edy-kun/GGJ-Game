@@ -18,7 +18,7 @@ public class Inventory
     public bool TrySubstract(Element cost)
     {
         //var element = items.Find(e => e.type == cost.type);
-        if (elements[cost.type] > cost.Amount)
+        if (elements[cost.type] >= cost.Amount)
         {
            
             elements[cost.type] -= cost.Amount; 
@@ -33,7 +33,7 @@ public class Inventory
 
     public bool TrySubstract(List<Element> cost)
     {
-        if (!cost.TrueForAll(item => (elements[item.type] > item.Amount)))
+        if (!cost.TrueForAll(item => (elements[item.type] >= item.Amount)))
             return false;
 
         foreach (var item in cost)
