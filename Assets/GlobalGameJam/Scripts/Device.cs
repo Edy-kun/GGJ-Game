@@ -8,12 +8,17 @@ public abstract class Device : MonoBehaviour, IRepairable
     protected AudioSource audioSource;
     protected Boat Boat;
     public Player ControlledBy { get; set; }
+    public GameObject BrokenIcon;
+    private SpriteRenderer iconR;
 
     protected virtual void Awake()
     {
+        var m = new GameObject();
         effectParent = transform;
         audioSource = this.GetComponent<AudioSource>();
         Health = config.health;
+        BrokenIcon =GameObject.Instantiate(m,this.transform.position+Vector3.up,Quaternion.identity,this.transform);
+        iconR =BrokenIcon.AddComponent<SpriteRenderer>();
     }
 
     private void Start()
@@ -64,6 +69,8 @@ public abstract class Device : MonoBehaviour, IRepairable
 
         if (config.RepairSound) audioSource.PlayOneShot(config.RepairSound);
         if (_brokenParticles) Destroy(_brokenParticles.gameObject);
+        BrokenIcon.SetActive(false);
+        iconR.sprite = config.IconBroken;
     }
 
     public virtual void Break()
@@ -74,5 +81,12 @@ public abstract class Device : MonoBehaviour, IRepairable
             _brokenParticles = Instantiate(config.BrokenParticle, effectParent, false);
             _brokenParticles.transform.localPosition = Vector3.zero;
         }
+        BrokenIcon.SetActive(true);
+    }
+
+    public bool NeedsRepair()
+    {
+        return Health != config.health;
+
     }
 }

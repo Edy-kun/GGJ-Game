@@ -24,7 +24,7 @@ public class Boat : MonoBehaviour, ICanPickUp
     public bool TryPickUp(PickUpProfile contains)
     {
         if(contains)
-            Inventory.items.Add(contains.Element);
+            Inventory.AddElement(contains.Element);
         return true;
     }
 }

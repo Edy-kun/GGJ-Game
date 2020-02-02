@@ -31,6 +31,20 @@ public class Inventory
 
     }
 
+    public bool TrySubstract(List<Element> cost)
+    {
+        if (!cost.TrueForAll(item => (elements[item.type] > item.Amount)))
+            return false;
+
+        foreach (var item in cost)
+        {
+            TrySubstract(item);
+        }
+
+        return true;
+
+    }
+
     public void AddElement(Element element)
     {
         elements[element.type] += element.Amount;

@@ -15,4 +15,5 @@ MonoBehaviour:
   Element:
     type: 0
     Amount: 1
-  GameObject: {fileID: 100000, guid: 00718395eefb6084bb25555f962f25c0, type: 3}
+  GameObject: {fileID: 3433428039201817394, guid: 0cf6d94b227a02f4db458a03b52a5c43,
+    type: 3}

@@ -1,4 +1,5 @@
 ﻿using System;
+using System.Collections;
 using System.Collections.Generic;
 using System.Linq;
 using GlobalGameJam.Hovercraft;
@@ -47,6 +48,8 @@ public class Player : MonoBehaviour, ICanPickUp//, IControlled
 
     public void Update()
     {
+        if (IsRepairing)
+            return;
 
         if (Onboat)
         {
@@ -71,7 +74,8 @@ public class Player : MonoBehaviour, ICanPickUp//, IControlled
                 Destroy(rb);
                 this.transform.parent = Boat.transform;
                 this.transform.localPosition = new Vector3(inv.x, 1.6f, inv.z);
-                Boat.TryPickUp(holds);
+                if (Boat.TryPickUp(holds))
+                    holds = null;
                 col.isTrigger = true;
 
             }
@@ -104,21 +108,26 @@ public class Player : MonoBehaviour, ICanPickUp//, IControlled
 
     public void DoMove(Vector3 vec)
     {
+        if (IsRepairing)
+            vec = Vector3.zero;
         if (_receiveInput == null && _controller==null)
         {
             Vector3 move;
             if (Onboat)
             {  move = new Vector3(vec.x, 0, vec.y) * movespeed;
 
-                var rotation = Quaternion.LookRotation(Boat.transform.TransformDirection(move));
-                transform.rotation = rotation;
-                transform.localPosition += move;
+                if (move.magnitude != 0)
+                {
+                    var rotation = Quaternion.LookRotation(Boat.transform.TransformDirection(move));
+                    transform.rotation = rotation;
+                    transform.localPosition += move;
+                }
             }
             else
             {
 
                
-                ;
+                
                 var camRight = mainCamera.transform.right;
                 var forward = Vector3.Cross(camRight, Vector3.up);
                 var toCamera = Matrix4x4.TRS(Vector3.zero, Quaternion.LookRotation(forward, Vector3.up), Vector3.one);
@@ -141,7 +150,7 @@ public class Player : MonoBehaviour, ICanPickUp//, IControlled
 
     public void Move(InputAction.CallbackContext context)
     {
-        if (!IsMine(context))
+        if (!IsMine(context)|| IsRepairing)
             return;
 
         if (_controller is ThirdPersonHoverCraftController hoverCraftController)
@@ -161,7 +170,7 @@ public class Player : MonoBehaviour, ICanPickUp//, IControlled
 
     public void Rotate(InputAction.CallbackContext context)
     {
-        if (!IsMine(context)||!Onboat)
+        if (!IsMine(context)||!Onboat|| IsRepairing)
             return;
         
         if (_controller is ThirdPersonHoverCraftController hoverCraftController)
@@ -195,7 +204,7 @@ public class Player : MonoBehaviour, ICanPickUp//, IControlled
 
     public void Yes(InputAction.CallbackContext context)
     {
-        if (!IsMine(context))
+        if (!IsMine(context)|| IsRepairing)
             return;
         if (Onboat)
         {
@@ -204,6 +213,24 @@ public class Player : MonoBehaviour, ICanPickUp//, IControlled
 
                 if (Physics.Raycast(transform.position, transform.TransformDirection(Vector3.forward), out var hit, 1f))
                 {
+                    var repaierable = hit.transform.GetComponent<IRepairable>();
+                    
+                    if (repaierable != null)
+                    {
+                        Debug.Log("IREPAIING");
+                        if (repaierable.NeedsRepair())
+                        {
+                          
+                            if (Boat.Inventory.TrySubstract(repaierable.GetRequiredItem()))
+                            {repa = repaierable;
+                                transform.LookAt((repaierable as MonoBehaviour).transform);
+                                DoRepair();  
+                            }
+
+                        }
+                        
+                        return;
+                    }
                     _receiveInput = hit.transform.GetComponent<IReceiveInput>();
                     if (_receiveInput != null)
                     {
@@ -224,7 +251,7 @@ public class Player : MonoBehaviour, ICanPickUp//, IControlled
 
     public void No(InputAction.CallbackContext context)
     {
-        if (!IsMine(context)||!Onboat)
+        if (!IsMine(context)||!Onboat|| IsRepairing)
             return;
         if (_receiveInput != null)
         {
@@ -263,7 +290,7 @@ public class Player : MonoBehaviour, ICanPickUp//, IControlled
 
     public void LeftTrigger(InputAction.CallbackContext context)
     {
-        if (!IsMine(context)||!Onboat)
+        if (!IsMine(context)||!Onboat|| IsRepairing)
             return;
         if (_controller is ThirdPersonHoverCraftController hoverCraftController)
         {
@@ -273,7 +300,7 @@ public class Player : MonoBehaviour, ICanPickUp//, IControlled
 
     public void RightTrigger(InputAction.CallbackContext context)
     {
-        if (!IsMine(context)||!Onboat)
+        if (!IsMine(context)||!Onboat|| IsRepairing)
             return;
         if (_receiveInput != null)
         {
@@ -291,6 +318,26 @@ public class Player : MonoBehaviour, ICanPickUp//, IControlled
     {
     }
 
+    private bool IsRepairing = false;
+    private IRepairable repa;
+    private static readonly int Repair1 = Animator.StringToHash("Repair");
+
+    public void DoRepair()
+    {
+        Repair(4.5f);
+    }
+
+    public IEnumerable Repair(float time)
+    {  
+        Anim.SetBool(Repair1, true);
+        IsRepairing = true;
+        yield return new WaitForSeconds(time);
+        IsRepairing = false;
+        Anim.SetBool(Repair1, false);
+        repa.Repair();
+    }
+    
+
     public void EndControl()
     {
         //do cleanup here
@@ -302,7 +349,7 @@ public class Player : MonoBehaviour, ICanPickUp//, IControlled
 
     public void Interact(InputAction.CallbackContext context)
     {
-        if (!context.performed || !IsMine(context) || !Onboat)
+        if (!context.performed || !IsMine(context) || !Onboat || IsRepairing)
             return;
 
 
