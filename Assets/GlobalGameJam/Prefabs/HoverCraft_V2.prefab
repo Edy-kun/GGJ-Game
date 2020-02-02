@@ -9980,7 +9980,7 @@ MonoBehaviour:
     forceMode: 0
     _minThrust: 0.16
     _maxThrust: 2.48
-    _particleSystem: {fileID: 5984980617256814743}
+    _particleSystem: {fileID: 3713571544913455404}
     _minLifeTime: 0
     _maxLifeTime: 0.5
   _rightEngine:
@@ -9991,7 +9991,7 @@ MonoBehaviour:
     forceMode: 0
     _minThrust: 0.16
     _maxThrust: 2.44
-    _particleSystem: {fileID: 5572007976826362103}
+    _particleSystem: {fileID: 3302284457989421388}
     _minLifeTime: 0
     _maxLifeTime: 0.5
 --- !u!1001 &634189849530909469
@@ -10577,9 +10577,9 @@ PrefabInstance:
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 97f27d6b640c74d4692f0b3937023819, type: 3}
---- !u!198 &5984980617256814743 stripped
+--- !u!198 &3713571544913455404 stripped
 ParticleSystem:
-  m_CorrespondingSourceObject: {fileID: 1963428579850597025, guid: 97f27d6b640c74d4692f0b3937023819,
+  m_CorrespondingSourceObject: {fileID: 8915106807881945882, guid: 97f27d6b640c74d4692f0b3937023819,
     type: 3}
   m_PrefabInstance: {fileID: 5202101554825984566}
   m_PrefabAsset: {fileID: 0}
@@ -10669,9 +10669,9 @@ Transform:
     type: 3}
   m_PrefabInstance: {fileID: 6227563902016219734}
   m_PrefabAsset: {fileID: 0}
---- !u!198 &5572007976826362103 stripped
+--- !u!198 &3302284457989421388 stripped
 ParticleSystem:
-  m_CorrespondingSourceObject: {fileID: 1963428579850597025, guid: 97f27d6b640c74d4692f0b3937023819,
+  m_CorrespondingSourceObject: {fileID: 8915106807881945882, guid: 97f27d6b640c74d4692f0b3937023819,
     type: 3}
   m_PrefabInstance: {fileID: 6227563902016219734}
   m_PrefabAsset: {fileID: 0}
