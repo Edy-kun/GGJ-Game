@@ -231,7 +231,7 @@ GameObject:
   m_Component:
   - component: {fileID: 4291919368116261452}
   m_Layer: 0
-  m_Name: HoverCraft_UVMapped
+  m_Name: Hovercraft
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
