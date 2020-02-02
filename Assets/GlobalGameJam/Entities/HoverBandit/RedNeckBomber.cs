@@ -9,6 +9,8 @@ public class RedNeckBomber : MonoBehaviour
     [SerializeField] private NavMeshAgent agent;
     [SerializeField] private Transform[] points;
 
+    [SerializeField] private float remainingDistance = 1f, spawnAfter = 2f;
+
     [SerializeField] private GameObject minePrefab;
 
     private int destPoint = 0;
@@ -32,12 +34,13 @@ public class RedNeckBomber : MonoBehaviour
 
     private void ThrowRandomMine()
     {
-        Instantiate(minePrefab,transform.localPosition +  new Vector3(0,1f,-5f), Quaternion.identity);
+        Vector3 spawnPos = new Vector3(transform.position.x,transform.position.y * (spawnAfter + 5f), transform.position.z);
+        Instantiate(minePrefab, spawnPos - transform.forward * spawnAfter, Quaternion.identity);
     }
 
     private void UpdateAgent()
     {
-        if (!agent.pathPending && agent.remainingDistance < 0.5f)
+        if (!agent.pathPending && agent.remainingDistance < remainingDistance)
         {
             GotoNextPoint();
         }
