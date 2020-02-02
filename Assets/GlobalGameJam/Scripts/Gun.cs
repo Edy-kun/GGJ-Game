@@ -35,7 +35,7 @@ public class Gun : Device, IWeapon, IControlled, IReceiveInput
         turrentCartStartPos = TurrentCart.transform.localPosition;
     }
     
-    public List<Element> GetRequiredItem()
+    public override List<Element> GetRequiredItem()
     {
         return new List<Element> {config.RequiredElemnt};
     }
