@@ -1,9 +1,11 @@
-﻿using System.Collections;
+﻿using System;
+using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.AI;
 
-public class TurretAI : MonoBehaviour
+[RequireComponent(typeof(AudioSource))]
+public class TurretAI : MonoBehaviour, IDamageable
 {
     [SerializeField] private NavMeshAgent agent;
     [SerializeField] private Transform partToRotate, gunToRotate;
@@ -17,12 +19,15 @@ public class TurretAI : MonoBehaviour
 
     private Transform target;
     private float cachedSpeed, nextFire = 0.4f, myTime = 0.0f;
-
+    private AudioSource audioSource;
+    public List<TurretAI> ListOfEnemies { get; set; }
 
     private void Start()
     {
+        audioSource = this.GetComponent<AudioSource>();
         InvokeRepeating("UpdateTarget", 0.0f, 0.5f);
         cachedSpeed = agent.speed;
+        ListOfEnemies.Add(this);
     }
 
     private void Update()
@@ -151,6 +156,12 @@ public class TurretAI : MonoBehaviour
         }
     }
 
+    private void OnDestroy()
+    {
+    
+        ListOfEnemies.Remove(this);
+    }
+
     private void OnDrawGizmosSelected()
     {
         Gizmos.color = Color.blue;
@@ -160,4 +171,21 @@ public class TurretAI : MonoBehaviour
         Gizmos.DrawWireSphere(transform.position, maxTurretRange);
     }
 
+    private int _health = 100;
+
+    public int Health
+    {
+        get => _health;
+        set => _health = value;
+    }
+
+    public void TakeDamage(int dmg)
+    {
+        _health -= dmg;
+        if (_health <= 0)
+        {
+            GameManager.Instance._team.Score += 10;
+            Destroy(this.gameObject);
+        }
+    }
 }

@@ -391,6 +391,7 @@ GameObject:
   - component: {fileID: 5191110260267322928}
   - component: {fileID: 4278395811241074767}
   - component: {fileID: 6254435754853427363}
+  - component: {fileID: 6933570569827532909}
   m_Layer: 0
   m_Name: Crock
   m_TagString: Untagged
@@ -459,6 +460,20 @@ MeshRenderer:
   m_SortingLayerID: 0
   m_SortingLayer: 0
   m_SortingOrder: 0
+--- !u!64 &6933570569827532909
+MeshCollider:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 7873651162384073608}
+  m_Material: {fileID: 0}
+  m_IsTrigger: 0
+  m_Enabled: 1
+  serializedVersion: 3
+  m_Convex: 1
+  m_CookingOptions: 30
+  m_Mesh: {fileID: 3380532795058928235, guid: 621b070e61cb83d41b07f980cf363d8f, type: 3}
 --- !u!1 &8397396279284643953
 GameObject:
   m_ObjectHideFlags: 0

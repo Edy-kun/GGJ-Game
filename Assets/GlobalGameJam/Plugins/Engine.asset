@@ -1,0 +1,25 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!114 &11400000
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: f4b950734e324a9ea82937aa950835c0, type: 3}
+  m_Name: Engine
+  m_EditorClassIdentifier: 
+  health: 100
+  RequiredElemnt:
+    type: 2
+    Amount: 1
+  IconBroken: {fileID: 21300000, guid: 5ca4639a31380bc4c8df05f430a4488c, type: 3}
+  BrokenParticle: {fileID: 8378052001650860877, guid: 6420ed0cda9a4734895075149f358ed7,
+    type: 3}
+  RepairParticle: {fileID: 403841968385964864, guid: f4dfd3168f9945046a70e4f467ff6b99,
+    type: 3}
+  BreakSound: {fileID: 8300000, guid: 9cf078a5cf3374d468b8bc84758a11f7, type: 3}
+  RepairSound: {fileID: 8300000, guid: 9db9336e9f17c9744847c5fe94c1650f, type: 3}
