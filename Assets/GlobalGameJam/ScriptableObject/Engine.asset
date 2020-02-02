@@ -12,11 +12,13 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: f4b950734e324a9ea82937aa950835c0, type: 3}
   m_Name: Engine
   m_EditorClassIdentifier: 
-  health: 0
+  health: 100
   RequiredElemnt:
-    type: 0
+    type: 2
     Amount: 1
-  BrokenParticle: {fileID: 0}
-  RepairParticle: {fileID: 0}
-  BreakSound: {fileID: 0}
-  RepairSound: {fileID: 0}
+  BrokenParticle: {fileID: 1516894465842181368, guid: f392a3abacf548544a46257be8e7b1d4,
+    type: 3}
+  RepairParticle: {fileID: 403841968385964864, guid: f4dfd3168f9945046a70e4f467ff6b99,
+    type: 3}
+  BreakSound: {fileID: 8300000, guid: 9cf078a5cf3374d468b8bc84758a11f7, type: 3}
+  RepairSound: {fileID: 8300000, guid: 9db9336e9f17c9744847c5fe94c1650f, type: 3}
