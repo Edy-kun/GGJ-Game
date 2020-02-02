@@ -1,4 +1,5 @@
-﻿using UnityEngine;
+﻿using System;
+using UnityEngine;
 
 public class MenuSystem : MonoBehaviour
 {
@@ -12,6 +13,12 @@ public class MenuSystem : MonoBehaviour
     {
         Show(MenuPanel);
         Credits.MenuSystem = Players.MenuSystem = MenuPanel.MenuSystem = this;
+     
+    }
+
+    private void Start()
+    {
+        GameManager.Instance.SceneSwitcher.LoadScene(Scenes.Game);
     }
 
     public void Show(UIPanel menuSystemPlayers)

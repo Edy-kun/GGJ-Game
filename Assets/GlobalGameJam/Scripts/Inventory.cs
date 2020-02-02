@@ -8,9 +8,9 @@ public class Inventory
 
     public Inventory()
     {
-        elements.Add(ElementType.Tape, 0);
-        elements.Add(ElementType.Cog, 0);
-        elements.Add(ElementType.Prop, 0);
+        elements.Add(ElementType.Tape, 2);
+        elements.Add(ElementType.Cog, 3);
+        elements.Add(ElementType.Prop, 2);
         elements.Add(ElementType.Ammo, 100);
     }
 

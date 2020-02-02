@@ -8,7 +8,7 @@ public class ShowSpawn : MonoBehaviour
     void OnDrawGizmos()
     {
         Gizmos.color = Color.yellow;
-        Handles.Label(transform.position, gameObject.transform.name);
+       // Handles.Label(transform.position, gameObject.transform.name);
         Gizmos.DrawSphere(transform.position, 0.25f);
     }
 }

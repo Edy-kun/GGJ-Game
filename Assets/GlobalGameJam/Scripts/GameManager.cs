@@ -27,7 +27,7 @@ public class GameManager : MonoBehaviour
 
         Instance = this;
         SceneSwitcher = new SceneSwitcher();
-        SceneSwitcher.LoadScene(Scenes.Menu);
+        SceneSwitcher.LoadScene(Scenes.Game);
 
 
 
