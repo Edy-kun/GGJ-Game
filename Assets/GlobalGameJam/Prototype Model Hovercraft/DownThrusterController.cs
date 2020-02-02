@@ -70,7 +70,7 @@ namespace GlobalGameJam.Hovercraft
                     var d = Mathf.Clamp(hit.distance, _minDistance, _maxDistance);
                     d = Mathf.InverseLerp(_minDistance, _maxDistance, d);
                     var upForceAmount = ThrusterEffectiveness[i] * _forceMultiplier.Evaluate(d) * _force * ActualPower;
-                    rigidBody.AddForceAtPosition(Vector3.up * upForceAmount, thruster.position);
+                    rigidBody.AddForceAtPosition(thruster.forward * upForceAmount, thruster.position);
                     Forces[i] = upForceAmount;
                 }
             }

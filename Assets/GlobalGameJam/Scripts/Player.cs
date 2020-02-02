@@ -14,7 +14,7 @@ public class Player : MonoBehaviour, ICanPickUp, IControlled
     public Element holds;
     private Vector3 _aimDirection;
     private IControlled _controller;
-    private IReceiveInput _recieveInput = null;
+    private IReceiveInput _receiveInput = null;
     public InputDevice InputDevice;
     [SerializeField] private PlayerInput _playerInput;
     public event Action<object, Player> OnLeave;
@@ -45,9 +45,9 @@ public class Player : MonoBehaviour, ICanPickUp, IControlled
         DoMove(_movevec * Time.deltaTime);
         if (TriggerActive)
         {
-            if (_recieveInput != null)
+            if (_receiveInput != null)
             {
-                _recieveInput.OnTrigger();
+                _receiveInput.OnTrigger();
             }
         }
             
@@ -55,14 +55,14 @@ public class Player : MonoBehaviour, ICanPickUp, IControlled
 
     public void DoMove(Vector3 vec)
     {
-        if (_recieveInput == null)
+        if (_receiveInput == null)
         {
             var move = new Vector3(vec.x,0,vec.y);
             transform.position += move * movespeed;
         }
         else
         {
-            _recieveInput.Move(vec);
+            _receiveInput.Move(vec);
         }
     }
 
@@ -98,13 +98,14 @@ public class Player : MonoBehaviour, ICanPickUp, IControlled
         }
 
         var rotvec = context.ReadValue<Vector2>();
-        if (_recieveInput != null)
+        if (_receiveInput != null)
         {
-            _recieveInput.Rotate(rotvec);
+            _receiveInput.Rotate(rotvec);
         }
         else
         {
-            this.transform.rotation = Quaternion.Euler(0, Angle(rotvec), 0);
+            if(rotvec.magnitude > 0.2f)
+                this.transform.rotation = Quaternion.Euler(0, Angle(rotvec), 0);
         }
     }
 
@@ -124,27 +125,27 @@ public class Player : MonoBehaviour, ICanPickUp, IControlled
     {
         if (!IsMine(context)) 
             return;
-        if (_recieveInput == null)
+        if (_receiveInput == null)
         {
 
             if (Physics.Raycast(transform.position, transform.TransformDirection(Vector3.forward), out var hit, 1f))
             {
-                _recieveInput = hit.transform.GetComponent<IReceiveInput>();
-                _controller = _recieveInput;
-                _recieveInput.OnControlEnd += EndControl;
+                _receiveInput = hit.transform.GetComponent<IReceiveInput>();
+                _controller = _receiveInput;
+                _receiveInput.OnControlEnd += EndControl;
             }
         }
         else
         {
-            _recieveInput.Yes();
+            _receiveInput.Yes();
         }
     }
 
     public void No(InputAction.CallbackContext context)
     {
-        if (_recieveInput != null)
+        if (_receiveInput != null)
         {
-            _recieveInput.No();
+            _receiveInput.No();
         }
     }
 
@@ -178,7 +179,7 @@ public class Player : MonoBehaviour, ICanPickUp, IControlled
 
     public void LeftTrigger(InputAction.CallbackContext context)
     {
-        
+        if (!IsMine(context)) return;
         if (_controller is ThirdPersonHoverCraftController hoverCraftController)
         {
             hoverCraftController.ControlThrustUpLeft(context);
@@ -189,7 +190,7 @@ public class Player : MonoBehaviour, ICanPickUp, IControlled
     {
         if (!IsMine(context))
             return;
-        if (_recieveInput != null)
+        if (_receiveInput != null)
         {
             TriggerActive =     context.ReadValue<float>() > .1f;
             //_recieveInput.OnTrigger();
@@ -208,7 +209,7 @@ public class Player : MonoBehaviour, ICanPickUp, IControlled
     public void EndControl()
     {
         //do cleanup here
-        _recieveInput = null;
+        _receiveInput = null;
     }
 
     public event Action<IControlled> OnControlEnd;
@@ -225,9 +226,9 @@ public class Player : MonoBehaviour, ICanPickUp, IControlled
             return;
         }
 
-        if (_recieveInput != null)
+        if (_receiveInput != null)
         {
-            _recieveInput.Interact();
+            _receiveInput.Interact();
             return;
         }
 
@@ -238,7 +239,7 @@ public class Player : MonoBehaviour, ICanPickUp, IControlled
             IControlled icon = null;
             if (con != null)
             {
-                icon = _recieveInput = con;
+                icon = _receiveInput = con;
                 
             }
             else
@@ -259,7 +260,7 @@ public class Player : MonoBehaviour, ICanPickUp, IControlled
     {
         Debug.Assert(_controller == controlled);
         _controller = null;
-        _recieveInput = null;
+        _receiveInput = null;
         controlled.OnControlEnd -= EndControl;
         controlled.EndControl();
     }

@@ -19,6 +19,7 @@ namespace GlobalGameJam.Hovercraft
         [SerializeField] private float _minThrust;
         [SerializeField] private float _maxThrust;
         private float _enginePower;
+        public float Effectiveness { get; set; }
 
         [Header("Visuals")] 
         [SerializeField] private ParticleSystem _particleSystem;
@@ -29,7 +30,7 @@ namespace GlobalGameJam.Hovercraft
 
         private float DirectionalModifier =>
             Vector3.Dot(_hoverCraft.InverseTransformDirection(_pivot.forward), Direction);
-        public float Thrust => Mathf.Lerp(_minThrust, _maxThrust, EnginePower) * DirectionalModifier;
+        public float Thrust => Mathf.Lerp(_minThrust, _maxThrust, EnginePower) * DirectionalModifier * Effectiveness;
 
         public float EnginePower
         {

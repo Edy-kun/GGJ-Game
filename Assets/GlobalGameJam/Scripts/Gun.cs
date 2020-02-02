@@ -1,4 +1,5 @@
 ﻿using System;
+using System.Collections.Generic;
 using System.Runtime.CompilerServices;
 using UnityEngine;
 
@@ -32,7 +33,12 @@ public class Gun : Device, IWeapon, IControlled, IReceiveInput
         base.Awake();
         turrentCartStartPos = TurrentCart.transform.localPosition;
     }
- 
+    
+    public override List<Element> GetRequiredItem()
+    {
+        return new List<Element> {config.RequiredElemnt};
+    }
+
     public void Shoot()
     {
         var time = Time.timeSinceLevelLoad;
