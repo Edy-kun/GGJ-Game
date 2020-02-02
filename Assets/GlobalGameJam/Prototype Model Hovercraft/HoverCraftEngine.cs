@@ -19,7 +19,7 @@ namespace GlobalGameJam.Hovercraft
         [SerializeField] private float _minThrust;
         [SerializeField] private float _maxThrust;
         private float _enginePower;
-        public float Effectiveness { get; set; }
+        public float Effectiveness { get; set; } = 1f;
 
         [Header("Visuals")] 
         [SerializeField] private ParticleSystem _particleSystem;
