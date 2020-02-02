@@ -5,6 +5,7 @@ using UnityEngine;
 public class PickUp : MonoBehaviour
 {
     [SerializeField] private PickUpProfile _contains;
+    public Action<PickUp> OnPickedUp { get; set; }
 
     private void Awake()
     {
@@ -17,17 +18,18 @@ public class PickUp : MonoBehaviour
     public void SetProfile(PickUpProfile contain)
     {
         _contains = contain;
-       Instantiate(_contains.GameObject,transform);
+        Instantiate(_contains.GameObject, transform);
     }
     
     private void OnTriggerEnter(Collider other)
     {
-        Debug.Log($"entered {other.name}" );
+        Debug.Log($"entered {other.name}");
         var collidedWith = other.GetComponent<ICanPickUp>();
-        if (collidedWith == null) 
+        if (collidedWith == null)
             return;
-        if (collidedWith.TryPickUp(_contains.Element))
+        if (collidedWith.TryPickUp(_contains))
         {
+            OnPickedUp?.Invoke(this);
             Destroy(gameObject);
         }
     }

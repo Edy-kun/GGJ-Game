@@ -1,6 +1,9 @@
-﻿using System.Collections;
+﻿using System;
+using System.Collections;
 using System.Collections.Generic;
+using System.Linq;
 using UnityEngine;
+using Random = UnityEngine.Random;
 
 public class RandomEnemyPlacement : MonoBehaviour
 {
@@ -76,4 +79,12 @@ public class RandomEnemyPlacement : MonoBehaviour
         point.y = 0;
         return point;
     }
+    
+    private float tollerance = 0.5f;
+
+    public List<TurretAI> CheckHit(Vector3 orig, float angle)
+    {
+        return allEnemiesInScene.Where(item => Math.Abs(Vector3.Angle(orig, item.transform.position) - angle) < tollerance).ToList();
+    }
 }
+

@@ -1,4 +1,5 @@
 ﻿using System;
+using System.Linq;
 using System.Runtime.CompilerServices;
 using UnityEngine;
 
@@ -26,13 +27,18 @@ public class Gun : Device, IWeapon, IControlled, IReceiveInput
     public Vector3 shotDir;
     public AudioClip shotsound;
     public GameObject bullet;
-    
+
     protected override void Awake()
     {
         base.Awake();
         turrentCartStartPos = TurrentCart.transform.localPosition;
     }
- 
+
+    private void Start()
+    {
+       // _spawner = GameManager.Instance._Spwaner;
+    }
+
     public void Shoot()
     {
         var time = Time.timeSinceLevelLoad;
@@ -96,8 +102,17 @@ public class Gun : Device, IWeapon, IControlled, IReceiveInput
     public void Rotate(Vector2 rotate)
     {
 
-       var percentage=  (rotate.y + 1) / 2;
-       Turret.rotation = Quaternion.Euler(Vector3.Lerp(AimDirMin, AimDirMax, percentage));
+        var percentage = (rotate.y + 1) / 2;
+        Turret.rotation = Quaternion.Euler(Vector3.Lerp(AimDirMin, AimDirMax, percentage));
+
+        var hitable = GameManager.Instance._spawner.CheckHit(Turret.transform.position,
+            Vector3.Angle(Turret.transform.position, Turret.transform.position + Turret.transform.forward));
+        if (hitable.Count != 0)
+        {
+            hitable.First().TakeDamage(25);
+        }
+        
+
 
     }
 

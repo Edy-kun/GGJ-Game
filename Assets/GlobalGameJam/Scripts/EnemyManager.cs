@@ -7,7 +7,7 @@ using Random = UnityEngine.Random;
 
 public class EnemyManager
 {
-    public DamagableEnemy Enemies;
+    /*public DamagableEnemy Enemies;
     public EnemyManager()
     {
         Enemies = new GameObject().AddComponent<DamagableEnemy>();
@@ -19,14 +19,7 @@ public class EnemyManager
         }
         
         
-    }
+    }*/
 
-  
-    public List<DamagableEnemy> enemyPositions;
-    private float tollerance = 0.5f;
 
-    public List<DamagableEnemy> CheckHit(Vector3 orig, float angle)
-    {
-        return enemyPositions.Where(item => Math.Abs(Vector3.Angle(orig, item.pos) - angle) < tollerance).ToList();
-    }
 }

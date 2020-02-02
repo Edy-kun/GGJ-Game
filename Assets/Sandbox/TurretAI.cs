@@ -5,7 +5,7 @@ using UnityEngine;
 using UnityEngine.AI;
 
 [RequireComponent(typeof(AudioSource))]
-public class TurretAI : MonoBehaviour
+public class TurretAI : MonoBehaviour, IDamageable
 {
     [SerializeField] private NavMeshAgent agent;
     [SerializeField] private Transform partToRotate, gunToRotate;
@@ -170,4 +170,18 @@ public class TurretAI : MonoBehaviour
         Gizmos.DrawWireSphere(transform.position, maxTurretRange);
     }
 
+    private int _health = 100;
+
+    public int Health
+    {
+        get => _health;
+        set => _health = value;
+    }
+
+    public void TakeDamage(int dmg)
+    {
+        _health -= dmg;
+        if(dmg<=0)
+            Destroy(this.gameObject);
+    }
 }

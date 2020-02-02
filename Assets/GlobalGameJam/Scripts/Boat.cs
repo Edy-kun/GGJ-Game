@@ -8,21 +8,29 @@ public class Boat : MonoBehaviour, ICanPickUp
     
     public List<IRepairable> Devices;
     public Inventory Inventory = new Inventory();
+    public RandomEnemyPlacement _spawner;
 
-    public void EnterBoat()
+    public Transform DisembarkPosition;
+    public Transform EmbarkPosition;
+
+    public Vector3 GetDisembarkLocation()
     {
-        
+        return new Vector3(DisembarkPosition.transform.position.x,0,DisembarkPosition.position.z);
     }
-    
+    public Vector3 GetEmbarkLocation()
+    {
+        return EmbarkPosition.position;
+    }
+   
     public void TakeDamage(int dmg)
     {
         Devices[Random.Range(0, Devices.Count)].TakeDamage(dmg);
     }
 
-
-    public bool TryPickUp(Element contains)
+    public bool TryPickUp(PickUpProfile contains)
     {
-        Inventory.items.Add(contains);
+        if(contains)
+            Inventory.items.Add(contains.Element);
         return true;
     }
 }

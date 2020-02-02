@@ -13,7 +13,7 @@ public class KeepHoverCraftInPlayableArea : MonoBehaviour
     {
         if (other.attachedRigidbody == rigidbody)
         {
-            Debug.Log("Player in bounds");
+            //Debug.Log("Player in bounds");
             _playerInBounds = true;
             _originalPosition = rigidbody.transform.position;
         }

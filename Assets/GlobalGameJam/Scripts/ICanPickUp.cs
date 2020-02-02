@@ -1,4 +1,4 @@
 ﻿public interface ICanPickUp
 {
-    bool TryPickUp(Element contains);
+    bool TryPickUp(PickUpProfile contains);
 }

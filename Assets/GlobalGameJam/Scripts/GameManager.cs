@@ -9,7 +9,8 @@ using UnityEngine.SceneManagement;
 public class GameManager : MonoBehaviour
 {
     public static GameManager Instance;
-    public EnemyManager EnemyManager;
+    public RandomEnemyPlacement _spawner;
+    public PickupSpawner _PickupSpawner;
     [SerializeField] private Player playerPrototype;
     public List<Player> players;
     public SceneSwitcher SceneSwitcher;
@@ -31,6 +32,7 @@ public class GameManager : MonoBehaviour
         SceneManager.sceneLoaded += (arg0, mode) =>
         {
             _boat = FindObjectOfType<Boat>();
+            _spawner = FindObjectOfType<RandomEnemyPlacement>();
             if(!_boat)
                 return;
             for (var i = 0; i < Settings.MaxPlayers; i++)
@@ -38,6 +40,7 @@ public class GameManager : MonoBehaviour
                 var player = Instantiate(playerPrototype,_boat.transform);
                 player.GetComponent<PlayerInput>().actions = map;
                 players.Add(player);
+                player.character.SetActive(false);
                 player.OnJoined += JoinPlayer;
             }
 

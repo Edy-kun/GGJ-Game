@@ -12,4 +12,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: c32956e14ef8437e989c292705b29bca, type: 3}
   m_Name: Tape
   m_EditorClassIdentifier: 
-  GameObject: {fileID: 0}
+  Element:
+    type: 0
+    Amount: 1
+  GameObject: {fileID: 100000, guid: 00718395eefb6084bb25555f962f25c0, type: 3}

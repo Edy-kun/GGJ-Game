@@ -7,11 +7,12 @@ using UnityEngine;
 using UnityEngine.InputSystem;
 
 
-[RequireComponent(typeof(Animator))]
+
+[RequireComponent(typeof(Animator),typeof(Collider),typeof(Rigidbody))]
 public class Player : MonoBehaviour, ICanPickUp, IControlled
 {
     public GameObject character;
-    public Element holds;
+    public PickUpProfile holds;
     private Vector3 _aimDirection;
     private IControlled _controller;
     private IReceiveInput _recieveInput = null;
@@ -21,12 +22,15 @@ public class Player : MonoBehaviour, ICanPickUp, IControlled
     private static HashSet<InputDevice> _knownControllers = new HashSet<InputDevice>();
     public Boat Boat { get; set; }
 
+    public bool Onboat => transform.parent == Boat.transform;
+    
     public Transform BoxSnap;
     public Transform ToolSnap;
     public Animator Anim;
+    private Collider col;
     
 
-    public bool TryPickUp(Element contains)
+    public bool TryPickUp(PickUpProfile contains)
     {
         if (holds != null)
             return false;
@@ -40,29 +44,76 @@ public class Player : MonoBehaviour, ICanPickUp, IControlled
     private Vector3 _movevec;
 
     private bool TriggerActive;
+
     public void Update()
     {
-        DoMove(_movevec * Time.deltaTime);
-        if (TriggerActive)
+
+        if (Onboat)
         {
-            if (_recieveInput != null)
+            var x = this.transform.localPosition.x;
+            var z = this.transform.localPosition.z;
+            if (x > 3 || x < -3 || z < -4 || z > 3)
             {
-                _recieveInput.OnTrigger();
+                //Debug.Log("Disembark");
+                this.transform.position = new Vector3(this.transform.position.x, 0, this.transform.position.z);
+                this.transform.parent = null;
+                col.isTrigger = false;
             }
         }
-            
+        else
+        {
+            var inv = Boat.transform.InverseTransformPoint(this.transform.position);
+
+            if (inv.x < 3 && inv.x > -3 && inv.z > -4 && inv.z < 3)
+            {
+
+                this.transform.position = new Vector3(this.transform.position.x, Boat.GetEmbarkLocation().y,
+                    this.transform.position.z);
+                this.transform.parent = Boat.transform;
+                Boat.TryPickUp(holds);
+                col.isTrigger = true;
+            }
+        }
+
+        if (Onboat || _recieveInput == null)
+        {
+
+
+
+            DoMove(_movevec * Time.deltaTime);
+            if (TriggerActive)
+            {
+                if (_recieveInput != null)
+                {
+                    _recieveInput.OnTrigger();
+                }
+            }
+
+        }
+
+    }
+
+    private void Awake()
+    {
+        col = this.GetComponent<Collider>();
+    
+        
     }
 
     public void DoMove(Vector3 vec)
     {
-        if (_recieveInput == null)
+        if (_recieveInput == null && _controller==null)
         {
-            var move = new Vector3(vec.x,0,vec.y);
-            transform.position += move * movespeed;
+           
+            var move = new Vector3(vec.x,0,vec.y)* movespeed;;
+            transform.LookAt(this.transform.position+move);
+            transform.position += move;
+            Anim.SetFloat("Speed", move.magnitude);
+            
         }
         else
         {
-            _recieveInput.Move(vec);
+            _recieveInput?.Move(vec);
         }
     }
 
@@ -88,7 +139,7 @@ public class Player : MonoBehaviour, ICanPickUp, IControlled
 
     public void Rotate(InputAction.CallbackContext context)
     {
-        if (!IsMine(context))
+        if (!IsMine(context)||!Onboat)
             return;
         
         if (_controller is ThirdPersonHoverCraftController hoverCraftController)
@@ -104,7 +155,7 @@ public class Player : MonoBehaviour, ICanPickUp, IControlled
         }
         else
         {
-            this.transform.rotation = Quaternion.Euler(0, Angle(rotvec), 0);
+           // this.transform.rotation = Quaternion.Euler(0, Angle(rotvec), 0);
         }
     }
 
@@ -122,29 +173,56 @@ public class Player : MonoBehaviour, ICanPickUp, IControlled
 
     public void Yes(InputAction.CallbackContext context)
     {
-        if (!IsMine(context)) 
+        if (!IsMine(context))
             return;
-        if (_recieveInput == null)
+        if (Onboat)
         {
-
-            if (Physics.Raycast(transform.position, transform.TransformDirection(Vector3.forward), out var hit, 1f))
+            if (_recieveInput == null)
             {
-                _recieveInput = hit.transform.GetComponent<IReceiveInput>();
-                _controller = _recieveInput;
-                _recieveInput.OnControlEnd += EndControl;
+
+                if (Physics.Raycast(transform.position, transform.TransformDirection(Vector3.forward), out var hit, 1f))
+                {
+                    _recieveInput = hit.transform.GetComponent<IReceiveInput>();
+                    if (_recieveInput != null)
+                    {
+                        _movevec = Vector2.zero;
+                        _controller = _recieveInput;
+                        _recieveInput.OnControlEnd += EndControl;
+                    }
+                }
+            }
+            else
+            {
+                _recieveInput.Yes();
             }
         }
         else
         {
-            _recieveInput.Yes();
+            /*if (Vector3.Distance(transform.position, Boat.GetEmbarkLocation()) < 6f)
+            {
+                Debug.Log("embark");
+                this.transform.position = Boat.GetEmbarkLocation();
+                this.transform.parent = Boat.transform;
+
+
+            }*/
         }
     }
 
     public void No(InputAction.CallbackContext context)
     {
+        if (!IsMine(context)||!Onboat)
+            return;
         if (_recieveInput != null)
         {
             _recieveInput.No();
+        }
+        else
+        {
+
+            //Debug.Log("Disembark");
+            this.transform.position = Boat.GetDisembarkLocation();
+            this.transform.parent = null;
         }
     }
 
@@ -178,7 +256,8 @@ public class Player : MonoBehaviour, ICanPickUp, IControlled
 
     public void LeftTrigger(InputAction.CallbackContext context)
     {
-        
+        if (!IsMine(context)||!Onboat)
+            return;
         if (_controller is ThirdPersonHoverCraftController hoverCraftController)
         {
             hoverCraftController.ControlThrustUpLeft(context);
@@ -187,7 +266,7 @@ public class Player : MonoBehaviour, ICanPickUp, IControlled
 
     public void RightTrigger(InputAction.CallbackContext context)
     {
-        if (!IsMine(context))
+        if (!IsMine(context)||!Onboat)
             return;
         if (_recieveInput != null)
         {
@@ -215,9 +294,9 @@ public class Player : MonoBehaviour, ICanPickUp, IControlled
 
     public void Interact(InputAction.CallbackContext context)
     {
-        if (!context.performed || !IsMine(context)) 
+        if (!context.performed || !IsMine(context) || !Onboat)
             return;
-        
+
 
         if (_controller is ThirdPersonHoverCraftController hoverCraftController)
         {
@@ -231,7 +310,7 @@ public class Player : MonoBehaviour, ICanPickUp, IControlled
             return;
         }
 
-        
+
         if (Physics.Raycast(this.transform.position, this.transform.forward, out var hit, 5.0f))
         {
             var con = hit.collider.GetComponent<IReceiveInput>();
@@ -239,16 +318,17 @@ public class Player : MonoBehaviour, ICanPickUp, IControlled
             if (con != null)
             {
                 icon = _recieveInput = con;
-                
+
             }
             else
             {
                 Debug.Log($"{name} tried to interact with {hit.rigidbody.name}");
                 icon = hit.rigidbody.GetComponent<IControlled>();
             }
+
             if (icon == null)
                 return;
-          
+
             icon.OnControlEnd += EndControl;
             icon.StartControl();
             _controller = icon;

@@ -5,6 +5,7 @@ public class Element
 {
     public ElementType type;
     public int Amount = 1;
+   
 
 
     public static Element operator+ ( Element b, Element c)
