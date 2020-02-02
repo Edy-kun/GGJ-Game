@@ -72,9 +72,9 @@ public class RedNeckBomber : MonoBehaviour
     {
         for (int i = 0; i < points.Length; i++)
         {
-            Gizmos.color = Color.yellow;
-            Handles.Label(points[i].position, points[i].name);
-            Gizmos.DrawSphere(points[i].position, 0.25f);
+          //  Gizmos.color = Color.yellow;
+            //Handles.Label(points[i].position, points[i].name);
+           // Gizmos.DrawSphere(points[i].position, 0.25f);
         }
     }
 }

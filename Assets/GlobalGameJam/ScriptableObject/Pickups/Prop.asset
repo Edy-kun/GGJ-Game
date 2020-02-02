@@ -13,7 +13,7 @@ MonoBehaviour:
   m_Name: Prop
   m_EditorClassIdentifier: 
   Element:
-    type: 0
+    type: 2
     Amount: 1
   GameObject: {fileID: 3433428039201817394, guid: 0cf6d94b227a02f4db458a03b52a5c43,
     type: 3}

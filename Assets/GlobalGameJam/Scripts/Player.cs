@@ -211,26 +211,30 @@ public class Player : MonoBehaviour, ICanPickUp//, IControlled
             if (_receiveInput == null)
             {
 
+                var vols = Physics.OverlapSphere(this.transform.position, 1f);
+                var repaierable = vols.Select(item => item.GetComponent<IRepairable>())
+                    .Where(item => item != null && item.NeedsRepair()).FirstOrDefault();
+
+                if (repaierable != null)
+                {
+                    Debug.Log("IREPAIING");
+                    if (repaierable.NeedsRepair())
+                    {
+                            
+                        if (Boat.Inventory.TrySubstract(repaierable.GetRequiredItem()))
+                        {repa = repaierable;
+                            transform.LookAt((repaierable as MonoBehaviour).transform);
+                            DoRepair();  
+                        }
+
+                    }
+                        
+                    return;
+                }
+
                 if (Physics.Raycast(transform.position, transform.TransformDirection(Vector3.forward), out var hit, 1f))
                 {
-                    var repaierable = hit.transform.GetComponent<IRepairable>();
                     
-                    if (repaierable != null)
-                    {
-                        Debug.Log("IREPAIING");
-                        if (repaierable.NeedsRepair())
-                        {
-                          
-                            if (Boat.Inventory.TrySubstract(repaierable.GetRequiredItem()))
-                            {repa = repaierable;
-                                transform.LookAt((repaierable as MonoBehaviour).transform);
-                                DoRepair();  
-                            }
-
-                        }
-                        
-                        return;
-                    }
                     _receiveInput = hit.transform.GetComponent<IReceiveInput>();
                     if (_receiveInput != null)
                     {

@@ -62,9 +62,7 @@ public class HoverCraftUI : MonoBehaviour
     public void OnScoreChange(int poins)
     {
         lbl_score.text = $"{poins}";
-        lbl_score.DOKill(true);
-        lbl_score.transform.DOShakeScale(.2f);
-
+      
     }
     
 }
