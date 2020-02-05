@@ -3,6 +3,7 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.AI;
+using Zenject;
 
 [RequireComponent(typeof(AudioSource))]
 public class TurretAI : MonoBehaviour, IDamageable
@@ -10,10 +11,20 @@ public class TurretAI : MonoBehaviour, IDamageable
     [SerializeField] private NavMeshAgent agent;
     [SerializeField] private Transform partToRotate, gunToRotate;
 
-    [SerializeField] private float minFollowRange, maxFollowRange, minTurretRange, maxTurretRange, turretTurnSpeed, collisionRange;
-    [SerializeField] private string boatTag;
-
-    [SerializeField] private float fireDelta;
+    [Inject]
+    public void Construct(Settings settings, BulletCollision.Pool bulletfactory)
+    {
+        _settings = settings;
+        _bulletPool = bulletfactory;
+    }
+    
+    private Settings _settings;
+    private BulletCollision.Pool _bulletPool;
+    /*
+    public float minFollowRange, maxFollowRange, minTurretRange, maxTurretRange, turretTurnSpeed, collisionRange;
+    public string boatTag;
+    public float fireDelta;
+    */
 
     [SerializeField] private GameObject ps, bullet;
 
@@ -39,13 +50,13 @@ public class TurretAI : MonoBehaviour, IDamageable
         RayCastUpdate();
 
         //Range
-        if (DetectPlayerInRange(minFollowRange, maxFollowRange, target) == true)
+        if (DetectPlayerInRange(_settings.minFollowRange, _settings.maxFollowRange, target) == true)
         {
             agent.destination = target.position;
         }
 
         //Turret
-        if (DetectPlayerInRange(minTurretRange, maxTurretRange, target) == true)
+        if (DetectPlayerInRange(_settings.minTurretRange, _settings.maxTurretRange, target) == true)
         {
             RotateTowardsTarget();
             RotateGunTowardsTarget();
@@ -55,7 +66,7 @@ public class TurretAI : MonoBehaviour, IDamageable
 
     private void UpdateTarget()
     {
-        GameObject[] targets = GameObject.FindGameObjectsWithTag(boatTag);
+        GameObject[] targets = GameObject.FindGameObjectsWithTag(_settings.boatTag);
         float shortestDistance = Mathf.Infinity;
         GameObject nearestTarget = null;
         foreach (GameObject target in targets)
@@ -99,7 +110,7 @@ public class TurretAI : MonoBehaviour, IDamageable
 
         Vector3 dir = target.position - transform.position;
         Quaternion lookRotation = Quaternion.LookRotation(dir);
-        Vector3 rotation = Quaternion.Lerp(partToRotate.rotation, lookRotation, Time.deltaTime * turretTurnSpeed).eulerAngles;
+        Vector3 rotation = Quaternion.Lerp(partToRotate.rotation, lookRotation, Time.deltaTime * _settings.turretTurnSpeed).eulerAngles;
         partToRotate.rotation = Quaternion.Euler(0f, rotation.y, 0f);
     }
 
@@ -112,7 +123,7 @@ public class TurretAI : MonoBehaviour, IDamageable
 
         Vector3 dir = target.position - transform.position;
         Quaternion lookRotation = Quaternion.LookRotation(dir);
-        Vector3 rotation = Quaternion.Lerp(gunToRotate.rotation, lookRotation, Time.deltaTime * turretTurnSpeed).eulerAngles;
+        Vector3 rotation = Quaternion.Lerp(gunToRotate.rotation, lookRotation, Time.deltaTime * _settings.turretTurnSpeed).eulerAngles;
         gunToRotate.localRotation = Quaternion.Euler(rotation.x - 0.1f, 0f, 0f);
     }
 
@@ -121,29 +132,33 @@ public class TurretAI : MonoBehaviour, IDamageable
         myTime = myTime + Time.deltaTime;
 
         RaycastHit hit;
-        if (Physics.Raycast(partToRotate.position,partToRotate.TransformDirection(Vector3.forward), out hit, maxTurretRange) && myTime > nextFire)
+        if (Physics.Raycast(partToRotate.position, partToRotate.TransformDirection(Vector3.forward), out hit,
+                _settings.maxTurretRange) && myTime > nextFire)
         {
-            nextFire = myTime + fireDelta;
+            nextFire = myTime + _settings.fireDelta;
 
-            Vector3 forward = partToRotate.TransformDirection(Vector3.forward) * maxTurretRange;
+            Vector3 forward = partToRotate.TransformDirection(Vector3.forward) * _settings.maxTurretRange;
             Debug.DrawRay(partToRotate.position, forward, Color.yellow);
 
-            GameObject shootBullet;
-            shootBullet = Instantiate(bullet, ps.transform.position, partToRotate.rotation);
-            shootBullet.GetComponent<Rigidbody>().AddForce(shootBullet.transform.forward * 90f);
-            Destroy(shootBullet,0.4f);
-            GetComponent<AudioSource>().Play();
+
+
+            var shootBullet = _bulletPool.Spawn();
+            shootBullet.transform.position = partToRotate.position;
+            shootBullet.transform.LookAt(forward);
+            shootBullet.rb.AddForce(shootBullet.transform.forward * 90f);
+            audioSource.Play();
             nextFire = nextFire - myTime;
             myTime = 0.0f;
         }
 
     }
 
+
     private void RayCastUpdate()
     {
 
         RaycastHit hit;
-        if (Physics.Raycast(partToRotate.position, partToRotate.TransformDirection(Vector3.forward), out hit, collisionRange) || Physics.Raycast(transform.position, transform.TransformDirection(Vector3.forward), out hit, collisionRange))
+        if (Physics.Raycast(partToRotate.position, partToRotate.TransformDirection(Vector3.forward), out hit, _settings.collisionRange) || Physics.Raycast(transform.position, transform.TransformDirection(Vector3.forward), out hit, _settings.collisionRange))
         {
             if (hit.transform.gameObject.tag == "Enemy")
             {
@@ -165,10 +180,10 @@ public class TurretAI : MonoBehaviour, IDamageable
     private void OnDrawGizmosSelected()
     {
         Gizmos.color = Color.blue;
-        Gizmos.DrawWireSphere(transform.position, maxFollowRange);
+        Gizmos.DrawWireSphere(transform.position, _settings.maxFollowRange);
 
         Gizmos.color = Color.red;
-        Gizmos.DrawWireSphere(transform.position, maxTurretRange);
+        Gizmos.DrawWireSphere(transform.position, _settings.maxTurretRange);
     }
 
     private int _health = 100;
@@ -187,5 +202,27 @@ public class TurretAI : MonoBehaviour, IDamageable
             GameManager.Instance._team.Score += 10;
             Destroy(this.gameObject);
         }
+    }
+    
+    public class Factory : PlaceholderFactory<TurretAI>
+    {
+        
+    }
+
+    [Serializable]
+    public class Settings
+    {
+     
+        public float 
+            minFollowRange, 
+            maxFollowRange,
+            minTurretRange,
+            maxTurretRange, 
+            turretTurnSpeed,
+            collisionRange;
+        public string 
+            boatTag;
+        public float 
+            fireDelta;
     }
 }

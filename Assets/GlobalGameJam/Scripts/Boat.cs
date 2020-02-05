@@ -1,6 +1,7 @@
 ﻿using System;
 using System.Collections.Generic;
 using UnityEngine;
+using Zenject;
 using Random = UnityEngine.Random;
 
 public class Boat : MonoBehaviour, ICanPickUp
@@ -26,6 +27,11 @@ public class Boat : MonoBehaviour, ICanPickUp
         if(contains)
             Inventory.AddElement(contains.Element);
         return true;
+    }
+    
+    public class Factory : PlaceholderFactory<Boat>
+    {
+        
     }
 }
 

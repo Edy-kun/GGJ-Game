@@ -45,7 +45,7 @@ public class GameManager : MonoBehaviour
             };
 
          
-            _spawner = FindObjectOfType<RandomEnemyPlacement>();
+           // _spawner = FindObjectOfType<RandomEnemyPlacement>();
             if (!_boat)
                 return;
             for (var i = 0; i < 2; i++)

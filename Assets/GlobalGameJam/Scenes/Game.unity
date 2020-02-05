@@ -257,17 +257,17 @@ PrefabInstance:
     - target: {fileID: 4984843561411084636, guid: 2cfe3ef67b6e06e42ace0d4ad67bf59d,
         type: 3}
       propertyPath: m_LocalRotation.x
-      value: 0.36085415
+      value: 0.36085412
       objectReference: {fileID: 0}
     - target: {fileID: 4984843561411084636, guid: 2cfe3ef67b6e06e42ace0d4ad67bf59d,
         type: 3}
       propertyPath: m_LocalRotation.y
-      value: -0.00000000451776
+      value: 0.000000036281232
       objectReference: {fileID: 0}
     - target: {fileID: 4984843561411084636, guid: 2cfe3ef67b6e06e42ace0d4ad67bf59d,
         type: 3}
       propertyPath: m_LocalRotation.z
-      value: -0.000000012347786
+      value: -0.000000028133902
       objectReference: {fileID: 0}
     - target: {fileID: 4984843561411084636, guid: 2cfe3ef67b6e06e42ace0d4ad67bf59d,
         type: 3}
@@ -294,13 +294,7 @@ PrefabInstance:
       propertyPath: m_LocalEulerAnglesHint.z
       value: 0
       objectReference: {fileID: 0}
-    - target: {fileID: 4984843561411084637, guid: 2cfe3ef67b6e06e42ace0d4ad67bf59d,
-        type: 3}
-      propertyPath: field of view
-      value: 71
-      objectReference: {fileID: 0}
-    m_RemovedComponents:
-    - {fileID: 4984843561411084635, guid: 2cfe3ef67b6e06e42ace0d4ad67bf59d, type: 3}
+    m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 2cfe3ef67b6e06e42ace0d4ad67bf59d, type: 3}
 --- !u!4 &657231390 stripped
 Transform:
@@ -5909,17 +5903,17 @@ PrefabInstance:
     - target: {fileID: 2260831778382126348, guid: 494d9ee1e4dfb814eb7c8e797a31e3c1,
         type: 3}
       propertyPath: m_LocalRotation.x
-      value: 0.36085415
+      value: 0.36085412
       objectReference: {fileID: 0}
     - target: {fileID: 2260831778382126348, guid: 494d9ee1e4dfb814eb7c8e797a31e3c1,
         type: 3}
       propertyPath: m_LocalRotation.y
-      value: -0.00000000451776
+      value: 0.000000036281232
       objectReference: {fileID: 0}
     - target: {fileID: 2260831778382126348, guid: 494d9ee1e4dfb814eb7c8e797a31e3c1,
         type: 3}
       propertyPath: m_LocalRotation.z
-      value: -0.000000012347786
+      value: -0.000000028133902
       objectReference: {fileID: 0}
     - target: {fileID: 2260831778382126348, guid: 494d9ee1e4dfb814eb7c8e797a31e3c1,
         type: 3}
@@ -5948,78 +5942,18 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 2260831778382126349, guid: 494d9ee1e4dfb814eb7c8e797a31e3c1,
         type: 3}
-      propertyPath: m_Follow
-      value: 
-      objectReference: {fileID: 1327680208}
-    - target: {fileID: 2260831778382126349, guid: 494d9ee1e4dfb814eb7c8e797a31e3c1,
-        type: 3}
       propertyPath: m_LookAt
       value: 
       objectReference: {fileID: 1327680208}
     - target: {fileID: 2260831778382126349, guid: 494d9ee1e4dfb814eb7c8e797a31e3c1,
         type: 3}
-      propertyPath: m_Lens.FieldOfView
-      value: 71
-      objectReference: {fileID: 0}
-    - target: {fileID: 2260831778382126349, guid: 494d9ee1e4dfb814eb7c8e797a31e3c1,
-        type: 3}
-      propertyPath: m_Enabled
-      value: 1
-      objectReference: {fileID: 0}
-    - target: {fileID: 2260831778382126349, guid: 494d9ee1e4dfb814eb7c8e797a31e3c1,
-        type: 3}
-      propertyPath: m_Lens.Dutch
-      value: 0
-      objectReference: {fileID: 0}
+      propertyPath: m_Follow
+      value: 
+      objectReference: {fileID: 1327680208}
     - target: {fileID: 2260831778382126578, guid: 494d9ee1e4dfb814eb7c8e797a31e3c1,
         type: 3}
       propertyPath: m_Name
       value: CM vcam follow camera
-      objectReference: {fileID: 0}
-    - target: {fileID: 2260831778780234082, guid: 494d9ee1e4dfb814eb7c8e797a31e3c1,
-        type: 3}
-      propertyPath: m_FollowOffset.y
-      value: 16.4
-      objectReference: {fileID: 0}
-    - target: {fileID: 2260831778780234082, guid: 494d9ee1e4dfb814eb7c8e797a31e3c1,
-        type: 3}
-      propertyPath: m_FollowOffset.z
-      value: -14.02
-      objectReference: {fileID: 0}
-    - target: {fileID: 2260831778780234082, guid: 494d9ee1e4dfb814eb7c8e797a31e3c1,
-        type: 3}
-      propertyPath: m_FollowOffset.x
-      value: 0
-      objectReference: {fileID: 0}
-    - target: {fileID: 2260831778780234082, guid: 494d9ee1e4dfb814eb7c8e797a31e3c1,
-        type: 3}
-      propertyPath: m_BindingMode
-      value: 1
-      objectReference: {fileID: 0}
-    - target: {fileID: 2260831778780234109, guid: 494d9ee1e4dfb814eb7c8e797a31e3c1,
-        type: 3}
-      propertyPath: m_TrackedObjectOffset.z
-      value: 4
-      objectReference: {fileID: 0}
-    - target: {fileID: 2260831778780234109, guid: 494d9ee1e4dfb814eb7c8e797a31e3c1,
-        type: 3}
-      propertyPath: m_HorizontalDamping
-      value: 0
-      objectReference: {fileID: 0}
-    - target: {fileID: 2260831778780234109, guid: 494d9ee1e4dfb814eb7c8e797a31e3c1,
-        type: 3}
-      propertyPath: m_VerticalDamping
-      value: 0
-      objectReference: {fileID: 0}
-    - target: {fileID: 2260831778780234109, guid: 494d9ee1e4dfb814eb7c8e797a31e3c1,
-        type: 3}
-      propertyPath: m_ScreenX
-      value: 0.5
-      objectReference: {fileID: 0}
-    - target: {fileID: 2260831778780234109, guid: 494d9ee1e4dfb814eb7c8e797a31e3c1,
-        type: 3}
-      propertyPath: m_ScreenY
-      value: 0.5
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 494d9ee1e4dfb814eb7c8e797a31e3c1, type: 3}

@@ -6,7 +6,7 @@ using GlobalGameJam.Hovercraft;
 using DG.Tweening;
 using UnityEngine;
 using UnityEngine.InputSystem;
-
+using Zenject;
 
 
 [RequireComponent(typeof(Animator),typeof(Collider))]
@@ -410,6 +410,7 @@ public class Player : MonoBehaviour, ICanPickUp//, IControlled
     {
         Gizmos.DrawLine(transform.position, transform.forward);
     }
+    
 }
 
 public interface IReceiveInput : IControlled

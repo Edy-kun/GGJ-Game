@@ -13,7 +13,6 @@ GameObject:
   - component: {fileID: 4984843561411084639}
   - component: {fileID: 4984843561411084608}
   - component: {fileID: 4984843561411084609}
-  - component: {fileID: 4984843561411084635}
   m_Layer: 0
   m_Name: Main Camera
   m_TagString: MainCamera
@@ -28,13 +27,13 @@ Transform:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 4984843561411084610}
-  m_LocalRotation: {x: 0.03191319, y: 0.6885062, z: -0.030915463, w: 0.7238682}
+  m_LocalRotation: {x: 0.03191172, y: 0.6885034, z: -0.03091683, w: 0.7238708}
   m_LocalPosition: {x: -13.931209, y: 9.474006, z: -22.490759}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children: []
   m_Father: {fileID: 0}
   m_RootOrder: 0
-  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+  m_LocalEulerAnglesHint: {x: 5.0930004, y: 87.129005, z: -0.047000002}
 --- !u!20 &4984843561411084637
 Camera:
   m_ObjectHideFlags: 0
@@ -60,7 +59,7 @@ Camera:
     height: 1
   near clip plane: 0.1
   far clip plane: 5000
-  field of view: 50
+  field of view: 71
   orthographic: 0
   orthographic size: 10
   m_Depth: -1
@@ -128,25 +127,3 @@ MonoBehaviour:
   m_CameraActivatedEvent:
     m_PersistentCalls:
       m_Calls: []
---- !u!114 &4984843561411084635
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 4984843561411084610}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 803b00b1c55094e499a99684ddbd9b57, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  m_Title: Follow Camera
-  m_Description: "Turn this window off by removing the example window script on Main
-    Camera\n\nScene setup:\n<i>Vehicle</i> follows the path driven by its <i>CinemachineDollyCart</i>
-    component.\n<i>CM vcam follow camera</i> looks at and follows object <i>Vehicle</i>
-    and has Aim and Body compoents setup to illustrate the main controls:\n\nBody\nFollow
-    offset - where the camera is in relation to the follow object\nDamping - positional
-    lag between the camera and follow object\nBinding mode - different styles of
-    relationships between camera and follow object\nPitch, Yaw, Roll damping - rotation
-    damping on the axis binding \n\nAim\nTracked offset - looking ahead of the ship\nDamping
-    - letting the ship move around on the screen, lots of vertical, a little horizontal."
