@@ -51,7 +51,7 @@ public class BulletCollision : MonoBehaviour, IPoolable<BulletCollision.Pool>//,
 
     public void OnSpawned(Pool p1)
     {
-        Debug.Log("Spawned");
+       
         gameObject.SetActive(true);
         _pool = p1;
     }
@@ -65,6 +65,7 @@ public class BulletCollision : MonoBehaviour, IPoolable<BulletCollision.Pool>//,
         protected override void OnSpawned(BulletCollision item)
         {
             base.OnSpawned(item);
+            item.transform.position = Vector3.zero;
             item.OnSpawned(this);
             item.gameObject.SetActive(true);
             item._startTime= Time.realtimeSinceStartup;
@@ -75,9 +76,7 @@ public class BulletCollision : MonoBehaviour, IPoolable<BulletCollision.Pool>//,
             base.OnDespawned(item);
             item.gameObject.SetActive(false);
             item.rb.velocity = Vector3.zero;
-           
             item.rb.angularVelocity = Vector3.zero;
-       
             item.rb.position= Vector3.zero;
             
         }

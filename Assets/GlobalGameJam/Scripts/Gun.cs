@@ -4,6 +4,7 @@ using System.Collections.Generic;
 
 using UnityEngine;
 using UnityEngine.Rendering;
+using Zenject;
 
 [RequireComponent(typeof(BoxCollider))]
 public class Gun : Device, IWeapon, IControlled, IReceiveInput
@@ -30,6 +31,14 @@ public class Gun : Device, IWeapon, IControlled, IReceiveInput
     public Vector3 shotDir;
     public AudioClip shotsound;
     public GameObject bullet;
+    private RandomEnemyPlacement _spawner;
+    private BulletCollision.Pool _pool;
+    [Inject]
+    public void construct(RandomEnemyPlacement spawner, BulletCollision.Pool pool)
+    {
+        _spawner = spawner;
+        _pool = pool;
+    }
     
     protected override void Awake()
     {
@@ -65,27 +74,26 @@ public class Gun : Device, IWeapon, IControlled, IReceiveInput
         Vector3 forward = Turret.forward * maxTurretRange;
         Debug.DrawRay(Turret.position, forward, Color.yellow);
 
-        GameObject shootBullet;
-        shootBullet = Instantiate(bullet, Turret.position+bulletOffset, Turret.rotation);
-        
+        var shootBullet = _pool.Spawn();
+        bullet.transform.position = Turret.position + bulletOffset; //, Turret.rotation);
+        bullet.transform.LookAt(Turret.TransformDirection(shotDir));
         shootBullet.GetComponent<Rigidbody>().AddForce(Turret.TransformDirection(shotDir) * 90f);
-        Destroy(shootBullet, 0.4f);
+      //  Destroy(shootBullet, 0.4f);
         audioSource.PlayOneShot(shotsound);
-        
-        
 
-        var hitable =GameManager.Instance._spawner.CheckHit(Turret.position, Turret.right).FirstOrDefault();
+        
+        var hitable = _spawner.CheckHit(Turret.position, Turret.right).FirstOrDefault();
         if (hitable)
         {
             Debug.Log("HIT");
-           hitable.TakeDamage(50);
+            hitable.TakeDamage(50);
         }
-        
+
 
 
     }
-    
-    
+
+
 
 
     public void StartControl(Player controlledBy)
@@ -108,7 +116,7 @@ public class Gun : Device, IWeapon, IControlled, IReceiveInput
         OnControlEnd?.Invoke(this);
     }
 
-    public void Move(Vector2 move)
+    public void StickLeft(Vector2 move)
     {
         position += move.y * .5f;
         position= Mathf.Clamp(position, 0, 1);
@@ -120,7 +128,7 @@ public class Gun : Device, IWeapon, IControlled, IReceiveInput
         ControlledBy.transform.localPosition -= new Vector3(playerOffset.x, 0, playerOffset.z);
     }
 
-    public void Rotate(Vector2 rotate)
+    public void StickRight(Vector2 rotate)
     {
 
         var percentage = (rotate.y + 1) / 2;
@@ -137,24 +145,29 @@ public class Gun : Device, IWeapon, IControlled, IReceiveInput
 
     }
 
-    public void OnTrigger()
+    public void OnTriggerLeft(float f)
+    {
+       // Shoot();
+    }
+
+    public void OnTriggerRight(float f)
     {
         Shoot();
     }
 
-    public void Yes()
+    public void HandleInteract()
     {
         
     }
 
-    public void No()
+    public void HandleStopInteract()
     {
-      
+        EndInteraction();
     }
 
-    public void Interact()
+    public void HandleRepair()
     {
-      EndInteraction();
+      //EndInteraction();
     }
     
     

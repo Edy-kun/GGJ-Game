@@ -29,7 +29,7 @@ public class GameManager : MonoBehaviour
         SceneSwitcher = new SceneSwitcher();
         SceneSwitcher.LoadScene(Scenes.Game);
 
-
+/*
 
         SceneManager.sceneLoaded += (arg0, mode) =>
         {
@@ -62,6 +62,7 @@ public class GameManager : MonoBehaviour
             players.ForEach(p => p.Boat = _boat);
 
         };
+        */
     }
 
     private void HandleInventoryUI(Inventory obj)
@@ -73,6 +74,7 @@ public class GameManager : MonoBehaviour
     {
         _ui.OnScoreChange(obj);
     }
+    /*
 
 
     public void JoinPlayer(object sender, Player player)
@@ -88,6 +90,7 @@ public class GameManager : MonoBehaviour
         player.OnLeave -= LeavePlayer;
         player.OnJoined += JoinPlayer;
     }
+    */
 
 
 }

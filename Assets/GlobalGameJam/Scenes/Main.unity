@@ -151,17 +151,17 @@ PrefabInstance:
     - target: {fileID: 2260831778382126348, guid: 494d9ee1e4dfb814eb7c8e797a31e3c1,
         type: 3}
       propertyPath: m_LocalRotation.y
-      value: 0.0001992998
+      value: 0.00019927738
       objectReference: {fileID: 0}
     - target: {fileID: 2260831778382126348, guid: 494d9ee1e4dfb814eb7c8e797a31e3c1,
         type: 3}
       propertyPath: m_LocalRotation.z
-      value: -0.00051508803
+      value: -0.0005150794
       objectReference: {fileID: 0}
     - target: {fileID: 2260831778382126348, guid: 494d9ee1e4dfb814eb7c8e797a31e3c1,
         type: 3}
       propertyPath: m_LocalRotation.w
-      value: 0.9326221
+      value: 0.93262213
       objectReference: {fileID: 0}
     - target: {fileID: 2260831778382126348, guid: 494d9ee1e4dfb814eb7c8e797a31e3c1,
         type: 3}
@@ -200,6 +200,89 @@ PrefabInstance:
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 494d9ee1e4dfb814eb7c8e797a31e3c1, type: 3}
+--- !u!1 &234862579
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 234862581}
+  - component: {fileID: 234862580}
+  m_Layer: 0
+  m_Name: InputManager
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!114 &234862580
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 234862579}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 621567455fd1c4ceb811cc8a00b6a1a5, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  m_NotificationBehavior: 0
+  m_MaxPlayerCount: 1
+  m_AllowJoining: 1
+  m_JoinBehavior: 1
+  m_PlayerJoinedEvent:
+    m_PersistentCalls:
+      m_Calls: []
+  m_PlayerLeftEvent:
+    m_PersistentCalls:
+      m_Calls: []
+  m_JoinAction:
+    m_UseReference: 0
+    m_Action:
+      m_Name: Action
+      m_Type: 0
+      m_ExpectedControlType: 
+      m_Id: d8ca6dc0-20c2-477b-974d-bf0dd2e81d2b
+      m_Processors: 
+      m_Interactions: 
+      m_SingletonActionBindings:
+      - m_Name: 
+        m_Id: 9e948925-76b8-43f1-9a47-4422362a7cc9
+        m_Path: <Keyboard>/space
+        m_Interactions: 
+        m_Processors: 
+        m_Groups: 
+        m_Action: Action
+        m_Flags: 0
+    m_Reference: {fileID: 0}
+  m_PlayerPrefab: {fileID: 5423724945111384758, guid: 42dfd2da58cd6684c95e59729d3721e0,
+    type: 3}
+  m_SplitScreen: 0
+  m_MaintainAspectRatioInSplitScreen: 0
+  m_FixedNumberOfSplitScreens: -1
+  m_SplitScreenRect:
+    serializedVersion: 2
+    x: 0
+    y: 0
+    width: 1
+    height: 1
+--- !u!4 &234862581
+Transform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 234862579}
+  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_LocalPosition: {x: -1.1140772, y: 1.6673595, z: -0.7938608}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_Children: []
+  m_Father: {fileID: 0}
+  m_RootOrder: 6
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!1 &303304219
 GameObject:
   m_ObjectHideFlags: 0
@@ -404,17 +487,17 @@ PrefabInstance:
     - target: {fileID: 4984843561411084636, guid: 2cfe3ef67b6e06e42ace0d4ad67bf59d,
         type: 3}
       propertyPath: m_LocalRotation.y
-      value: 0.0001992998
+      value: 0.00019927738
       objectReference: {fileID: 0}
     - target: {fileID: 4984843561411084636, guid: 2cfe3ef67b6e06e42ace0d4ad67bf59d,
         type: 3}
       propertyPath: m_LocalRotation.z
-      value: -0.00051508803
+      value: -0.0005150794
       objectReference: {fileID: 0}
     - target: {fileID: 4984843561411084636, guid: 2cfe3ef67b6e06e42ace0d4ad67bf59d,
         type: 3}
       propertyPath: m_LocalRotation.w
-      value: 0.9326221
+      value: 0.93262213
       objectReference: {fileID: 0}
     - target: {fileID: 4984843561411084636, guid: 2cfe3ef67b6e06e42ace0d4ad67bf59d,
         type: 3}

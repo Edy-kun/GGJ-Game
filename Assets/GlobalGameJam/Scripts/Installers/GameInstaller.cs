@@ -26,10 +26,7 @@ public class GameInstaller : MonoInstaller
         Container.BindInterfacesAndSelfTo<RandomEnemyPlacement>().AsSingle();
         Container.BindFactory<TurretAI, TurretAI.Factory>()
             .FromComponentInNewPrefab(_settings.Enemy)
-            // We can also tell Zenject what to name the new gameobject here
             .WithGameObjectName("Enemy")
-            // GameObjectGroup's are just game objects used for organization
-            // This is nice so that it doesn't clutter up our scene hierarchy
             .UnderTransformGroup("Enemies");
 
         Container.BindMemoryPool<BulletCollision, BulletCollision.Pool>()

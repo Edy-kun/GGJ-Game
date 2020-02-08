@@ -3,118 +3,107 @@ using System.Collections;
 using System.Collections.Generic;
 using System.Linq;
 using GlobalGameJam.Hovercraft;
-using DG.Tweening;
 using UnityEngine;
 using UnityEngine.InputSystem;
-using Zenject;
+using UnityEngine.Serialization;
 
-
-[RequireComponent(typeof(Animator),typeof(Collider))]
-public class Player : MonoBehaviour, ICanPickUp//, IControlled
+[RequireComponent(typeof(Animator), typeof(Collider))]
+public class Player : MonoBehaviour, ICanPickUp, IReceiveInput
 {
     public GameObject character;
     public PickUpProfile holds;
     private Vector3 _aimDirection;
     private IControlled _controller;
-    private IReceiveInput _receiveInput = null;
-    public InputDevice InputDevice;
-    [SerializeField] private PlayerInput _playerInput;
-    public event Action<object, Player> OnLeave;
-    private static HashSet<InputDevice> _knownControllers = new HashSet<InputDevice>();
-    public Boat Boat { get; set; }
+    private IReceiveInput _receiveInput;
+    private bool _isRepairing;
+    private IRepairable _repa;
+    private static readonly int Repair1 = Animator.StringToHash("Repair");
+    private static readonly int Speed = Animator.StringToHash("Speed");
 
-    public bool Onboat => transform.parent == Boat.transform;
-    
-    public Transform BoxSnap;
-    public Transform ToolSnap;
-    public Animator Anim;
-    private Collider col;
-    private Camera mainCamera = null;
+    public Boat Boat { get; set; }
+    public bool OnBoat => true; // transform.parent == Boat.transform;
+    public Transform boxSnap;
+    public Transform toolSnap;
+    public Animator anim;
+    private Collider _col;
+    private Camera _mainCamera;
 
     public bool TryPickUp(PickUpProfile contains)
     {
-        if (holds != null)
-            return false;
-
+        if (holds != null) return false;
         holds = contains;
         return true;
     }
 
-
     public float movespeed = 10;
     private Vector3 _movevec;
-
-    private bool TriggerActive;
+    private bool _triggerActive;
 
     public void Update()
     {
-        if (IsRepairing)
-            return;
-
-        if (Onboat)
+        if (_isRepairing) return;
+        if (OnBoat)
         {
-            var x = this.transform.localPosition.x;
-            var z = this.transform.localPosition.z;
+            var x = transform.localPosition.x;
+            var z = transform.localPosition.z;
             if (x > 3 || x < -3 || z < -4 || z > 3)
             {
-                rb = gameObject.AddComponent<Rigidbody>();
-                rb.isKinematic = true;
+                /*
+                _rb = gameObject.AddComponent<Rigidbody>();
+                _rb.isKinematic = true;
+                */
                 //Debug.Log("Disembark");
-                this.transform.position = new Vector3(this.transform.position.x, 0, this.transform.position.z);
-                this.transform.parent = null;
-                col.isTrigger = false;
+                transform.position = new Vector3(transform.position.x, 0, transform.position.z);
+                transform.parent = null;
+                _col.isTrigger = false;
             }
         }
         else
         {
-            var inv = Boat.transform.InverseTransformPoint(this.transform.position);
-
+            var inv = Boat.transform.InverseTransformPoint(transform.position);
             if (inv.x < 3 && inv.x > -3 && inv.z > -4 && inv.z < 3)
             {
-                Destroy(rb);
-                this.transform.parent = Boat.transform;
-                this.transform.localPosition = new Vector3(inv.x, 1.6f, inv.z);
-                if (Boat.TryPickUp(holds))
-                    holds = null;
-                col.isTrigger = true;
-
+                Destroy(_rb);
+                transform.parent = Boat.transform;
+                transform.localPosition = new Vector3(inv.x, 1.6f, inv.z);
+                if (Boat.TryPickUp(holds)) holds = null;
+                _col.isTrigger = true;
             }
         }
 
 
-
-        DoMove(_movevec * Time.deltaTime);
-        if (TriggerActive)
+        // DoMove(_movevec * Time.deltaTime);
+        if (_triggerActive)
         {
-            if (_receiveInput != null)
-            {
-                _receiveInput.OnTrigger();
-            }
+            _receiveInput?.OnTriggerLeft(1f);
         }
-
-
-
     }
 
-    private Rigidbody rb;
+    private Rigidbody _rb;
+
     private void Awake()
     {
-        col = this.GetComponent<Collider>();
-        mainCamera = Camera.main;
-
-
-
+        _col = GetComponent<Collider>();
+        _mainCamera = Camera.main;
     }
 
+    private void Start(){
+
+    _receiveInput = FindObjectOfType<Gun>().GetComponent<IReceiveInput>();
+    _controller = _receiveInput;
+    _controller.StartControl(this);
+    _receiveInput.OnControlEnd += EndControl;
+    }
     public void DoMove(Vector3 vec)
     {
         if (IsRepairing)
             vec = Vector3.zero;
-        if (_receiveInput == null && _controller==null)
+        if (_receiveInput == null && _controller == null)
         {
             Vector3 move;
-            if (Onboat)
-            {  move = new Vector3(vec.x, 0, vec.y) * movespeed;
+            if (OnBoat)
+            {
+                move = new Vector3(vec.x, 0, vec.y) * movespeed;
 
                 if (move.magnitude != 0)
                 {
@@ -125,165 +114,142 @@ public class Player : MonoBehaviour, ICanPickUp//, IControlled
             }
             else
             {
-
-               
-                
-                var camRight = mainCamera.transform.right;
+                var camRight = _mainCamera.transform.right;
                 var forward = Vector3.Cross(camRight, Vector3.up);
                 var toCamera = Matrix4x4.TRS(Vector3.zero, Quaternion.LookRotation(forward, Vector3.up), Vector3.one);
-                var worldMove = toCamera.MultiplyVector(new Vector3(vec.x, 0, vec.y)) * (movespeed);
-              //  Debug.Log(string.Join(",", new[] {worldMove.x, worldMove.y, worldMove.z}));
-                transform.LookAt(this.transform.position + worldMove);
+                var worldMove = toCamera.MultiplyVector(new Vector3(vec.x, 0, vec.y)) * movespeed;
+                //  Debug.Log(string.Join(",", new[] {worldMove.x, worldMove.y, worldMove.z}));
+                transform.LookAt(transform.position + worldMove);
 
                 transform.position += worldMove;
                 move = worldMove;
             }
 
-            Anim.SetFloat("Speed", move.magnitude);
-            
+            anim.SetFloat(Speed, move.magnitude);
         }
         else
         {
-            _receiveInput?.Move(vec);
+            _receiveInput?.StickLeft(new Vector2(vec.x,vec.z));
         }
     }
 
+    /*
     public void Move(InputAction.CallbackContext context)
     {
-        if (!IsMine(context)|| IsRepairing)
+        if (!IsMine(context) || IsRepairing)
             return;
 
-        if (_controller is ThirdPersonHoverCraftController hoverCraftController)
+        /*if (_controller is ThirdPersonHoverCraftController hoverCraftController)
         {
             hoverCraftController.ControlLeftThruster(context);
             return;
-        }
+        }#1#
 
         _movevec = context.ReadValue<Vector2>();
-   
     }
+    */
 
+    
     private bool IsMine(InputAction.CallbackContext context)
     {
-        return (context.control.device == InputDevice);
+        //return context.control.device == InputDevice;
+        return true;
     }
 
+    /*
     public void Rotate(InputAction.CallbackContext context)
     {
-        if (!IsMine(context)||!Onboat|| IsRepairing)
+        if (!IsMine(context) || !OnBoat || IsRepairing)
             return;
-        
+
+        /*
         if (_controller is ThirdPersonHoverCraftController hoverCraftController)
         {
             hoverCraftController.ControlRightThruster(context);
             return;
         }
+        #1#
 
         var rotvec = context.ReadValue<Vector2>();
-        if (_receiveInput != null)
-        {
-            _receiveInput.Rotate(rotvec);
-        }
-        else
-        {
-           // this.transform.rotation = Quaternion.Euler(0, Angle(rotvec), 0);
-        }
+        _receiveInput?.StickRight(rotvec);
     }
+    */
 
+    /*
     public static float Angle(Vector2 p_vector2)
     {
         if (p_vector2.x < 0)
-        {
-            return 360 - (Mathf.Atan2(p_vector2.x, p_vector2.y) * Mathf.Rad2Deg * -1);
-        }
-        else
-        {
-            return Mathf.Atan2(p_vector2.x, p_vector2.y) * Mathf.Rad2Deg;
-        }
-    }
+            return 360 - Mathf.Atan2(p_vector2.x, p_vector2.y) * Mathf.Rad2Deg * -1;
+        return Mathf.Atan2(p_vector2.x, p_vector2.y) * Mathf.Rad2Deg;
+    }*/
 
-    public void Yes(InputAction.CallbackContext context)
+    public void Yes()
     {
-        if (!IsMine(context)|| IsRepairing)
-            return;
-        if (Onboat)
+
+        if (OnBoat)
         {
-            if (_receiveInput == null)
+
+            var vols = Physics.OverlapSphere(transform.position, 1f);
+            var objects = FindObjectsOfType<Device>();
+            IRepairable repaierable = objects.Where(item => item is IRepairable)
+                .FirstOrDefault(item => item.NeedsRepair());
+
+
+            if (repaierable != null)
             {
-
-                var vols = Physics.OverlapSphere(this.transform.position, 1f);
-                var objects = FindObjectsOfType<Device>();
-                IRepairable repaierable = objects.Where(item => item is IRepairable).Where(item => item.NeedsRepair()).FirstOrDefault();
-               
-
-                if (repaierable != null)
-                {
-                    Debug.Log("IREPAIING");
-                    if (repaierable.NeedsRepair())
+                Debug.Log("IREPAIING");
+                if (repaierable.NeedsRepair())
+                    if (Boat.Inventory.TrySubstract(repaierable.GetRequiredItem()))
                     {
-                            
-                        if (Boat.Inventory.TrySubstract(repaierable.GetRequiredItem()))
-                        {repa = repaierable;
-                            transform.LookAt((repaierable as MonoBehaviour).transform);
-                            DoRepair();  
-                        }
-
+                        _repa = repaierable;
+                        transform.LookAt((repaierable as MonoBehaviour).transform);
+                        DoRepair();
                     }
-                        
-                    return;
-                }
 
-                if (Physics.Raycast(transform.position, transform.TransformDirection(Vector3.forward), out var hit, 1f))
-                {
-                    
-                    _receiveInput = hit.transform.GetComponent<IReceiveInput>();
-                    if (_receiveInput != null)
-                    {
-                        _movevec = Vector2.zero;
-                        _controller = _receiveInput;
-                        _receiveInput.OnControlEnd += EndControl;
-                    }
-                  
-                }
+                return;
             }
-            else
+
+            if (Physics.Raycast(transform.position, transform.TransformDirection(Vector3.forward), out var hit, 1f))
             {
-                _receiveInput.Yes();
+                _receiveInput = hit.transform.GetComponent<IReceiveInput>();
+                if (_receiveInput != null)
+                {
+                    _movevec = Vector2.zero;
+                    _controller = _receiveInput;
+                    _receiveInput.OnControlEnd += EndControl;
+                }
             }
         }
-     
     }
 
+    /*
     public void No(InputAction.CallbackContext context)
     {
-        if (!IsMine(context)||!Onboat|| IsRepairing)
+        if (!IsMine(context) || !OnBoat || IsRepairing)
             return;
-        if (_receiveInput != null)
-        {
-            _receiveInput.No();
-        }
-      
-    }
+        
+        _receiveInput?.HandleStopInteract();
+    }*/
 
 
-    public void Join(InputAction.CallbackContext context)
+    /*public void Join(InputAction.CallbackContext context)
     {
         if (InputDevice == null && !_knownControllers.Contains(context.control.device) &&
-            (context.phase == InputActionPhase.Started))
+            context.phase == InputActionPhase.Started)
         {
-            this.transform.parent = Boat.transform;
+            transform.parent = Boat.transform;
             var device = context.control.device;
             _knownControllers.Add(device);
             InputDevice = device;
             character.SetActive(true);
             OnJoined?.Invoke(this, this);
         }
-    }
+    }*/
 
+    /*
     public void Leave(InputAction.CallbackContext context)
     {
-        
-        if (InputDevice != null && (context.phase == InputActionPhase.Performed))
+        if (InputDevice != null && context.phase == InputActionPhase.Performed)
         {
             var device = context.control.device;
             _knownControllers.Remove(device);
@@ -291,41 +257,41 @@ public class Player : MonoBehaviour, ICanPickUp//, IControlled
             OnLeave?.Invoke(this, this);
             character.SetActive(false);
         }
-    }
+    }*/
 
     public void LeftTrigger(InputAction.CallbackContext context)
     {
-        if (!IsMine(context)||!Onboat|| IsRepairing)
+        if (!IsMine(context) || !OnBoat || IsRepairing)
             return;
+        
+        /*
         if (_controller is ThirdPersonHoverCraftController hoverCraftController)
-        {
             hoverCraftController.ControlThrustUpLeft(context);
-        }
+            */
     }
+
+    public bool IsRepairing = false;
 
     public void RightTrigger(InputAction.CallbackContext context)
     {
-        if (!IsMine(context)||!Onboat|| IsRepairing)
+        if (!IsMine(context) || !OnBoat || IsRepairing)
             return;
-        if (_receiveInput != null)
-        {
-            TriggerActive =     context.ReadValue<float>() > .1f;
-            //_recieveInput.OnTrigger();
-        }
         
+        /*
+        if (_receiveInput != null)
+            TriggerActive = context.ReadValue<float>() > .1f;
+            */
+      
+
+        /*
         if (_controller is ThirdPersonHoverCraftController hoverCraftController)
-        {
-            hoverCraftController.ControlThrustUpRight(context);
-        }
+            hoverCraftController.ControlThrustUpRight(context);*/
     }
+    
 
     public void StartControl()
     {
     }
-
-    private bool IsRepairing = false;
-    private IRepairable repa;
-    private static readonly int Repair1 = Animator.StringToHash("Repair");
 
     public void DoRepair()
     {
@@ -333,15 +299,14 @@ public class Player : MonoBehaviour, ICanPickUp//, IControlled
     }
 
     public IEnumerable Repair(float time)
-    {  
-        Anim.SetBool(Repair1, true);
-        IsRepairing = true;
+    {
+        anim.SetBool(Repair1, true);
+        _isRepairing = true;
         yield return new WaitForSeconds(time);
-        IsRepairing = false;
-        Anim.SetBool(Repair1, false);
-        repa.Repair();
+        _isRepairing = false;
+        anim.SetBool(Repair1, false);
+        _repa.Repair();
     }
-    
 
     public void EndControl()
     {
@@ -350,11 +315,18 @@ public class Player : MonoBehaviour, ICanPickUp//, IControlled
         _receiveInput = null;
     }
 
-    public event Action<IControlled> OnControlEnd;
+    public Player ControlledBy { get; set; }
 
+    public void StartControl(Player controlledby)
+    {
+        throw new NotImplementedException();
+    }
+
+    public event Action<IControlled> OnControlEnd;
+    /*
     public void Interact(InputAction.CallbackContext context)
     {
-        if (!context.performed || !IsMine(context) || !Onboat || IsRepairing)
+        if (!context.performed || !IsMine(context) || !OnBoat || IsRepairing)
             return;
 
 
@@ -371,14 +343,13 @@ public class Player : MonoBehaviour, ICanPickUp//, IControlled
         }
 
 
-        if (Physics.Raycast(this.transform.position, this.transform.forward, out var hit, 5.0f))
+        if (Physics.Raycast(transform.position, transform.forward, out var hit, 5.0f))
         {
             var con = hit.collider.GetComponent<IReceiveInput>();
             IControlled icon = null;
             if (con != null)
             {
                 icon = _receiveInput = con;
-
             }
             else
             {
@@ -386,14 +357,14 @@ public class Player : MonoBehaviour, ICanPickUp//, IControlled
                 icon = hit.rigidbody.GetComponent<IControlled>();
             }
 
-            if (icon == null && icon.ControlledBy!=null)
+            if (icon == null && icon.ControlledBy != null)
                 return;
 
             icon.OnControlEnd += EndControl;
             icon.StartControl(this);
             _controller = icon;
         }
-    }
+    }*/
 
     private void EndControl(IControlled controlled)
     {
@@ -410,16 +381,53 @@ public class Player : MonoBehaviour, ICanPickUp//, IControlled
     {
         Gizmos.DrawLine(transform.position, transform.forward);
     }
-    
-}
 
-public interface IReceiveInput : IControlled
-{
-    void Move(Vector2 move);
-    void Rotate(Vector2 rotate);
+    public void StickLeft(Vector2 vec)
+    {
+        
+        if(_receiveInput != null)
+            _receiveInput.StickLeft(vec);
+        else
+        {
+            _movevec = vec;
+        }
+    }
 
-    void OnTrigger();
-    void Yes();
-    void No();
-    void Interact();
+    public void StickRight(Vector2 vec)
+    {
+        _receiveInput?.StickRight(vec);
+
+    }
+
+    public void OnTriggerLeft(float f)
+    {
+        _receiveInput?.OnTriggerLeft(f);
+    }
+
+    public void OnTriggerRight(float f)
+    {
+        _receiveInput?.OnTriggerRight(f);
+    }
+
+    public void HandleInteract()
+    {
+        if (_receiveInput != null)
+        {
+            _receiveInput.HandleInteract();
+        }
+        else
+        {
+           Yes();
+        }
+    }
+
+    public void HandleStopInteract()
+    {
+        _receiveInput?.HandleStopInteract();
+    }
+
+    public void HandleRepair()
+    {
+        throw new NotImplementedException();
+    }
 }

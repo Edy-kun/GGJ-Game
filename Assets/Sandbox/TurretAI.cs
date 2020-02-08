@@ -199,14 +199,13 @@ public class TurretAI : MonoBehaviour, IDamageable
         _health -= dmg;
         if (_health <= 0)
         {
-            GameManager.Instance._team.Score += 10;
+           // GameManager.Instance._team.Score += 10;
             Destroy(this.gameObject);
         }
     }
     
     public class Factory : PlaceholderFactory<TurretAI>
     {
-        
     }
 
     [Serializable]
