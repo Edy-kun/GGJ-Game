@@ -1,0 +1,391 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<project version="4">
+  <component name="ChangeListManager">
+    <list default="true" id="cd1008e1-0cab-4c8d-8aed-1a1414922053" name="Default Changelist" comment="">
+      <change afterPath="$PROJECT_DIR$/Assets/GlobalGameJam/Scripts/IReceiveInput.cs" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/Assets/GlobalGameJam/Scripts/IReceiveInput.cs.meta" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/Assets/GlobalGameJam/Scripts/PlayerV2.cs" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/Assets/GlobalGameJam/Scripts/PlayerV2.cs.meta" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/.idea/.idea.GGJ-Game/.idea/indexLayout.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/.idea.GGJ-Game/.idea/indexLayout.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/GlobalGameJam/Prefabs/Player.prefab" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/GlobalGameJam/Prefabs/Player.prefab" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/GlobalGameJam/Prototype Model Hovercraft/GGJ-Game.inputactions" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/GlobalGameJam/Prototype Model Hovercraft/GGJ-Game.inputactions" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/GlobalGameJam/Prototype Model Hovercraft/ThirdPersonHoverCraftController.cs" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/GlobalGameJam/Prototype Model Hovercraft/ThirdPersonHoverCraftController.cs" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/GlobalGameJam/Scenes/Main.unity" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/GlobalGameJam/Scenes/Main.unity" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/GlobalGameJam/Scripts/GameManager.cs" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/GlobalGameJam/Scripts/GameManager.cs" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/GlobalGameJam/Scripts/Gun.cs" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/GlobalGameJam/Scripts/Gun.cs" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/GlobalGameJam/Scripts/Installers/GameInstaller.cs" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/GlobalGameJam/Scripts/Installers/GameInstaller.cs" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/GlobalGameJam/Scripts/Player.cs" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/GlobalGameJam/Scripts/Player.cs" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/Sandbox/Bullet.prefab" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Sandbox/Bullet.prefab" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/Sandbox/BulletCollision.cs" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Sandbox/BulletCollision.cs" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/Sandbox/TurretAI.cs" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Sandbox/TurretAI.cs" afterDir="false" />
+    </list>
+    <option name="SHOW_DIALOG" value="false" />
+    <option name="HIGHLIGHT_CONFLICTS" value="true" />
+    <option name="HIGHLIGHT_NON_ACTIVE_CHANGELIST" value="false" />
+    <option name="LAST_RESOLUTION" value="IGNORE" />
+  </component>
+  <component name="DatabaseView">
+    <option name="SHOW_INTERMEDIATE" value="true" />
+    <option name="GROUP_DATA_SOURCES" value="true" />
+    <option name="GROUP_SCHEMA" value="true" />
+    <option name="GROUP_CONTENTS" value="false" />
+    <option name="SORT_POSITIONED" value="false" />
+    <option name="SHOW_EMPTY_GROUPS" value="false" />
+    <option name="AUTO_SCROLL_FROM_SOURCE" value="false" />
+    <option name="HIDDEN_KINDS">
+      <set />
+    </option>
+    <expand />
+    <select />
+  </component>
+  <component name="FileTemplateManagerImpl">
+    <option name="RECENT_TEMPLATES">
+      <list>
+        <option value="UML Class" />
+      </list>
+    </option>
+  </component>
+  <component name="Git.Settings">
+    <option name="RECENT_GIT_ROOT_PATH" value="$PROJECT_DIR$" />
+    <option name="UPDATE_TYPE" value="MERGE" />
+  </component>
+  <component name="GithubPullRequestsUISettings">
+    <option name="hiddenUrls">
+      <set>
+        <option value="git@github.com:Edy-kun/GGJ-Game.git" />
+      </set>
+    </option>
+  </component>
+  <component name="HighlightingSettingsPerFile">
+    <setting file="file://$PROJECT_DIR$/Assets/GlobalGameJam/Scripts/ICanPickUp.cs" root0="FORCE_HIGHLIGHTING" />
+    <setting file="file://$PROJECT_DIR$/Assets/GlobalGameJam/Scripts/GameManager.cs" root0="FORCE_HIGHLIGHTING" />
+    <setting file="file://$PROJECT_DIR$/Assets/GlobalGameJam/Scripts/PlayerV2.cs" root0="FORCE_HIGHLIGHTING" />
+    <setting file="file://$PROJECT_DIR$/Assets/Sandbox/ShowSpawn.cs" root0="FORCE_HIGHLIGHTING" />
+    <setting file="file://$PROJECT_DIR$/Library/PackageCache/com.unity.inputsystem@1.0.0-preview.4/InputSystem/Actions/InputActionState.cs" root0="SKIP_HIGHLIGHTING" />
+    <setting file="file://$PROJECT_DIR$/Assets/GlobalGameJam/Prototype Model Hovercraft/HoverCraftEngine.cs" root0="FORCE_HIGHLIGHTING" />
+    <setting file="file://$PROJECT_DIR$/Assets/GlobalGameJam/Prototype Model Hovercraft/HoverCraftUI.cs" root0="FORCE_HIGHLIGHTING" />
+    <setting file="file://$PROJECT_DIR$/ProjectSettings/GraphicsSettings.asset" root0="FORCE_HIGHLIGHTING" />
+    <setting file="file://$PROJECT_DIR$/Assets/Sandbox/BulletCollision.cs" root0="FORCE_HIGHLIGHTING" />
+    <setting file="file://$PROJECT_DIR$/Assets/GlobalGameJam/Prototype Model Hovercraft/DownThrusterController.cs" root0="FORCE_HIGHLIGHTING" />
+    <setting file="file://$PROJECT_DIR$/Assets/Plugins/Zenject/Source/Runtime/Kernels/SceneKernel.cs" root0="FORCE_HIGHLIGHTING" />
+    <setting file="file://$PROJECT_DIR$/Assets/GlobalGameJam/Art.meta" root0="FORCE_HIGHLIGHTING" />
+    <setting file="file://$PROJECT_DIR$/Assets/GlobalGameJam/Scripts/KeepHoverCraftInPlayableArea.cs" root0="FORCE_HIGHLIGHTING" />
+    <setting file="file://$PROJECT_DIR$/Assets/GlobalGameJam/Scripts/IRepairable.cs" root0="FORCE_HIGHLIGHTING" />
+    <setting file="file://$PROJECT_DIR$/Assets/Standard Assets/Characters/ThirdPersonCharacter/Scripts/ThirdPersonUserControl.cs" root0="FORCE_HIGHLIGHTING" />
+    <setting file="file://$PROJECT_DIR$/Assets/New Terrain 1.asset.meta" root0="FORCE_HIGHLIGHTING" />
+    <setting file="file://$PROJECT_DIR$/Assets/GlobalGameJam/Scripts/EngineInteraction.cs" root0="FORCE_HIGHLIGHTING" />
+    <setting file="file://$PROJECT_DIR$/Assets/GlobalGameJam/Scripts/IDamageable.cs" root0="FORCE_HIGHLIGHTING" />
+    <setting file="file://$PROJECT_DIR$/Assets/GlobalGameJam/Scripts/DamagableEnemy.cs" root0="FORCE_HIGHLIGHTING" />
+    <setting file="file://$PROJECT_DIR$/Assets/GlobalGameJam/Scripts/Gun.cs" root0="FORCE_HIGHLIGHTING" />
+    <setting file="file://$PROJECT_DIR$/Assets/GlobalGameJam/Scripts/Installers/GameInstaller.cs" root0="FORCE_HIGHLIGHTING" />
+    <setting file="file://$PROJECT_DIR$/Assets/GlobalGameJam/Scripts/ElementType.cs" root0="FORCE_HIGHLIGHTING" />
+    <setting file="file://$APPLICATION_CONFIG_DIR$/resharper-host/DecompilerCache/decompiler/D195DA47-F292-4AA6-AB1F-FC82F421F850/fb/bcbb5e0c/List`1.cs" root0="SKIP_HIGHLIGHTING" />
+    <setting file="file://$PROJECT_DIR$/Assets/GlobalGameJam/Scripts/Game/PickupSpawner.cs" root0="FORCE_HIGHLIGHTING" />
+    <setting file="file://$PROJECT_DIR$/Assets/Plugins/Zenject/OptionalExtras/SampleGame1 (Beginner)/Scripts/Ship/ShipStateFactory.cs" root0="FORCE_HIGHLIGHTING" />
+    <setting file="file://$PROJECT_DIR$/Assets/Plugins/Zenject/OptionalExtras/SampleGame1 (Beginner)/Scripts/Ship/Ship.cs" root0="FORCE_HIGHLIGHTING" />
+    <setting file="file://$PROJECT_DIR$/Assets/GlobalGameJam/Entities/HoverBandit/RedNeckBomber.cs" root0="FORCE_HIGHLIGHTING" />
+    <setting file="file://$PROJECT_DIR$/Library/PackageCache/com.unity.inputsystem@1.0.0-preview.4/InputSystem/Plugins/PlayerInput/PlayerInputManager.cs" root0="SKIP_HIGHLIGHTING" />
+    <setting file="file://$PROJECT_DIR$/Library/PackageCache/com.unity.inputsystem@1.0.0-preview.4/InputSystem/Plugins/PlayerInput/PlayerInput.cs" root0="SKIP_HIGHLIGHTING" />
+    <setting file="file://$PROJECT_DIR$/Assets/GlobalGameJam/Scripts/SceneSwitcher.cs" root0="FORCE_HIGHLIGHTING" />
+    <setting file="file://$PROJECT_DIR$/Assets/GlobalGameJam/Art/Prefabs/AmmoBox.prefab" root0="FORCE_HIGHLIGHTING" />
+    <setting file="file://$PROJECT_DIR$/Assets/Plugins/Zenject/Source/Factories/PlaceholderFactory.cs" root0="FORCE_HIGHLIGHTING" />
+    <setting file="file://$PROJECT_DIR$/Assets/GlobalGameJam/Scripts/Team.cs" root0="FORCE_HIGHLIGHTING" />
+    <setting file="file://$PROJECT_DIR$/Assets/GlobalGameJam/Scripts/Player.cs" root0="FORCE_HIGHLIGHTING" />
+    <setting file="file://$PROJECT_DIR$/Assets/GlobalGameJam/Scripts/Inventory.cs" root0="FORCE_HIGHLIGHTING" />
+    <setting file="file://$PROJECT_DIR$/Assets/GlobalGameJam/Scripts/PickUp.cs" root0="FORCE_HIGHLIGHTING" />
+    <setting file="file://$PROJECT_DIR$/Assets/GlobalGameJam/Scripts/Element.cs" root0="FORCE_HIGHLIGHTING" />
+    <setting file="file://$PROJECT_DIR$/Assets/GlobalGameJam/Prefabs/HoverCraft_V2.prefab" root0="FORCE_HIGHLIGHTING" />
+    <setting file="file://$PROJECT_DIR$/Assets/GlobalGameJam/Scripts/ScriptableObjects/PickUpProfile.cs" root0="FORCE_HIGHLIGHTING" />
+    <setting file="file://$PROJECT_DIR$/Assets/Standard Assets/Utility/ForcedReset.cs" root0="FORCE_HIGHLIGHTING" />
+    <setting file="file://$PROJECT_DIR$/Assets/GlobalGameJam/Scripts/UI.meta" root0="FORCE_HIGHLIGHTING" />
+    <setting file="file://$PROJECT_DIR$/Assets/GlobalGameJam/Scripts/Menu/UIPanel.cs" root0="FORCE_HIGHLIGHTING" />
+    <setting file="file://$PROJECT_DIR$/Assets/GlobalGameJam/Scripts/Menu/MenuSystem.cs" root0="FORCE_HIGHLIGHTING" />
+    <setting file="file://$PROJECT_DIR$/Assets/GlobalGameJam/Scripts/UI/HUD.cs" root0="FORCE_HIGHLIGHTING" />
+    <setting file="file://$PROJECT_DIR$/Assets/GlobalGameJam/Scripts/Device.cs" root0="FORCE_HIGHLIGHTING" />
+    <setting file="file://$PROJECT_DIR$/Assets/GlobalGameJam/Scripts/Boat.cs" root0="FORCE_HIGHLIGHTING" />
+    <setting file="file://$PROJECT_DIR$/Assets/GlobalGameJam/Scripts/Menu/PlayerPanel.cs" root0="FORCE_HIGHLIGHTING" />
+    <setting file="file://$PROJECT_DIR$/Assets/GlobalGameJam/Scenes/Main.unity" root0="FORCE_HIGHLIGHTING" />
+    <setting file="file://$PROJECT_DIR$/Assets/GlobalGameJam/Scripts/IReceiveInput.cs" root0="FORCE_HIGHLIGHTING" />
+    <setting file="file://$PROJECT_DIR$/Assets/GlobalGameJam/Scripts/Scenes.cs" root0="FORCE_HIGHLIGHTING" />
+    <setting file="file://$PROJECT_DIR$/Assets/GlobalGameJam/Scripts/Menu/Menu.cs" root0="FORCE_HIGHLIGHTING" />
+    <setting file="file://$PROJECT_DIR$/Assets/GlobalGameJam/Scripts/Menu/CreditsPanel.cs" root0="FORCE_HIGHLIGHTING" />
+    <setting file="file://$PROJECT_DIR$/Assets/GlobalGameJam/Scripts/Menu/PlayerSelectPanel.cs" root0="FORCE_HIGHLIGHTING" />
+    <setting file="file://$PROJECT_DIR$/Assets/GlobalGameJam/Prototype Model Hovercraft/ThirdPersonHoverCraftController.cs" root0="FORCE_HIGHLIGHTING" />
+    <setting file="file://$PROJECT_DIR$/Assets/Sandbox/Croc.prefab" root0="FORCE_HIGHLIGHTING" />
+    <setting file="file://$PROJECT_DIR$/Assets/GlobalGameJam/Scripts/Game/Game.cs" root0="FORCE_HIGHLIGHTING" />
+    <setting file="file://$PROJECT_DIR$/Assets/GlobalGameJam/Scripts/IControlled.cs" root0="FORCE_HIGHLIGHTING" />
+    <setting file="file://$PROJECT_DIR$/Assets/Sandbox/RandomEnemyPlacement.cs" root0="FORCE_HIGHLIGHTING" />
+    <setting file="file://$PROJECT_DIR$/Assets/GlobalGameJam/Scripts/ScriptableObjects/DeviceConfig.cs" root0="FORCE_HIGHLIGHTING" />
+    <setting file="file://$PROJECT_DIR$/Assets/Sandbox/TurretAI.cs" root0="FORCE_HIGHLIGHTING" />
+    <setting file="file://$PROJECT_DIR$/Assets/GlobalGameJam/Scripts/ScriptableObjects/SettingsConfig.cs" root0="FORCE_HIGHLIGHTING" />
+  </component>
+  <component name="IdeDocumentHistory">
+    <option name="CHANGED_PATHS">
+      <list>
+        <option value="$PROJECT_DIR$/Assets/UML/Player.puml" />
+        <option value="$PROJECT_DIR$/Assets/UML/Device.puml" />
+        <option value="$PROJECT_DIR$/Assets/GlobalGameJam/Scripts/Menu.cs" />
+        <option value="$PROJECT_DIR$/Assets/UML/GameManager.puml" />
+        <option value="$PROJECT_DIR$/Assets/UIPanel.cs" />
+        <option value="$PROJECT_DIR$/Assets/MenuSystem.cs" />
+        <option value="$PROJECT_DIR$/Assets/MenuPanel.cs" />
+        <option value="$PROJECT_DIR$/Assets/PlayerSelectPanel.cs" />
+        <option value="$PROJECT_DIR$/Assets/GlobalGameJam/Scripts/SceneSwitcher.cs" />
+        <option value="$PROJECT_DIR$/Assets/PlayerPanel.cs" />
+        <option value="$PROJECT_DIR$/Assets/GlobalGameJam/Scripts/ScriptableObjects/SettingsConfig.cs" />
+        <option value="$PROJECT_DIR$/Assets/GlobalGameJam/Scripts/Menu/Menu.cs" />
+        <option value="$PROJECT_DIR$/Assets/GlobalGameJam/Scripts/UI/HUD.cs" />
+        <option value="$PROJECT_DIR$/Assets/GlobalGameJam/Scripts/Team.cs" />
+        <option value="$PROJECT_DIR$/Assets/GlobalGameJam/Scripts/ElementType.cs" />
+        <option value="$PROJECT_DIR$/Assets/GlobalGameJam/Scripts/Menu/PlayerPanel.cs" />
+        <option value="$PROJECT_DIR$/Assets/GlobalGameJam/Scripts/EnemyManager.cs" />
+        <option value="$PROJECT_DIR$/Assets/GlobalGameJam/Scripts/Element.cs" />
+        <option value="$PROJECT_DIR$/Assets/GlobalGameJam/Scripts/ICanPickUp.cs" />
+        <option value="$PROJECT_DIR$/Assets/GlobalGameJam/Scripts/KeepHoverCraftInPlayableArea.cs" />
+        <option value="$PROJECT_DIR$/Assets/GlobalGameJam/Scripts/PickUp.cs" />
+        <option value="$PROJECT_DIR$/Assets/GlobalGameJam/Scripts/Game/Game.cs" />
+        <option value="$PROJECT_DIR$/Assets/GlobalGameJam/Scripts/IControlled.cs" />
+        <option value="$PROJECT_DIR$/Assets/Sandbox/RandomEnemyPlacement.cs" />
+        <option value="$PROJECT_DIR$/Assets/GlobalGameJam/Scripts/ScriptableObjects/DeviceConfig.cs" />
+        <option value="$PROJECT_DIR$/Assets/GlobalGameJam/Scripts/IRepairable.cs" />
+        <option value="$PROJECT_DIR$/Assets/GlobalGameJam/Scripts/Device.cs" />
+        <option value="$PROJECT_DIR$/Assets/GlobalGameJam/Scripts/Boat.cs" />
+        <option value="$PROJECT_DIR$/Assets/GlobalGameJam/Scripts/Game/PickupSpawner.cs" />
+        <option value="$PROJECT_DIR$/Assets/GlobalGameJam/Scripts/Menu/MenuSystem.cs" />
+        <option value="$PROJECT_DIR$/Assets/GlobalGameJam/Prototype Model Hovercraft/HoverCraftUI.cs" />
+        <option value="$PROJECT_DIR$/Assets/GlobalGameJam/Entities/HoverBandit/RedNeckBomber.cs" />
+        <option value="$PROJECT_DIR$/Assets/Sandbox/ShowSpawn.cs" />
+        <option value="$PROJECT_DIR$/Assets/GlobalGameJam/Scripts/Inventory.cs" />
+        <option value="$PROJECT_DIR$/Assets/Plugins/Zenject/OptionalExtras/SampleGame2 (Advanced)/Scripts/Player/PlayerMoveHandler.cs" />
+        <option value="$PROJECT_DIR$/Assets/GlobalGameJam/Scripts/Installers/GameInstaller.cs" />
+        <option value="$PROJECT_DIR$/Assets/GlobalGameJam/Scripts/InputController.cs" />
+        <option value="$PROJECT_DIR$/Assets/GlobalGameJam/Scripts/GameManager.cs" />
+        <option value="$PROJECT_DIR$/Assets/GlobalGameJam/Scripts/PlayerV2.cs" />
+        <option value="$PROJECT_DIR$/Assets/GlobalGameJam/Prototype Model Hovercraft/ThirdPersonHoverCraftController.cs" />
+        <option value="$PROJECT_DIR$/Assets/GlobalGameJam/Scripts/Player.cs" />
+        <option value="$PROJECT_DIR$/Assets/Sandbox/TurretAI.cs" />
+        <option value="$PROJECT_DIR$/Assets/Sandbox/BulletCollision.cs" />
+        <option value="$PROJECT_DIR$/Assets/GlobalGameJam/Scripts/Gun.cs" />
+      </list>
+    </option>
+  </component>
+  <component name="ProjectId" id="1XBwppljbSaGdMnfBM6AqwSGzd9" />
+  <component name="ProjectLevelVcsManager">
+    <ConfirmationsSetting value="2" id="Add" />
+  </component>
+  <component name="ProjectViewState">
+    <option name="hideEmptyMiddlePackages" value="true" />
+    <option name="showExcludedFiles" value="true" />
+    <option name="showLibraryContents" value="true" />
+  </component>
+  <component name="PropertiesComponent">
+    <property name="ASKED_ADD_EXTERNAL_FILES" value="true" />
+    <property name="DefaultPlantUmlFileTemplate" value="UML Class" />
+    <property name="Discover.Launch.Via.Unity" value="true" />
+    <property name="RunOnceActivity.ShowReadmeOnStart" value="true" />
+    <property name="TWShift.4" value="true" />
+    <property name="WebServerToolWindowFactoryState" value="false" />
+    <property name="settings.editor.selected.configurable" value="editor.preferences.smartKeys_rider" />
+  </component>
+  <component name="RunManager" selected="Attach to Unity Editor.Attach to Unity Editor">
+    <configuration name="Attach to Unity Editor &amp; Play" type="UNITY_DEBUG_RUN_CONFIGURATION" factoryName="UNITY_ATTACH_AND_PLAY" show_console_on_std_err="false" show_console_on_std_out="false" port="50000" address="localhost">
+      <option name="allowRunningInParallel" value="false" />
+      <option name="listenPortForConnections" value="false" />
+      <option name="pid" />
+      <method v="2" />
+    </configuration>
+    <configuration name="Attach to Unity Editor" type="UNITY_DEBUG_RUN_CONFIGURATION" factoryName="Unity Debug" show_console_on_std_err="false" show_console_on_std_out="false" port="50000" address="localhost">
+      <option name="allowRunningInParallel" value="false" />
+      <option name="listenPortForConnections" value="false" />
+      <option name="pid" />
+      <method v="2" />
+    </configuration>
+  </component>
+  <component name="ServiceViewManager">
+    <option name="viewStates">
+      <list>
+        <serviceView>
+          <treeState>
+            <expand />
+            <select />
+          </treeState>
+        </serviceView>
+      </list>
+    </option>
+  </component>
+  <component name="SvnConfiguration">
+    <configuration />
+  </component>
+  <component name="TaskManager">
+    <task active="true" id="Default" summary="Default task">
+      <changelist id="cd1008e1-0cab-4c8d-8aed-1a1414922053" name="Default Changelist" comment="" />
+      <created>1580532981446</created>
+      <option name="number" value="Default" />
+      <option name="presentableId" value="Default" />
+      <updated>1580532981446</updated>
+      <workItem from="1580532986289" duration="1763000" />
+      <workItem from="1580536052975" duration="239000" />
+      <workItem from="1580536316757" duration="74719000" />
+      <workItem from="1580640164834" duration="11436000" />
+      <workItem from="1580773696855" duration="2802000" />
+      <workItem from="1580934863379" duration="11784000" />
+    </task>
+    <servers />
+  </component>
+  <component name="TypeScriptGeneratedFilesManager">
+    <option name="version" value="1" />
+  </component>
+  <component name="UnityProjectConfiguration" hasMinimizedUI="true" />
+  <component name="UnityUnitTestConfiguration" currentTestLauncher="EditMode" />
+  <component name="Vcs.Log.Tabs.Properties">
+    <option name="TAB_STATES">
+      <map>
+        <entry key="1">
+          <value>
+            <State />
+          </value>
+        </entry>
+        <entry key="MAIN">
+          <value>
+            <State>
+              <option name="COLUMN_ORDER" />
+            </State>
+          </value>
+        </entry>
+      </map>
+    </option>
+    <option name="OPEN_TABS">
+      <set>
+        <option value="1" />
+      </set>
+    </option>
+  </component>
+  <component name="VcsManagerConfiguration">
+    <option name="ADD_EXTERNAL_FILES_SILENTLY" value="true" />
+  </component>
+  <component name="WindowStateProjectService">
+    <state x="552" y="179" key="#Plugins" timestamp="1580535973045">
+      <screen x="0" y="0" width="1920" height="1040" />
+    </state>
+    <state x="552" y="179" key="#Plugins/0.0.1920.1040@0.0.1920.1040" timestamp="1580535973045" />
+    <state x="92" y="92" width="1736" height="856" key="DiffContextDialog" timestamp="1580608007361">
+      <screen x="0" y="0" width="1920" height="1040" />
+    </state>
+    <state x="92" y="92" width="1736" height="856" key="DiffContextDialog/0.0.1920.1040@0.0.1920.1040" timestamp="1580608007361" />
+    <state width="1877" height="348" key="GridCell.Tab.0.bottom" timestamp="1580637360139">
+      <screen x="0" y="0" width="1920" height="1040" />
+    </state>
+    <state width="1877" height="348" key="GridCell.Tab.0.bottom/0.0.1920.1040@0.0.1920.1040" timestamp="1580637360139" />
+    <state width="1877" height="348" key="GridCell.Tab.0.center" timestamp="1580637360139">
+      <screen x="0" y="0" width="1920" height="1040" />
+    </state>
+    <state width="1877" height="348" key="GridCell.Tab.0.center/0.0.1920.1040@0.0.1920.1040" timestamp="1580637360139" />
+    <state width="1877" height="348" key="GridCell.Tab.0.left" timestamp="1580637360139">
+      <screen x="0" y="0" width="1920" height="1040" />
+    </state>
+    <state width="1877" height="348" key="GridCell.Tab.0.left/0.0.1920.1040@0.0.1920.1040" timestamp="1580637360139" />
+    <state width="1877" height="348" key="GridCell.Tab.0.right" timestamp="1580637360139">
+      <screen x="0" y="0" width="1920" height="1040" />
+    </state>
+    <state width="1877" height="348" key="GridCell.Tab.0.right/0.0.1920.1040@0.0.1920.1040" timestamp="1580637360139" />
+    <state width="1877" height="348" key="GridCell.Tab.1.bottom" timestamp="1580637360140">
+      <screen x="0" y="0" width="1920" height="1040" />
+    </state>
+    <state width="1877" height="348" key="GridCell.Tab.1.bottom/0.0.1920.1040@0.0.1920.1040" timestamp="1580637360140" />
+    <state width="1877" height="348" key="GridCell.Tab.1.center" timestamp="1580637360140">
+      <screen x="0" y="0" width="1920" height="1040" />
+    </state>
+    <state width="1877" height="348" key="GridCell.Tab.1.center/0.0.1920.1040@0.0.1920.1040" timestamp="1580637360140" />
+    <state width="1877" height="348" key="GridCell.Tab.1.left" timestamp="1580637360139">
+      <screen x="0" y="0" width="1920" height="1040" />
+    </state>
+    <state width="1877" height="348" key="GridCell.Tab.1.left/0.0.1920.1040@0.0.1920.1040" timestamp="1580637360139" />
+    <state width="1877" height="348" key="GridCell.Tab.1.right" timestamp="1580637360140">
+      <screen x="0" y="0" width="1920" height="1040" />
+    </state>
+    <state width="1877" height="348" key="GridCell.Tab.1.right/0.0.1920.1040@0.0.1920.1040" timestamp="1580637360140" />
+    <state width="1877" height="348" key="GridCell.Tab.2.bottom" timestamp="1580637360140">
+      <screen x="0" y="0" width="1920" height="1040" />
+    </state>
+    <state width="1877" height="348" key="GridCell.Tab.2.bottom/0.0.1920.1040@0.0.1920.1040" timestamp="1580637360140" />
+    <state width="1877" height="348" key="GridCell.Tab.2.center" timestamp="1580637360140">
+      <screen x="0" y="0" width="1920" height="1040" />
+    </state>
+    <state width="1877" height="348" key="GridCell.Tab.2.center/0.0.1920.1040@0.0.1920.1040" timestamp="1580637360140" />
+    <state width="1877" height="348" key="GridCell.Tab.2.left" timestamp="1580637360140">
+      <screen x="0" y="0" width="1920" height="1040" />
+    </state>
+    <state width="1877" height="348" key="GridCell.Tab.2.left/0.0.1920.1040@0.0.1920.1040" timestamp="1580637360140" />
+    <state width="1877" height="348" key="GridCell.Tab.2.right" timestamp="1580637360140">
+      <screen x="0" y="0" width="1920" height="1040" />
+    </state>
+    <state width="1877" height="348" key="GridCell.Tab.2.right/0.0.1920.1040@0.0.1920.1040" timestamp="1580637360140" />
+    <state width="1877" height="348" key="GridCell.Tab.3.bottom" timestamp="1580637360140">
+      <screen x="0" y="0" width="1920" height="1040" />
+    </state>
+    <state width="1877" height="348" key="GridCell.Tab.3.bottom/0.0.1920.1040@0.0.1920.1040" timestamp="1580637360140" />
+    <state width="1877" height="348" key="GridCell.Tab.3.center" timestamp="1580637360140">
+      <screen x="0" y="0" width="1920" height="1040" />
+    </state>
+    <state width="1877" height="348" key="GridCell.Tab.3.center/0.0.1920.1040@0.0.1920.1040" timestamp="1580637360140" />
+    <state width="1877" height="348" key="GridCell.Tab.3.left" timestamp="1580637360140">
+      <screen x="0" y="0" width="1920" height="1040" />
+    </state>
+    <state width="1877" height="348" key="GridCell.Tab.3.left/0.0.1920.1040@0.0.1920.1040" timestamp="1580637360140" />
+    <state width="1877" height="348" key="GridCell.Tab.3.right" timestamp="1580637360140">
+      <screen x="0" y="0" width="1920" height="1040" />
+    </state>
+    <state width="1877" height="348" key="GridCell.Tab.3.right/0.0.1920.1040@0.0.1920.1040" timestamp="1580637360140" />
+    <state x="56" y="85" width="1680" height="955" key="MergeDialog" timestamp="1580608368561">
+      <screen x="0" y="0" width="1920" height="1040" />
+    </state>
+    <state x="56" y="85" width="1680" height="955" key="MergeDialog/0.0.1920.1040@0.0.1920.1040" timestamp="1580608368561" />
+    <state x="672" y="237" key="MultipleFileMergeDialog" timestamp="1580608368571">
+      <screen x="0" y="0" width="1920" height="1040" />
+    </state>
+    <state x="672" y="237" key="MultipleFileMergeDialog/0.0.1920.1040@0.0.1920.1040" timestamp="1580608368571" />
+    <state x="794" y="221" key="RiderGenerateDialog" timestamp="1581155018653">
+      <screen x="0" y="0" width="1920" height="1040" />
+    </state>
+    <state x="794" y="221" key="RiderGenerateDialog/0.0.1920.1040@0.0.1920.1040" timestamp="1581155018653" />
+    <state x="461" y="163" key="SettingsEditor" timestamp="1580558676837">
+      <screen x="0" y="0" width="1920" height="1040" />
+    </state>
+    <state x="461" y="163" key="SettingsEditor/0.0.1920.1040@0.0.1920.1040" timestamp="1580558676837" />
+    <state x="769" y="438" key="com.intellij.openapi.vcs.update.UpdateOrStatusOptionsDialogupdate-v2" timestamp="1580608062380">
+      <screen x="0" y="0" width="1920" height="1040" />
+    </state>
+    <state x="769" y="438" key="com.intellij.openapi.vcs.update.UpdateOrStatusOptionsDialogupdate-v2/0.0.1920.1040@0.0.1920.1040" timestamp="1580608062380" />
+    <state x="761" y="312" key="git4idea.merge.GitMergeDialog" timestamp="1580608005030">
+      <screen x="0" y="0" width="1920" height="1040" />
+    </state>
+    <state x="761" y="312" key="git4idea.merge.GitMergeDialog/0.0.1920.1040@0.0.1920.1040" timestamp="1580608005030" />
+    <state x="616" y="240" width="672" height="677" key="run.anything.popup" timestamp="1581152405518">
+      <screen x="0" y="0" width="1920" height="1040" />
+    </state>
+    <state x="616" y="240" width="672" height="677" key="run.anything.popup/0.0.1920.1040@0.0.1920.1040" timestamp="1581152405518" />
+    <state x="623" y="239" width="672" height="678" key="search.everywhere.popup" timestamp="1581157910356">
+      <screen x="0" y="0" width="1920" height="1040" />
+    </state>
+    <state x="623" y="239" width="672" height="678" key="search.everywhere.popup/0.0.1920.1040@0.0.1920.1040" timestamp="1581157910356" />
+  </component>
+  <component name="XDebuggerManager">
+    <breakpoint-manager>
+      <breakpoints>
+        <line-breakpoint enabled="true" type="DotNet Breakpoints">
+          <url>file://$PROJECT_DIR$/Assets/GlobalGameJam/Scripts/PickUp.cs</url>
+          <line>25</line>
+          <properties documentPath="$PROJECT_DIR$/Assets/GlobalGameJam/Scripts/PickUp.cs" initialLine="25">
+            <startOffsets>
+              <option value="554" />
+            </startOffsets>
+            <endOffsets>
+              <option value="589" />
+            </endOffsets>
+          </properties>
+          <option name="timeStamp" value="5" />
+        </line-breakpoint>
+      </breakpoints>
+    </breakpoint-manager>
+  </component>
+</project>
