@@ -13,8 +13,8 @@ public class GameManager : MonoBehaviour
     public PickupSpawner _PickupSpawner;
     [SerializeField] private Player playerPrototype;
     public List<Player> players;
-//    public SceneSwitcher SceneSwitcher;
- //   public SettingsConfig Settings;
+    public SceneSwitcher SceneSwitcher;
+    public SettingsConfig Settings;
 
     public InputActionAsset map;
     public Boat _boat;

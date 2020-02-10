@@ -146,17 +146,17 @@ PrefabInstance:
     - target: {fileID: 2260831778382126348, guid: 494d9ee1e4dfb814eb7c8e797a31e3c1,
         type: 3}
       propertyPath: m_LocalRotation.x
-      value: 0.3608541
+      value: 0.36085406
       objectReference: {fileID: 0}
     - target: {fileID: 2260831778382126348, guid: 494d9ee1e4dfb814eb7c8e797a31e3c1,
         type: 3}
       propertyPath: m_LocalRotation.y
-      value: 0.00019927738
+      value: 0.00019932282
       objectReference: {fileID: 0}
     - target: {fileID: 2260831778382126348, guid: 494d9ee1e4dfb814eb7c8e797a31e3c1,
         type: 3}
       propertyPath: m_LocalRotation.z
-      value: -0.0005150794
+      value: -0.000515097
       objectReference: {fileID: 0}
     - target: {fileID: 2260831778382126348, guid: 494d9ee1e4dfb814eb7c8e797a31e3c1,
         type: 3}
@@ -482,17 +482,17 @@ PrefabInstance:
     - target: {fileID: 4984843561411084636, guid: 2cfe3ef67b6e06e42ace0d4ad67bf59d,
         type: 3}
       propertyPath: m_LocalRotation.x
-      value: 0.3608541
+      value: 0.36085406
       objectReference: {fileID: 0}
     - target: {fileID: 4984843561411084636, guid: 2cfe3ef67b6e06e42ace0d4ad67bf59d,
         type: 3}
       propertyPath: m_LocalRotation.y
-      value: 0.00019927738
+      value: 0.00019932282
       objectReference: {fileID: 0}
     - target: {fileID: 4984843561411084636, guid: 2cfe3ef67b6e06e42ace0d4ad67bf59d,
         type: 3}
       propertyPath: m_LocalRotation.z
-      value: -0.0005150794
+      value: -0.000515097
       objectReference: {fileID: 0}
     - target: {fileID: 4984843561411084636, guid: 2cfe3ef67b6e06e42ace0d4ad67bf59d,
         type: 3}
@@ -657,7 +657,8 @@ PrefabInstance:
       propertyPath: m_Name
       value: HoverCraft_V2
       objectReference: {fileID: 0}
-    m_RemovedComponents: []
+    m_RemovedComponents:
+    - {fileID: 373527151879852252, guid: f0f4c006712ee8543bdaf4926acca699, type: 3}
   m_SourcePrefab: {fileID: 100100000, guid: f0f4c006712ee8543bdaf4926acca699, type: 3}
 --- !u!1 &2128879999 stripped
 GameObject:
@@ -665,16 +666,16 @@ GameObject:
     type: 3}
   m_PrefabInstance: {fileID: 2128879998}
   m_PrefabAsset: {fileID: 0}
---- !u!114 &2128880000 stripped
+--- !u!114 &2128880000
 MonoBehaviour:
-  m_CorrespondingSourceObject: {fileID: 373527151879852252, guid: f0f4c006712ee8543bdaf4926acca699,
-    type: 3}
-  m_PrefabInstance: {fileID: 2128879998}
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 2128879999}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 8c8efcc83649410fb607e3c2209b16c0, type: 3}
+  m_Script: {fileID: 11500000, guid: 90782d3b4c0554f4abf1dede1b56d0bb, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
 --- !u!114 &2128880001
@@ -690,7 +691,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   _components:
-  - {fileID: 2128880000}
+  - {fileID: 0}
   _identifier: 
   _useSceneContext: 0
   _context: {fileID: 0}

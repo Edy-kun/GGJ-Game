@@ -22,6 +22,7 @@ namespace GlobalGameJam.Hovercraft
        
         public HoverCraftEngine LeftEngine => _leftEngine;
         public HoverCraftEngine RightEngine => _rightEngine;
+        public DownThrusterController ThrusterController => _downThrusterController;
 
         [SerializeField] 
         private Rigidbody _rigidbody;

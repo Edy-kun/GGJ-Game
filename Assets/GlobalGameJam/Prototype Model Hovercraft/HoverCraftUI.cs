@@ -1,7 +1,6 @@
 ﻿using System;
 using System.Collections;
 using System.Collections.Generic;
-using DG.Tweening;
 using GlobalGameJam.Hovercraft;
 using TMPro;
 using UnityEngine;

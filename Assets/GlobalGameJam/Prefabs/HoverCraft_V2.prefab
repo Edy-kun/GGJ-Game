@@ -9843,6 +9843,7 @@ GameObject:
   - component: {fileID: 4201444925466338348}
   - component: {fileID: 373527151879852252}
   - component: {fileID: 8569252006510850600}
+  - component: {fileID: 5059173029502845374}
   m_Layer: 0
   m_Name: HoverCraft_V2
   m_TagString: Player
@@ -9902,10 +9903,9 @@ MonoBehaviour:
   m_GameObject: {fileID: 7160727961448052398}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 8c8efcc83649410fb607e3c2209b16c0, type: 3}
+  m_Script: {fileID: 11500000, guid: 90782d3b4c0554f4abf1dede1b56d0bb, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  _spawner: {fileID: 0}
 --- !u!114 &8569252006510850600
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -9994,6 +9994,23 @@ MonoBehaviour:
     _particleSystem: {fileID: 3302284457989421388}
     _minLifeTime: 0
     _maxLifeTime: 0.5
+--- !u!114 &5059173029502845374
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 7160727961448052398}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 0166d8ff8d905b048b2448179e1f5d11, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  _components: []
+  _identifier: 
+  _useSceneContext: 0
+  _context: {fileID: 0}
+  _bindType: 0
 --- !u!1001 &634189849530909469
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -10395,6 +10412,12 @@ PrefabInstance:
     m_RemovedComponents:
     - {fileID: 3084517332827003422, guid: a497fd59f5767d643a2a66c1c8faf8d6, type: 3}
   m_SourcePrefab: {fileID: 100100000, guid: a497fd59f5767d643a2a66c1c8faf8d6, type: 3}
+--- !u!4 &4414554554704333132 stripped
+Transform:
+  m_CorrespondingSourceObject: {fileID: 9187335812578449969, guid: a497fd59f5767d643a2a66c1c8faf8d6,
+    type: 3}
+  m_PrefabInstance: {fileID: 4772791705718657917}
+  m_PrefabAsset: {fileID: 0}
 --- !u!4 &3317241167084099226 stripped
 Transform:
   m_CorrespondingSourceObject: {fileID: 7797254331695302119, guid: a497fd59f5767d643a2a66c1c8faf8d6,
@@ -10404,12 +10427,6 @@ Transform:
 --- !u!4 &3566045242024318370 stripped
 Transform:
   m_CorrespondingSourceObject: {fileID: 8305059393324336863, guid: a497fd59f5767d643a2a66c1c8faf8d6,
-    type: 3}
-  m_PrefabInstance: {fileID: 4772791705718657917}
-  m_PrefabAsset: {fileID: 0}
---- !u!4 &4414554554704333132 stripped
-Transform:
-  m_CorrespondingSourceObject: {fileID: 9187335812578449969, guid: a497fd59f5767d643a2a66c1c8faf8d6,
     type: 3}
   m_PrefabInstance: {fileID: 4772791705718657917}
   m_PrefabAsset: {fileID: 0}
@@ -10577,15 +10594,15 @@ PrefabInstance:
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 97f27d6b640c74d4692f0b3937023819, type: 3}
---- !u!198 &3713571544913455404 stripped
-ParticleSystem:
-  m_CorrespondingSourceObject: {fileID: 8915106807881945882, guid: 97f27d6b640c74d4692f0b3937023819,
-    type: 3}
-  m_PrefabInstance: {fileID: 5202101554825984566}
-  m_PrefabAsset: {fileID: 0}
 --- !u!4 &7120574526056778701 stripped
 Transform:
   m_CorrespondingSourceObject: {fileID: 3089696957420515835, guid: 97f27d6b640c74d4692f0b3937023819,
+    type: 3}
+  m_PrefabInstance: {fileID: 5202101554825984566}
+  m_PrefabAsset: {fileID: 0}
+--- !u!198 &3713571544913455404 stripped
+ParticleSystem:
+  m_CorrespondingSourceObject: {fileID: 8915106807881945882, guid: 97f27d6b640c74d4692f0b3937023819,
     type: 3}
   m_PrefabInstance: {fileID: 5202101554825984566}
   m_PrefabAsset: {fileID: 0}

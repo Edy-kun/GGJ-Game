@@ -2,24 +2,23 @@
 <project version="4">
   <component name="ChangeListManager">
     <list default="true" id="cd1008e1-0cab-4c8d-8aed-1a1414922053" name="Default Changelist" comment="">
-      <change afterPath="$PROJECT_DIR$/Assets/GlobalGameJam/Prototype Model Hovercraft/ThirdPersonHoverCraftController.cs.orig" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/Assets/GlobalGameJam/Prototype Model Hovercraft/ThirdPersonHoverCraftController.cs.orig.meta" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/.idea.GGJ-Game/.idea/contentModel.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/.idea.GGJ-Game/.idea/contentModel.xml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/.idea.GGJ-Game/.idea/indexLayout.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/.idea.GGJ-Game/.idea/indexLayout.xml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/.idea.GGJ-Game/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/.idea.GGJ-Game/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/GlobalGameJam/Art/Skybox.meta" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/GlobalGameJam/Entities/MechanicalCroc.meta" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/GlobalGameJam/Entities/Watersnakes.meta" beforeDir="false" />
       <change beforePath="$PROJECT_DIR$/Assets/GlobalGameJam/GameMechanics.meta" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/GlobalGameJam/Plugins/DOTween/Editor.meta" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/GlobalGameJam/Prefabs/HoverCraft_V2.prefab" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/GlobalGameJam/Prefabs/HoverCraft_V2.prefab" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/GlobalGameJam/Prototype Model Hovercraft/HoverCraftUI.cs" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/GlobalGameJam/Prototype Model Hovercraft/HoverCraftUI.cs" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/Assets/GlobalGameJam/Prototype Model Hovercraft/ThirdPersonHoverCraftController.cs" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/GlobalGameJam/Prototype Model Hovercraft/ThirdPersonHoverCraftController.cs" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/Assets/GlobalGameJam/Scenes/HovercraftTesting.meta" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/GlobalGameJam/Scripts/EnemyManager.cs.meta" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/GlobalGameJam/Scripts/Game/Game.cs" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/GlobalGameJam/Scripts/Game/Game.cs" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/GlobalGameJam/Scenes/Main.unity" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/GlobalGameJam/Scenes/Main.unity" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/Assets/GlobalGameJam/Scripts/GameManager.cs" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/GlobalGameJam/Scripts/GameManager.cs" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/GlobalGameJam/Scripts/Gun.cs" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/GlobalGameJam/Scripts/Gun.cs" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/GlobalGameJam/UI.meta" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/GlobalGameJam/Scripts/Player.cs.orig" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/GlobalGameJam/Scripts/Player.cs.orig.meta" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/GlobalGameJam/Scripts/UI/HUD.cs" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/GlobalGameJam/Scripts/UI/HUD.cs" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/Plugins/Zenject/OptionalExtras/ReflectionBaking/Zenject-ReflectionBaking.csproj.meta" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/Plugins/Zenject/OptionalExtras/Signals/Zenject-Signals.csproj.meta" beforeDir="false" />
       <change beforePath="$PROJECT_DIR$/Assets/Sandbox/BulletCollision.cs" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Sandbox/BulletCollision.cs" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/Sandbox/TurretAI.cs" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Sandbox/TurretAI.cs" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -59,57 +58,54 @@
     </option>
   </component>
   <component name="HighlightingSettingsPerFile">
-    <setting file="file://$PROJECT_DIR$/Assets/GlobalGameJam/Scripts/ICanPickUp.cs" root0="FORCE_HIGHLIGHTING" />
-    <setting file="file://$PROJECT_DIR$/Assets/GlobalGameJam/Scripts/GameManager.cs" root0="FORCE_HIGHLIGHTING" />
-    <setting file="file://$PROJECT_DIR$/Assets/GlobalGameJam/Scripts/PlayerV2.cs" root0="FORCE_HIGHLIGHTING" />
-    <setting file="file://$PROJECT_DIR$/Assets/Sandbox/ShowSpawn.cs" root0="FORCE_HIGHLIGHTING" />
-    <setting file="file://$PROJECT_DIR$/Library/PackageCache/com.unity.inputsystem@1.0.0-preview.4/InputSystem/Actions/InputActionState.cs" root0="SKIP_HIGHLIGHTING" />
-    <setting file="file://$PROJECT_DIR$/Assets/GlobalGameJam/Prototype Model Hovercraft/HoverCraftEngine.cs" root0="FORCE_HIGHLIGHTING" />
     <setting file="file://$PROJECT_DIR$/Assets/GlobalGameJam/Prototype Model Hovercraft/HoverCraftUI.cs" root0="FORCE_HIGHLIGHTING" />
     <setting file="file://$PROJECT_DIR$/ProjectSettings/GraphicsSettings.asset" root0="FORCE_HIGHLIGHTING" />
-    <setting file="file://$PROJECT_DIR$/Assets/Sandbox/BulletCollision.cs" root0="FORCE_HIGHLIGHTING" />
+    <setting file="file://$PROJECT_DIR$/Assets/Sandbox/TurretAI.cs" root0="FORCE_HIGHLIGHTING" />
     <setting file="file://$PROJECT_DIR$/Assets/GlobalGameJam/Prototype Model Hovercraft/DownThrusterController.cs" root0="FORCE_HIGHLIGHTING" />
-    <setting file="file://$PROJECT_DIR$/Assets/Plugins/Zenject/Source/Runtime/Kernels/SceneKernel.cs" root0="FORCE_HIGHLIGHTING" />
     <setting file="file://$PROJECT_DIR$/Assets/GlobalGameJam/Art.meta" root0="FORCE_HIGHLIGHTING" />
-    <setting file="file://$PROJECT_DIR$/Assets/GlobalGameJam/Scripts/KeepHoverCraftInPlayableArea.cs" root0="FORCE_HIGHLIGHTING" />
-    <setting file="file://$PROJECT_DIR$/Assets/GlobalGameJam/Scripts/IRepairable.cs" root0="FORCE_HIGHLIGHTING" />
-    <setting file="file://$PROJECT_DIR$/Assets/Standard Assets/Characters/ThirdPersonCharacter/Scripts/ThirdPersonUserControl.cs" root0="FORCE_HIGHLIGHTING" />
-    <setting file="file://$PROJECT_DIR$/Assets/New Terrain 1.asset.meta" root0="FORCE_HIGHLIGHTING" />
-    <setting file="file://$PROJECT_DIR$/Assets/GlobalGameJam/Scripts/EngineInteraction.cs" root0="FORCE_HIGHLIGHTING" />
+    <setting file="file://$PROJECT_DIR$/Assets/GlobalGameJam/Scripts/Device.cs" root0="FORCE_HIGHLIGHTING" />
+    <setting file="file://$PROJECT_DIR$/Assets/GlobalGameJam/Prototype Model Hovercraft/ThirdPersonHoverCraftController.cs" root0="FORCE_HIGHLIGHTING" />
     <setting file="file://$PROJECT_DIR$/Assets/GlobalGameJam/Scripts/Gun.cs" root0="FORCE_HIGHLIGHTING" />
-    <setting file="file://$PROJECT_DIR$/Assets/GlobalGameJam/Scripts/Installers/GameInstaller.cs" root0="FORCE_HIGHLIGHTING" />
-    <setting file="file://$PROJECT_DIR$/Assets/GlobalGameJam/Scripts/ElementType.cs" root0="FORCE_HIGHLIGHTING" />
-    <setting file="file://$APPLICATION_CONFIG_DIR$/resharper-host/DecompilerCache/decompiler/D195DA47-F292-4AA6-AB1F-FC82F421F850/fb/bcbb5e0c/List`1.cs" root0="SKIP_HIGHLIGHTING" />
+    <setting file="file://$PROJECT_DIR$/Assets/GlobalGameJam/Scripts/Inventory.cs" root0="FORCE_HIGHLIGHTING" />
+    <setting file="file://$PROJECT_DIR$/Assets/GlobalGameJam/Scripts/PickUp.cs" root0="FORCE_HIGHLIGHTING" />
+    <setting file="file://$PROJECT_DIR$/Assets/Standard Assets/Utility/ForcedReset.cs" root0="FORCE_HIGHLIGHTING" />
+    <setting file="file://$PROJECT_DIR$/Assets/Plugins/Zenject/Source/Runtime/Kernels/SceneKernel.cs" root0="FORCE_HIGHLIGHTING" />
+    <setting file="file://$PROJECT_DIR$/Assets/GlobalGameJam/Scripts/Element.cs" root0="FORCE_HIGHLIGHTING" />
+    <setting file="file://$PROJECT_DIR$/Assets/GlobalGameJam/Scripts/IControlled.cs" root0="FORCE_HIGHLIGHTING" />
+    <setting file="file://$PROJECT_DIR$/Assets/GlobalGameJam/Scripts/Boat.cs" root0="FORCE_HIGHLIGHTING" />
+    <setting file="file://$PROJECT_DIR$/Assets/GlobalGameJam/Scripts/GameManager.cs" root0="FORCE_HIGHLIGHTING" />
+    <setting file="file://$PROJECT_DIR$/Assets/GlobalGameJam/Art/Prefabs/AmmoBox.prefab" root0="FORCE_HIGHLIGHTING" />
+    <setting file="file://$PROJECT_DIR$/Assets/GlobalGameJam/Scripts/Player.cs" root0="FORCE_HIGHLIGHTING" />
+    <setting file="file://$PROJECT_DIR$/Assets/GlobalGameJam/Scripts/IRepairable.cs" root0="FORCE_HIGHLIGHTING" />
+    <setting file="file://$PROJECT_DIR$/Assets/GlobalGameJam/Scripts/EngineInteraction.cs" root0="FORCE_HIGHLIGHTING" />
+    <setting file="file://$PROJECT_DIR$/Assets/GlobalGameJam/Scripts/Team.cs" root0="FORCE_HIGHLIGHTING" />
+    <setting file="file://$PROJECT_DIR$/Assets/GlobalGameJam/Scripts/ICanPickUp.cs" root0="FORCE_HIGHLIGHTING" />
+    <setting file="file://$PROJECT_DIR$/Assets/GlobalGameJam/Scripts/Game/Game.cs" root0="FORCE_HIGHLIGHTING" />
     <setting file="file://$PROJECT_DIR$/Assets/GlobalGameJam/Scripts/Game/PickupSpawner.cs" root0="FORCE_HIGHLIGHTING" />
     <setting file="file://$PROJECT_DIR$/Assets/Plugins/Zenject/OptionalExtras/SampleGame1 (Beginner)/Scripts/Ship/ShipStateFactory.cs" root0="FORCE_HIGHLIGHTING" />
     <setting file="file://$PROJECT_DIR$/Assets/Plugins/Zenject/OptionalExtras/SampleGame1 (Beginner)/Scripts/Ship/Ship.cs" root0="FORCE_HIGHLIGHTING" />
+    <setting file="file://$PROJECT_DIR$/Assets/GlobalGameJam/Scripts/UI/HUD.cs" root0="FORCE_HIGHLIGHTING" />
+    <setting file="file://$PROJECT_DIR$/Assets/GlobalGameJam/Scripts/Menu/PlayerPanel.cs" root0="FORCE_HIGHLIGHTING" />
+    <setting file="file://$PROJECT_DIR$/Assets/GlobalGameJam/Scripts/Menu/MenuSystem.cs" root0="FORCE_HIGHLIGHTING" />
+    <setting file="file://$PROJECT_DIR$/Library/PackageCache/com.unity.inputsystem@1.0.0-preview.4/InputSystem/Actions/InputActionState.cs" root0="SKIP_HIGHLIGHTING" />
+    <setting file="file://$PROJECT_DIR$/Assets/New Terrain 1.asset.meta" root0="FORCE_HIGHLIGHTING" />
+    <setting file="file://$PROJECT_DIR$/Assets/Plugins/Zenject/Source/Factories/PlaceholderFactory.cs" root0="FORCE_HIGHLIGHTING" />
+    <setting file="file://$PROJECT_DIR$/Assets/GlobalGameJam/Scripts/ScriptableObjects/DeviceConfig.cs" root0="FORCE_HIGHLIGHTING" />
+    <setting file="file://$PROJECT_DIR$/Assets/GlobalGameJam/Scenes/Main.unity" root0="FORCE_HIGHLIGHTING" />
     <setting file="file://$PROJECT_DIR$/Assets/GlobalGameJam/Entities/HoverBandit/RedNeckBomber.cs" root0="FORCE_HIGHLIGHTING" />
+    <setting file="file://$PROJECT_DIR$/Assets/Sandbox/ShowSpawn.cs" root0="FORCE_HIGHLIGHTING" />
+    <setting file="file://$PROJECT_DIR$/Assets/Standard Assets/Characters/ThirdPersonCharacter/Scripts/ThirdPersonUserControl.cs" root0="FORCE_HIGHLIGHTING" />
+    <setting file="file://$PROJECT_DIR$/Assets/Sandbox/RandomEnemyPlacement.cs" root0="FORCE_HIGHLIGHTING" />
     <setting file="file://$PROJECT_DIR$/Library/PackageCache/com.unity.inputsystem@1.0.0-preview.4/InputSystem/Plugins/PlayerInput/PlayerInputManager.cs" root0="SKIP_HIGHLIGHTING" />
     <setting file="file://$PROJECT_DIR$/Library/PackageCache/com.unity.inputsystem@1.0.0-preview.4/InputSystem/Plugins/PlayerInput/PlayerInput.cs" root0="SKIP_HIGHLIGHTING" />
-    <setting file="file://$PROJECT_DIR$/Assets/GlobalGameJam/Art/Prefabs/AmmoBox.prefab" root0="FORCE_HIGHLIGHTING" />
-    <setting file="file://$PROJECT_DIR$/Assets/Plugins/Zenject/Source/Factories/PlaceholderFactory.cs" root0="FORCE_HIGHLIGHTING" />
-    <setting file="file://$PROJECT_DIR$/Assets/GlobalGameJam/Scripts/Team.cs" root0="FORCE_HIGHLIGHTING" />
-    <setting file="file://$PROJECT_DIR$/Assets/GlobalGameJam/Scripts/Player.cs" root0="FORCE_HIGHLIGHTING" />
-    <setting file="file://$PROJECT_DIR$/Assets/GlobalGameJam/Scripts/Inventory.cs" root0="FORCE_HIGHLIGHTING" />
-    <setting file="file://$PROJECT_DIR$/Assets/GlobalGameJam/Scripts/PickUp.cs" root0="FORCE_HIGHLIGHTING" />
-    <setting file="file://$PROJECT_DIR$/Assets/GlobalGameJam/Scripts/Element.cs" root0="FORCE_HIGHLIGHTING" />
     <setting file="file://$PROJECT_DIR$/Assets/GlobalGameJam/Prefabs/HoverCraft_V2.prefab" root0="FORCE_HIGHLIGHTING" />
-    <setting file="file://$PROJECT_DIR$/Assets/Standard Assets/Utility/ForcedReset.cs" root0="FORCE_HIGHLIGHTING" />
     <setting file="file://$PROJECT_DIR$/Assets/GlobalGameJam/Scripts/UI.meta" root0="FORCE_HIGHLIGHTING" />
-    <setting file="file://$PROJECT_DIR$/Assets/GlobalGameJam/Scripts/Menu/MenuSystem.cs" root0="FORCE_HIGHLIGHTING" />
-    <setting file="file://$PROJECT_DIR$/Assets/GlobalGameJam/Scripts/UI/HUD.cs" root0="FORCE_HIGHLIGHTING" />
-    <setting file="file://$PROJECT_DIR$/Assets/GlobalGameJam/Scripts/Device.cs" root0="FORCE_HIGHLIGHTING" />
-    <setting file="file://$PROJECT_DIR$/Assets/GlobalGameJam/Scripts/Boat.cs" root0="FORCE_HIGHLIGHTING" />
-    <setting file="file://$PROJECT_DIR$/Assets/GlobalGameJam/Scripts/Menu/PlayerPanel.cs" root0="FORCE_HIGHLIGHTING" />
-    <setting file="file://$PROJECT_DIR$/Assets/GlobalGameJam/Scenes/Main.unity" root0="FORCE_HIGHLIGHTING" />
-    <setting file="file://$PROJECT_DIR$/Assets/GlobalGameJam/Scripts/IReceiveInput.cs" root0="FORCE_HIGHLIGHTING" />
-    <setting file="file://$PROJECT_DIR$/Assets/GlobalGameJam/Prototype Model Hovercraft/ThirdPersonHoverCraftController.cs" root0="FORCE_HIGHLIGHTING" />
+    <setting file="file://$PROJECT_DIR$/Assets/GlobalGameJam/Prototype Model Hovercraft/HoverCraftEngine.cs" root0="FORCE_HIGHLIGHTING" />
+    <setting file="file://$PROJECT_DIR$/Assets/GlobalGameJam/Scripts/Installers/GameInstaller.cs" root0="FORCE_HIGHLIGHTING" />
+    <setting file="file://$PROJECT_DIR$/Assets/Sandbox/BulletCollision.cs" root0="FORCE_HIGHLIGHTING" />
+    <setting file="file://$PROJECT_DIR$/Assets/GlobalGameJam/Scripts/KeepHoverCraftInPlayableArea.cs" root0="FORCE_HIGHLIGHTING" />
+    <setting file="file://$PROJECT_DIR$/Assets/GlobalGameJam/Scripts/ElementType.cs" root0="FORCE_HIGHLIGHTING" />
     <setting file="file://$PROJECT_DIR$/Assets/Sandbox/Croc.prefab" root0="FORCE_HIGHLIGHTING" />
-    <setting file="file://$PROJECT_DIR$/Assets/GlobalGameJam/Scripts/Game/Game.cs" root0="FORCE_HIGHLIGHTING" />
-    <setting file="file://$PROJECT_DIR$/Assets/GlobalGameJam/Scripts/IControlled.cs" root0="FORCE_HIGHLIGHTING" />
-    <setting file="file://$PROJECT_DIR$/Assets/Sandbox/RandomEnemyPlacement.cs" root0="FORCE_HIGHLIGHTING" />
-    <setting file="file://$PROJECT_DIR$/Assets/GlobalGameJam/Scripts/ScriptableObjects/DeviceConfig.cs" root0="FORCE_HIGHLIGHTING" />
-    <setting file="file://$PROJECT_DIR$/Assets/Sandbox/TurretAI.cs" root0="FORCE_HIGHLIGHTING" />
   </component>
   <component name="IdeDocumentHistory">
     <option name="CHANGED_PATHS">
@@ -126,7 +122,6 @@
         <option value="$PROJECT_DIR$/Assets/PlayerPanel.cs" />
         <option value="$PROJECT_DIR$/Assets/GlobalGameJam/Scripts/ScriptableObjects/SettingsConfig.cs" />
         <option value="$PROJECT_DIR$/Assets/GlobalGameJam/Scripts/Menu/Menu.cs" />
-        <option value="$PROJECT_DIR$/Assets/GlobalGameJam/Scripts/UI/HUD.cs" />
         <option value="$PROJECT_DIR$/Assets/GlobalGameJam/Scripts/Team.cs" />
         <option value="$PROJECT_DIR$/Assets/GlobalGameJam/Scripts/ElementType.cs" />
         <option value="$PROJECT_DIR$/Assets/GlobalGameJam/Scripts/Menu/PlayerPanel.cs" />
@@ -143,7 +138,6 @@
         <option value="$PROJECT_DIR$/Assets/GlobalGameJam/Scripts/Boat.cs" />
         <option value="$PROJECT_DIR$/Assets/GlobalGameJam/Scripts/Game/PickupSpawner.cs" />
         <option value="$PROJECT_DIR$/Assets/GlobalGameJam/Scripts/Menu/MenuSystem.cs" />
-        <option value="$PROJECT_DIR$/Assets/GlobalGameJam/Prototype Model Hovercraft/HoverCraftUI.cs" />
         <option value="$PROJECT_DIR$/Assets/GlobalGameJam/Entities/HoverBandit/RedNeckBomber.cs" />
         <option value="$PROJECT_DIR$/Assets/Sandbox/ShowSpawn.cs" />
         <option value="$PROJECT_DIR$/Assets/GlobalGameJam/Scripts/Inventory.cs" />
@@ -155,9 +149,11 @@
         <option value="$PROJECT_DIR$/Assets/Sandbox/TurretAI.cs" />
         <option value="$PROJECT_DIR$/Assets/GlobalGameJam/Scripts/Gun.cs" />
         <option value="$PROJECT_DIR$/Assets/GlobalGameJam/Scripts/Game/Game.cs" />
-        <option value="$PROJECT_DIR$/Assets/GlobalGameJam/Scripts/GameManager.cs" />
-        <option value="$PROJECT_DIR$/Assets/Sandbox/BulletCollision.cs" />
+        <option value="$PROJECT_DIR$/Assets/GlobalGameJam/Prototype Model Hovercraft/HoverCraftUI.cs" />
         <option value="$PROJECT_DIR$/Assets/GlobalGameJam/Prototype Model Hovercraft/ThirdPersonHoverCraftController.cs" />
+        <option value="$PROJECT_DIR$/Assets/GlobalGameJam/Scripts/UI/HUD.cs" />
+        <option value="$PROJECT_DIR$/Assets/Sandbox/BulletCollision.cs" />
+        <option value="$PROJECT_DIR$/Assets/GlobalGameJam/Scripts/GameManager.cs" />
       </list>
     </option>
   </component>
@@ -222,6 +218,7 @@
       <workItem from="1580773696855" duration="2802000" />
       <workItem from="1580934863379" duration="11784000" />
       <workItem from="1581189672836" duration="1223000" />
+      <workItem from="1581323288812" duration="1203000" />
     </task>
     <servers />
   </component>
