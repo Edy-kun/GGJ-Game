@@ -21,6 +21,7 @@
       <Path>.idea</Path>
       <Path>David</Path>
       <Path>Library</Path>
+      <Path>Temp</Path>
       <Path>hover</Path>
       <Path>obj</Path>
     </explicitExcludes>

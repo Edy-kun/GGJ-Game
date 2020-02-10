@@ -2,6 +2,7 @@
 using UnityEngine;
 
 
+/*
 public class Game: SceneController
 {
 
@@ -11,4 +12,4 @@ public class Game: SceneController
     {
         base.Start();
     }
-}
+}*/

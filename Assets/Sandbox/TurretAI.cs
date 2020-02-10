@@ -6,7 +6,7 @@ using UnityEngine.AI;
 using Zenject;
 
 [RequireComponent(typeof(AudioSource))]
-public class TurretAI : MonoBehaviour, IDamageable
+public class TurretAI : MonoBehaviour//, IDamageable
 {
     [SerializeField] private NavMeshAgent agent;
     [SerializeField] private Transform partToRotate, gunToRotate;

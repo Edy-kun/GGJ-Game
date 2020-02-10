@@ -13,23 +13,12 @@
         </e>
         <e p="GlobalGameJam" t="Include">
           <e p="Entities" t="Include">
+            <e p="EnemyHealth.cs" t="Include" />
             <e p="HoverBandit" t="Include">
               <e p="RedNeckBomber.cs" t="Include" />
             </e>
           </e>
           <e p="Plugins" t="Include">
-            <e p="DOTween" t="Include">
-              <e p="Modules" t="Include">
-                <e p="DOTweenModuleAudio.cs" t="Include" />
-                <e p="DOTweenModulePhysics.cs" t="Include" />
-                <e p="DOTweenModulePhysics2D.cs" t="Include" />
-                <e p="DOTweenModuleSprite.cs" t="Include" />
-                <e p="DOTweenModuleUI.cs" t="Include" />
-                <e p="DOTweenModuleUnityVersion.cs" t="Include" />
-                <e p="DOTweenModuleUtils.cs" t="Include" />
-              </e>
-              <e p="readme.txt" t="Include" />
-            </e>
             <e p="SimpleFX" t="Include">
               <e p="Materials" t="Include">
                 <e p="UnlitVertexColour_Alpha.shader" t="Include" />
@@ -44,7 +33,6 @@
           </e>
           <e p="Scripts" t="Include">
             <e p="Boat.cs" t="Include" />
-            <e p="DamagableEnemy.cs" t="Include" />
             <e p="Device.cs" t="Include" />
             <e p="Element.cs" t="Include" />
             <e p="ElementType.cs" t="Include" />
@@ -58,7 +46,6 @@
             <e p="HovercraftTracker.cs" t="Include" />
             <e p="ICanPickUp.cs" t="Include" />
             <e p="IControlled.cs" t="Include" />
-            <e p="IDamageable.cs" t="Include" />
             <e p="Installers" t="Include">
               <e p="GameInstaller.cs" t="Include" />
               <e p="GGJGameSettingsInstaller.cs" t="Include" />
@@ -66,26 +53,16 @@
             <e p="Inventory.cs" t="Include" />
             <e p="IReceiveInput.cs" t="Include" />
             <e p="IRepairable.cs" t="Include" />
-            <e p="IWeapon.cs" t="Include" />
             <e p="KeepHoverCraftInPlayableArea.cs" t="Include" />
             <e p="Menu" t="Include">
-              <e p="CreditsPanel.cs" t="Include" />
-              <e p="Menu.cs" t="Include" />
-              <e p="MenuPanel.cs" t="Include" />
               <e p="MenuSystem.cs" t="Include" />
               <e p="PlayerPanel.cs" t="Include" />
-              <e p="PlayerSelectPanel.cs" t="Include" />
-              <e p="UIPanel.cs" t="Include" />
             </e>
             <e p="PickUp.cs" t="Include" />
             <e p="Player.cs" t="Include" />
             <e p="PlayerV2.cs" t="Include" />
-            <e p="Scenes.cs" t="Include" />
-            <e p="SceneSwitcher.cs" t="Include" />
             <e p="ScriptableObjects" t="Include">
               <e p="DeviceConfig.cs" t="Include" />
-              <e p="PickUpProfile.cs" t="Include" />
-              <e p="SettingsConfig.cs" t="Include" />
             </e>
             <e p="SensorResetHovercraft.cs" t="Include" />
             <e p="Team.cs" t="Include" />
@@ -872,34 +849,6 @@
                 <e p="ReflectiveDiffuseSpecTransp.shader" t="Include" />
               </e>
             </e>
-          </e>
-        </e>
-        <e p="TextMesh Pro" t="Include">
-          <e p="Fonts" t="Include">
-            <e p="LiberationSans - OFL.txt" t="Include" />
-          </e>
-          <e p="Resources" t="Include">
-            <e p="LineBreaking Following Characters.txt" t="Include" />
-            <e p="LineBreaking Leading Characters.txt" t="Include" />
-            <e p="Shaders" t="Include">
-              <e p="TMP_Bitmap-Custom-Atlas.shader" t="Include" />
-              <e p="TMP_Bitmap-Mobile.shader" t="Include" />
-              <e p="TMP_Bitmap.shader" t="Include" />
-              <e p="TMP_SDF Overlay.shader" t="Include" />
-              <e p="TMP_SDF-Mobile Masking.shader" t="Include" />
-              <e p="TMP_SDF-Mobile Overlay.shader" t="Include" />
-              <e p="TMP_SDF-Mobile.shader" t="Include" />
-              <e p="TMP_SDF-Surface-Mobile.shader" t="Include" />
-              <e p="TMP_SDF-Surface.shader" t="Include" />
-              <e p="TMP_SDF.shader" t="Include" />
-              <e p="TMP_Sprite.shader" t="Include" />
-              <e p="TMPro.cginc" t="Include" />
-              <e p="TMPro_Properties.cginc" t="Include" />
-              <e p="TMPro_Surface.cginc" t="Include" />
-            </e>
-          </e>
-          <e p="Sprites" t="Include">
-            <e p="EmojiOne Attribution.txt" t="Include" />
           </e>
         </e>
       </e>

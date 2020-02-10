@@ -2,20 +2,22 @@
 <project version="4">
   <component name="ChangeListManager">
     <list default="true" id="cd1008e1-0cab-4c8d-8aed-1a1414922053" name="Default Changelist" comment="">
-      <change afterPath="$PROJECT_DIR$/Assets/GlobalGameJam/Scripts/IReceiveInput.cs" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/Assets/GlobalGameJam/Scripts/IReceiveInput.cs.meta" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/Assets/GlobalGameJam/Scripts/PlayerV2.cs" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/Assets/GlobalGameJam/Scripts/PlayerV2.cs.meta" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/Assets/GlobalGameJam/Prototype Model Hovercraft/ThirdPersonHoverCraftController.cs.orig" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/Assets/GlobalGameJam/Prototype Model Hovercraft/ThirdPersonHoverCraftController.cs.orig.meta" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/.idea/.idea.GGJ-Game/.idea/contentModel.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/.idea.GGJ-Game/.idea/contentModel.xml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/.idea.GGJ-Game/.idea/indexLayout.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/.idea.GGJ-Game/.idea/indexLayout.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/GlobalGameJam/Prefabs/Player.prefab" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/GlobalGameJam/Prefabs/Player.prefab" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/GlobalGameJam/Prototype Model Hovercraft/GGJ-Game.inputactions" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/GlobalGameJam/Prototype Model Hovercraft/GGJ-Game.inputactions" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/.idea/.idea.GGJ-Game/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/.idea.GGJ-Game/.idea/workspace.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/GlobalGameJam/Art/Skybox.meta" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/GlobalGameJam/Entities/MechanicalCroc.meta" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/GlobalGameJam/Entities/Watersnakes.meta" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/GlobalGameJam/GameMechanics.meta" beforeDir="false" />
       <change beforePath="$PROJECT_DIR$/Assets/GlobalGameJam/Prototype Model Hovercraft/ThirdPersonHoverCraftController.cs" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/GlobalGameJam/Prototype Model Hovercraft/ThirdPersonHoverCraftController.cs" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/GlobalGameJam/Scenes/Main.unity" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/GlobalGameJam/Scenes/Main.unity" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/GlobalGameJam/Scenes/HovercraftTesting.meta" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/GlobalGameJam/Scripts/EnemyManager.cs.meta" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/GlobalGameJam/Scripts/Game/Game.cs" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/GlobalGameJam/Scripts/Game/Game.cs" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/Assets/GlobalGameJam/Scripts/GameManager.cs" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/GlobalGameJam/Scripts/GameManager.cs" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/Assets/GlobalGameJam/Scripts/Gun.cs" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/GlobalGameJam/Scripts/Gun.cs" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/GlobalGameJam/Scripts/Installers/GameInstaller.cs" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/GlobalGameJam/Scripts/Installers/GameInstaller.cs" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/GlobalGameJam/Scripts/Player.cs" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/GlobalGameJam/Scripts/Player.cs" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/Sandbox/Bullet.prefab" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Sandbox/Bullet.prefab" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/GlobalGameJam/UI.meta" beforeDir="false" />
       <change beforePath="$PROJECT_DIR$/Assets/Sandbox/BulletCollision.cs" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Sandbox/BulletCollision.cs" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/Assets/Sandbox/TurretAI.cs" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Sandbox/TurretAI.cs" afterDir="false" />
     </list>
@@ -74,8 +76,6 @@
     <setting file="file://$PROJECT_DIR$/Assets/Standard Assets/Characters/ThirdPersonCharacter/Scripts/ThirdPersonUserControl.cs" root0="FORCE_HIGHLIGHTING" />
     <setting file="file://$PROJECT_DIR$/Assets/New Terrain 1.asset.meta" root0="FORCE_HIGHLIGHTING" />
     <setting file="file://$PROJECT_DIR$/Assets/GlobalGameJam/Scripts/EngineInteraction.cs" root0="FORCE_HIGHLIGHTING" />
-    <setting file="file://$PROJECT_DIR$/Assets/GlobalGameJam/Scripts/IDamageable.cs" root0="FORCE_HIGHLIGHTING" />
-    <setting file="file://$PROJECT_DIR$/Assets/GlobalGameJam/Scripts/DamagableEnemy.cs" root0="FORCE_HIGHLIGHTING" />
     <setting file="file://$PROJECT_DIR$/Assets/GlobalGameJam/Scripts/Gun.cs" root0="FORCE_HIGHLIGHTING" />
     <setting file="file://$PROJECT_DIR$/Assets/GlobalGameJam/Scripts/Installers/GameInstaller.cs" root0="FORCE_HIGHLIGHTING" />
     <setting file="file://$PROJECT_DIR$/Assets/GlobalGameJam/Scripts/ElementType.cs" root0="FORCE_HIGHLIGHTING" />
@@ -86,7 +86,6 @@
     <setting file="file://$PROJECT_DIR$/Assets/GlobalGameJam/Entities/HoverBandit/RedNeckBomber.cs" root0="FORCE_HIGHLIGHTING" />
     <setting file="file://$PROJECT_DIR$/Library/PackageCache/com.unity.inputsystem@1.0.0-preview.4/InputSystem/Plugins/PlayerInput/PlayerInputManager.cs" root0="SKIP_HIGHLIGHTING" />
     <setting file="file://$PROJECT_DIR$/Library/PackageCache/com.unity.inputsystem@1.0.0-preview.4/InputSystem/Plugins/PlayerInput/PlayerInput.cs" root0="SKIP_HIGHLIGHTING" />
-    <setting file="file://$PROJECT_DIR$/Assets/GlobalGameJam/Scripts/SceneSwitcher.cs" root0="FORCE_HIGHLIGHTING" />
     <setting file="file://$PROJECT_DIR$/Assets/GlobalGameJam/Art/Prefabs/AmmoBox.prefab" root0="FORCE_HIGHLIGHTING" />
     <setting file="file://$PROJECT_DIR$/Assets/Plugins/Zenject/Source/Factories/PlaceholderFactory.cs" root0="FORCE_HIGHLIGHTING" />
     <setting file="file://$PROJECT_DIR$/Assets/GlobalGameJam/Scripts/Team.cs" root0="FORCE_HIGHLIGHTING" />
@@ -95,10 +94,8 @@
     <setting file="file://$PROJECT_DIR$/Assets/GlobalGameJam/Scripts/PickUp.cs" root0="FORCE_HIGHLIGHTING" />
     <setting file="file://$PROJECT_DIR$/Assets/GlobalGameJam/Scripts/Element.cs" root0="FORCE_HIGHLIGHTING" />
     <setting file="file://$PROJECT_DIR$/Assets/GlobalGameJam/Prefabs/HoverCraft_V2.prefab" root0="FORCE_HIGHLIGHTING" />
-    <setting file="file://$PROJECT_DIR$/Assets/GlobalGameJam/Scripts/ScriptableObjects/PickUpProfile.cs" root0="FORCE_HIGHLIGHTING" />
     <setting file="file://$PROJECT_DIR$/Assets/Standard Assets/Utility/ForcedReset.cs" root0="FORCE_HIGHLIGHTING" />
     <setting file="file://$PROJECT_DIR$/Assets/GlobalGameJam/Scripts/UI.meta" root0="FORCE_HIGHLIGHTING" />
-    <setting file="file://$PROJECT_DIR$/Assets/GlobalGameJam/Scripts/Menu/UIPanel.cs" root0="FORCE_HIGHLIGHTING" />
     <setting file="file://$PROJECT_DIR$/Assets/GlobalGameJam/Scripts/Menu/MenuSystem.cs" root0="FORCE_HIGHLIGHTING" />
     <setting file="file://$PROJECT_DIR$/Assets/GlobalGameJam/Scripts/UI/HUD.cs" root0="FORCE_HIGHLIGHTING" />
     <setting file="file://$PROJECT_DIR$/Assets/GlobalGameJam/Scripts/Device.cs" root0="FORCE_HIGHLIGHTING" />
@@ -106,10 +103,6 @@
     <setting file="file://$PROJECT_DIR$/Assets/GlobalGameJam/Scripts/Menu/PlayerPanel.cs" root0="FORCE_HIGHLIGHTING" />
     <setting file="file://$PROJECT_DIR$/Assets/GlobalGameJam/Scenes/Main.unity" root0="FORCE_HIGHLIGHTING" />
     <setting file="file://$PROJECT_DIR$/Assets/GlobalGameJam/Scripts/IReceiveInput.cs" root0="FORCE_HIGHLIGHTING" />
-    <setting file="file://$PROJECT_DIR$/Assets/GlobalGameJam/Scripts/Scenes.cs" root0="FORCE_HIGHLIGHTING" />
-    <setting file="file://$PROJECT_DIR$/Assets/GlobalGameJam/Scripts/Menu/Menu.cs" root0="FORCE_HIGHLIGHTING" />
-    <setting file="file://$PROJECT_DIR$/Assets/GlobalGameJam/Scripts/Menu/CreditsPanel.cs" root0="FORCE_HIGHLIGHTING" />
-    <setting file="file://$PROJECT_DIR$/Assets/GlobalGameJam/Scripts/Menu/PlayerSelectPanel.cs" root0="FORCE_HIGHLIGHTING" />
     <setting file="file://$PROJECT_DIR$/Assets/GlobalGameJam/Prototype Model Hovercraft/ThirdPersonHoverCraftController.cs" root0="FORCE_HIGHLIGHTING" />
     <setting file="file://$PROJECT_DIR$/Assets/Sandbox/Croc.prefab" root0="FORCE_HIGHLIGHTING" />
     <setting file="file://$PROJECT_DIR$/Assets/GlobalGameJam/Scripts/Game/Game.cs" root0="FORCE_HIGHLIGHTING" />
@@ -117,7 +110,6 @@
     <setting file="file://$PROJECT_DIR$/Assets/Sandbox/RandomEnemyPlacement.cs" root0="FORCE_HIGHLIGHTING" />
     <setting file="file://$PROJECT_DIR$/Assets/GlobalGameJam/Scripts/ScriptableObjects/DeviceConfig.cs" root0="FORCE_HIGHLIGHTING" />
     <setting file="file://$PROJECT_DIR$/Assets/Sandbox/TurretAI.cs" root0="FORCE_HIGHLIGHTING" />
-    <setting file="file://$PROJECT_DIR$/Assets/GlobalGameJam/Scripts/ScriptableObjects/SettingsConfig.cs" root0="FORCE_HIGHLIGHTING" />
   </component>
   <component name="IdeDocumentHistory">
     <option name="CHANGED_PATHS">
@@ -143,7 +135,6 @@
         <option value="$PROJECT_DIR$/Assets/GlobalGameJam/Scripts/ICanPickUp.cs" />
         <option value="$PROJECT_DIR$/Assets/GlobalGameJam/Scripts/KeepHoverCraftInPlayableArea.cs" />
         <option value="$PROJECT_DIR$/Assets/GlobalGameJam/Scripts/PickUp.cs" />
-        <option value="$PROJECT_DIR$/Assets/GlobalGameJam/Scripts/Game/Game.cs" />
         <option value="$PROJECT_DIR$/Assets/GlobalGameJam/Scripts/IControlled.cs" />
         <option value="$PROJECT_DIR$/Assets/Sandbox/RandomEnemyPlacement.cs" />
         <option value="$PROJECT_DIR$/Assets/GlobalGameJam/Scripts/ScriptableObjects/DeviceConfig.cs" />
@@ -159,13 +150,14 @@
         <option value="$PROJECT_DIR$/Assets/Plugins/Zenject/OptionalExtras/SampleGame2 (Advanced)/Scripts/Player/PlayerMoveHandler.cs" />
         <option value="$PROJECT_DIR$/Assets/GlobalGameJam/Scripts/Installers/GameInstaller.cs" />
         <option value="$PROJECT_DIR$/Assets/GlobalGameJam/Scripts/InputController.cs" />
-        <option value="$PROJECT_DIR$/Assets/GlobalGameJam/Scripts/GameManager.cs" />
         <option value="$PROJECT_DIR$/Assets/GlobalGameJam/Scripts/PlayerV2.cs" />
-        <option value="$PROJECT_DIR$/Assets/GlobalGameJam/Prototype Model Hovercraft/ThirdPersonHoverCraftController.cs" />
         <option value="$PROJECT_DIR$/Assets/GlobalGameJam/Scripts/Player.cs" />
         <option value="$PROJECT_DIR$/Assets/Sandbox/TurretAI.cs" />
-        <option value="$PROJECT_DIR$/Assets/Sandbox/BulletCollision.cs" />
         <option value="$PROJECT_DIR$/Assets/GlobalGameJam/Scripts/Gun.cs" />
+        <option value="$PROJECT_DIR$/Assets/GlobalGameJam/Scripts/Game/Game.cs" />
+        <option value="$PROJECT_DIR$/Assets/GlobalGameJam/Scripts/GameManager.cs" />
+        <option value="$PROJECT_DIR$/Assets/Sandbox/BulletCollision.cs" />
+        <option value="$PROJECT_DIR$/Assets/GlobalGameJam/Prototype Model Hovercraft/ThirdPersonHoverCraftController.cs" />
       </list>
     </option>
   </component>
@@ -229,6 +221,7 @@
       <workItem from="1580640164834" duration="11436000" />
       <workItem from="1580773696855" duration="2802000" />
       <workItem from="1580934863379" duration="11784000" />
+      <workItem from="1581189672836" duration="1223000" />
     </task>
     <servers />
   </component>
@@ -364,10 +357,10 @@
       <screen x="0" y="0" width="1920" height="1040" />
     </state>
     <state x="616" y="240" width="672" height="677" key="run.anything.popup/0.0.1920.1040@0.0.1920.1040" timestamp="1581152405518" />
-    <state x="623" y="239" width="672" height="678" key="search.everywhere.popup" timestamp="1581157910356">
+    <state x="623" y="239" width="672" height="678" key="search.everywhere.popup" timestamp="1581190310633">
       <screen x="0" y="0" width="1920" height="1040" />
     </state>
-    <state x="623" y="239" width="672" height="678" key="search.everywhere.popup/0.0.1920.1040@0.0.1920.1040" timestamp="1581157910356" />
+    <state x="623" y="239" width="672" height="678" key="search.everywhere.popup/0.0.1920.1040@0.0.1920.1040" timestamp="1581190310633" />
   </component>
   <component name="XDebuggerManager">
     <breakpoint-manager>

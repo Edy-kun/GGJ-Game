@@ -83,3 +83,9 @@ public class BulletCollision : MonoBehaviour, IPoolable<BulletCollision.Pool>//,
     }
 
 }
+
+internal interface IDamageable
+{
+    float Health { get; set; }
+    void TakeDamage(int dmg);
+}

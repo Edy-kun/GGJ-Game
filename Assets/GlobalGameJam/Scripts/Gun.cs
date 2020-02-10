@@ -7,7 +7,7 @@ using UnityEngine.Rendering;
 using Zenject;
 
 [RequireComponent(typeof(BoxCollider))]
-public class Gun : Device, IWeapon, IControlled, IReceiveInput
+public class Gun : Device, IControlled, IReceiveInput
 {
     public float fireRate
     {
