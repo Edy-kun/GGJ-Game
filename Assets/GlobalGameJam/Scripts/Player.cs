@@ -89,10 +89,13 @@ public class Player : MonoBehaviour, ICanPickUp, IReceiveInput
 
     private void Start(){
 
+        /* debug guncontroll
     _receiveInput = FindObjectOfType<Gun>().GetComponent<IReceiveInput>();
     _controller = _receiveInput;
     _controller.StartControl(this);
     _receiveInput.OnControlEnd += EndControl;
+    */
+        
     }
     public void DoMove(Vector3 vec)
     {

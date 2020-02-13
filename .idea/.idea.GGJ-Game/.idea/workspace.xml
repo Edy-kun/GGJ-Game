@@ -2,23 +2,11 @@
 <project version="4">
   <component name="ChangeListManager">
     <list default="true" id="cd1008e1-0cab-4c8d-8aed-1a1414922053" name="Default Changelist" comment="">
-      <change beforePath="$PROJECT_DIR$/.idea/.idea.GGJ-Game/.idea/contentModel.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/.idea.GGJ-Game/.idea/contentModel.xml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/.idea.GGJ-Game/.idea/indexLayout.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/.idea.GGJ-Game/.idea/indexLayout.xml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/.idea.GGJ-Game/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/.idea.GGJ-Game/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/GlobalGameJam/GameMechanics.meta" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/GlobalGameJam/Plugins/DOTween/Editor.meta" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/GlobalGameJam/Prefabs/HoverCraft_V2.prefab" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/GlobalGameJam/Prefabs/HoverCraft_V2.prefab" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/GlobalGameJam/Prototype Model Hovercraft/HoverCraftUI.cs" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/GlobalGameJam/Prototype Model Hovercraft/HoverCraftUI.cs" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/GlobalGameJam/Prototype Model Hovercraft/ThirdPersonHoverCraftController.cs" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/GlobalGameJam/Prototype Model Hovercraft/ThirdPersonHoverCraftController.cs" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/GlobalGameJam/Scenes/HovercraftTesting.meta" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/GlobalGameJam/Scenes/Main.unity" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/GlobalGameJam/Scenes/Main.unity" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/GlobalGameJam/Scripts/GameManager.cs" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/GlobalGameJam/Scripts/GameManager.cs" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/GlobalGameJam/Scripts/Player.cs.orig" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/GlobalGameJam/Scripts/Player.cs.orig.meta" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/GlobalGameJam/Scripts/UI/HUD.cs" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/GlobalGameJam/Scripts/UI/HUD.cs" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/Plugins/Zenject/OptionalExtras/ReflectionBaking/Zenject-ReflectionBaking.csproj.meta" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/Plugins/Zenject/OptionalExtras/Signals/Zenject-Signals.csproj.meta" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/Sandbox/BulletCollision.cs" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Sandbox/BulletCollision.cs" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/GlobalGameJam/Prefabs/Player.prefab" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/GlobalGameJam/Prefabs/Player.prefab" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/GlobalGameJam/Scripts/Device.cs" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/GlobalGameJam/Scripts/Device.cs" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/GlobalGameJam/Scripts/Player.cs" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/GlobalGameJam/Scripts/Player.cs" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -59,6 +47,7 @@
   </component>
   <component name="HighlightingSettingsPerFile">
     <setting file="file://$PROJECT_DIR$/Assets/GlobalGameJam/Prototype Model Hovercraft/HoverCraftUI.cs" root0="FORCE_HIGHLIGHTING" />
+    <setting file="file://$PROJECT_DIR$/Assets/GlobalGameJam/Scripts/PlayerV2.cs" root0="FORCE_HIGHLIGHTING" />
     <setting file="file://$PROJECT_DIR$/ProjectSettings/GraphicsSettings.asset" root0="FORCE_HIGHLIGHTING" />
     <setting file="file://$PROJECT_DIR$/Assets/Sandbox/TurretAI.cs" root0="FORCE_HIGHLIGHTING" />
     <setting file="file://$PROJECT_DIR$/Assets/GlobalGameJam/Prototype Model Hovercraft/DownThrusterController.cs" root0="FORCE_HIGHLIGHTING" />
@@ -134,7 +123,6 @@
         <option value="$PROJECT_DIR$/Assets/Sandbox/RandomEnemyPlacement.cs" />
         <option value="$PROJECT_DIR$/Assets/GlobalGameJam/Scripts/ScriptableObjects/DeviceConfig.cs" />
         <option value="$PROJECT_DIR$/Assets/GlobalGameJam/Scripts/IRepairable.cs" />
-        <option value="$PROJECT_DIR$/Assets/GlobalGameJam/Scripts/Device.cs" />
         <option value="$PROJECT_DIR$/Assets/GlobalGameJam/Scripts/Boat.cs" />
         <option value="$PROJECT_DIR$/Assets/GlobalGameJam/Scripts/Game/PickupSpawner.cs" />
         <option value="$PROJECT_DIR$/Assets/GlobalGameJam/Scripts/Menu/MenuSystem.cs" />
@@ -145,7 +133,6 @@
         <option value="$PROJECT_DIR$/Assets/GlobalGameJam/Scripts/Installers/GameInstaller.cs" />
         <option value="$PROJECT_DIR$/Assets/GlobalGameJam/Scripts/InputController.cs" />
         <option value="$PROJECT_DIR$/Assets/GlobalGameJam/Scripts/PlayerV2.cs" />
-        <option value="$PROJECT_DIR$/Assets/GlobalGameJam/Scripts/Player.cs" />
         <option value="$PROJECT_DIR$/Assets/Sandbox/TurretAI.cs" />
         <option value="$PROJECT_DIR$/Assets/GlobalGameJam/Scripts/Gun.cs" />
         <option value="$PROJECT_DIR$/Assets/GlobalGameJam/Scripts/Game/Game.cs" />
@@ -154,6 +141,8 @@
         <option value="$PROJECT_DIR$/Assets/GlobalGameJam/Scripts/UI/HUD.cs" />
         <option value="$PROJECT_DIR$/Assets/Sandbox/BulletCollision.cs" />
         <option value="$PROJECT_DIR$/Assets/GlobalGameJam/Scripts/GameManager.cs" />
+        <option value="$PROJECT_DIR$/Assets/GlobalGameJam/Scripts/Device.cs" />
+        <option value="$PROJECT_DIR$/Assets/GlobalGameJam/Scripts/Player.cs" />
       </list>
     </option>
   </component>
@@ -219,6 +208,7 @@
       <workItem from="1580934863379" duration="11784000" />
       <workItem from="1581189672836" duration="1223000" />
       <workItem from="1581323288812" duration="1203000" />
+      <workItem from="1581588742718" duration="466000" />
     </task>
     <servers />
   </component>

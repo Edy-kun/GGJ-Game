@@ -44,15 +44,16 @@ MonoBehaviour:
   m_GameObject: {fileID: 5423724945111384758}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 38b9230ed80e45d8a92e65b3fbcd9dc2, type: 3}
+  m_Script: {fileID: 11500000, guid: e3bdbc3daad2edc4aacedd1dcd49857a, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
   character: {fileID: 861946361352589620}
   holds: {fileID: 0}
   boxSnap: {fileID: 7462905623326643075}
   toolSnap: {fileID: 5247337202693206908}
-  anim: {fileID: 861946361352589621}
-  movespeed: 5
+  anim: {fileID: 0}
+  movespeed: 10
+  IsRepairing: 0
 --- !u!135 &-6838455861797996555
 SphereCollider:
   m_ObjectHideFlags: 0
@@ -78,182 +79,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 07e2ca24b7c04aa6896df819c0ce94bf, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  axisLeft:
-    m_Name: Axis Left
-    m_Type: 0
-    m_ExpectedControlType: 
-    m_Id: d301aa52-1c40-4936-a57e-c520ce017280
-    m_Processors: 
-    m_Interactions: 
-    m_SingletonActionBindings:
-    - m_Name: 2D Vector
-      m_Id: 73fb3f15-bc35-4bf0-9be3-2faaef8b3415
-      m_Path: 2DVector
-      m_Interactions: 
-      m_Processors: 
-      m_Groups: 
-      m_Action: Axis Left
-      m_Flags: 4
-    - m_Name: up
-      m_Id: 9841c05e-5040-4d80-a623-159e6ab88012
-      m_Path: <Keyboard>/w
-      m_Interactions: 
-      m_Processors: AxisDeadzone
-      m_Groups: 
-      m_Action: Axis Left
-      m_Flags: 8
-    - m_Name: down
-      m_Id: 5ddb0756-9e22-4343-8c3a-f89948781c0c
-      m_Path: <Keyboard>/s
-      m_Interactions: 
-      m_Processors: 
-      m_Groups: 
-      m_Action: Axis Left
-      m_Flags: 8
-    - m_Name: left
-      m_Id: d21a1296-8b34-4747-ad1e-7241da978459
-      m_Path: <Keyboard>/a
-      m_Interactions: 
-      m_Processors: 
-      m_Groups: 
-      m_Action: Axis Left
-      m_Flags: 8
-    - m_Name: right
-      m_Id: 6d6a3bd2-3095-4e8b-9771-db3c3bef5f0e
-      m_Path: <Keyboard>/d
-      m_Interactions: 
-      m_Processors: 
-      m_Groups: 
-      m_Action: Axis Left
-      m_Flags: 8
-    - m_Name: 
-      m_Id: 7d913617-4b05-4420-bf7c-a0e2e25cb909
-      m_Path: 
-      m_Interactions: 
-      m_Processors: 
-      m_Groups: 
-      m_Action: Axis Left
-      m_Flags: 0
-  axisRight:
-    m_Name: Axis Right
-    m_Type: 0
-    m_ExpectedControlType: 
-    m_Id: 3bfb2e3a-0173-405e-83c4-6cc8c8243719
-    m_Processors: 
-    m_Interactions: 
-    m_SingletonActionBindings:
-    - m_Name: 2D Vector
-      m_Id: e6b9b523-ba7b-4749-b75f-b820d7c98739
-      m_Path: 2DVector
-      m_Interactions: 
-      m_Processors: 
-      m_Groups: 
-      m_Action: Axis Right
-      m_Flags: 4
-    - m_Name: up
-      m_Id: 3b8e9c59-4661-496d-9238-2cc9995eb9d3
-      m_Path: 
-      m_Interactions: 
-      m_Processors: 
-      m_Groups: 
-      m_Action: Axis Right
-      m_Flags: 8
-    - m_Name: down
-      m_Id: c20eabb5-56ad-4fcb-bcfc-aedcf57c6889
-      m_Path: 
-      m_Interactions: 
-      m_Processors: 
-      m_Groups: 
-      m_Action: Axis Right
-      m_Flags: 8
-    - m_Name: left
-      m_Id: 359aa3b3-9e11-4703-8c39-2537bf2ba4ac
-      m_Path: 
-      m_Interactions: 
-      m_Processors: 
-      m_Groups: 
-      m_Action: Axis Right
-      m_Flags: 8
-    - m_Name: right
-      m_Id: 1d2368f4-9db6-4079-8697-33e5d158f667
-      m_Path: 
-      m_Interactions: 
-      m_Processors: 
-      m_Groups: 
-      m_Action: Axis Right
-      m_Flags: 8
-  triggerLeft:
-    m_Name: Trigger Left
-    m_Type: 0
-    m_ExpectedControlType: 
-    m_Id: 3df885d0-f0e8-4114-9912-385e5a878bf8
-    m_Processors: 
-    m_Interactions: 
-    m_SingletonActionBindings:
-    - m_Name: 1D Axis
-      m_Id: 6483941a-12f5-4a26-b405-4a4e8842980a
-      m_Path: 1DAxis
-      m_Interactions: 
-      m_Processors: 
-      m_Groups: 
-      m_Action: Trigger Left
-      m_Flags: 4
-    - m_Name: negative
-      m_Id: 697e0842-6b1b-4b8e-b155-06fcd7946ac8
-      m_Path: 
-      m_Interactions: 
-      m_Processors: 
-      m_Groups: 
-      m_Action: Trigger Left
-      m_Flags: 8
-    - m_Name: positive
-      m_Id: b2d4fa34-6b21-49d1-afc3-fd2c84cade4c
-      m_Path: 
-      m_Interactions: 
-      m_Processors: 
-      m_Groups: 
-      m_Action: Trigger Left
-      m_Flags: 8
-  triggerRight:
-    m_Name: Trigger Right
-    m_Type: 0
-    m_ExpectedControlType: 
-    m_Id: 72cffdbe-d122-4cee-b210-aa06b4c009b5
-    m_Processors: 
-    m_Interactions: 
-    m_SingletonActionBindings:
-    - m_Name: 
-      m_Id: 62fb0a37-a11e-44c3-868a-c3dfab8f5b55
-      m_Path: 
-      m_Interactions: 
-      m_Processors: 
-      m_Groups: 
-      m_Action: Trigger Right
-      m_Flags: 0
-  Interact:
-    m_Name: Interact
-    m_Type: 0
-    m_ExpectedControlType: 
-    m_Id: 7f8701ec-44ac-44c4-aea0-bdc009d40c76
-    m_Processors: 
-    m_Interactions: 
-    m_SingletonActionBindings:
-    - m_Name: 
-      m_Id: 36bb56bd-1c81-4dd3-991e-4beb78face29
-      m_Path: <Keyboard>/f
-      m_Interactions: 
-      m_Processors: 
-      m_Groups: 
-      m_Action: Interact
-      m_Flags: 0
-  StopInteract:
-    m_Name: Stop Interact
-    m_Type: 0
-    m_ExpectedControlType: 
-    m_Id: bcf61c56-58a4-496a-b105-3a2400ba1ca1
-    m_Processors: 
-    m_Interactions: 
-    m_SingletonActionBindings: []
+  p: {fileID: 0}
 --- !u!114 &1609313520
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -282,7 +108,7 @@ MonoBehaviour:
   m_ActionEvents: []
   m_NeverAutoSwitchControlSchemes: 0
   m_DefaultControlScheme: 
-  m_DefaultActionMap: 45799da5-6cb8-4a07-96f3-da9142dcc40f
+  m_DefaultActionMap: Character
   m_SplitScreenIndex: -1
   m_Camera: {fileID: 0}
 --- !u!1001 &7643865382119813007
@@ -363,12 +189,6 @@ GameObject:
 --- !u!4 &4444321102734975783 stripped
 Transform:
   m_CorrespondingSourceObject: {fileID: 6321102716544371880, guid: 59e8a65084eabb64297594b29155a917,
-    type: 3}
-  m_PrefabInstance: {fileID: 7643865382119813007}
-  m_PrefabAsset: {fileID: 0}
---- !u!95 &861946361352589621 stripped
-Animator:
-  m_CorrespondingSourceObject: {fileID: 7053279917096877754, guid: 59e8a65084eabb64297594b29155a917,
     type: 3}
   m_PrefabInstance: {fileID: 7643865382119813007}
   m_PrefabAsset: {fileID: 0}

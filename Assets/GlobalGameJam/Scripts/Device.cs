@@ -10,13 +10,15 @@ public abstract class Device : MonoBehaviour, IRepairable
     public Player ControlledBy { get; set; }
     public GameObject BrokenIcon;
     private SpriteRenderer iconR;
-
+    public DeviceConfig config;
+    private ParticleSystem _brokenParticles;
+    private ParticleSystem _repairParticles;
     protected virtual void Awake()
     {
         var m = new GameObject();
         effectParent = transform;
         audioSource = this.GetComponent<AudioSource>();
-        Health = config.health;
+        Health = config ? config.health : 100;
         BrokenIcon =GameObject.Instantiate(m,this.transform.position+Vector3.up,Quaternion.identity,this.transform);
         iconR =BrokenIcon.AddComponent<SpriteRenderer>();
     }
@@ -28,9 +30,7 @@ public abstract class Device : MonoBehaviour, IRepairable
     Boat = GetComponentInParent<Boat>();
     }
 
-    public DeviceConfig config;
-    private ParticleSystem _brokenParticles;
-    private ParticleSystem _repairParticles;
+ 
 
     public int Health { get; set; }
 
